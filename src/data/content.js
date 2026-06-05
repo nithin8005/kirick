@@ -1,0 +1,397 @@
+export const dietaryFeatures = [
+  { id: 'no-bad', label: 'No Bad Stuff', icon: '⚗', sublabel: 'No junk — clean crunch' },
+  { id: 'organic', label: 'Organic', icon: '🌿', sublabel: 'Organic' },
+  { id: 'non-gmo', label: 'Non-GMO', icon: 'GMO', sublabel: 'Non-GMO' },
+]
+
+export const products = [
+  {
+    id: 'green-chutney',
+    name: 'Green Chutney',
+    tagline: 'Fresh, zesty, certified chaos',
+    description:
+      'Our Green Chutney flavor hits like your favorite chutney — bold herb notes with a clean crunch finish.',
+    longDescription:
+      'No...Yes... DOSA CHIPS is made from Dosa, but not your regular dosa. Bold chutney notes, certified crunch, and plot-twist flavor in every bite.',
+    price: '₹20/-',
+    priceWas: '₹30/-',
+    isNew: true,
+    dietary: ['Gluten free', 'Rice bran oil'],
+    combo: 'Pair with mint yogurt dip or masala chai for peak kirik.',
+    image: '/images/products/green-chutney.jpeg',
+    imageLabel: 'Green Chutney packet — front view',
+    gridBlurb: 'Bold, fresh and filled with umami flavour',
+  },
+  {
+    id: 'jeera-salt',
+    name: 'Jeera Salt',
+    tagline: 'Cumin-kissed classic crunch',
+    description:
+      'Jeera-forward saltiness on a real dosa crunch — familiar, comforting, and hard to put down.',
+    longDescription:
+      'Jeera Salt Dosa Chips — cumin and salt on an authentic dosa base. Gluten free, rice bran oil, and crunch loyalty in every bite.',
+    price: '₹20/-',
+    priceWas: '₹30/-',
+    isNew: false,
+    dietary: ['Gluten free', 'Rice bran oil'],
+    combo: 'Best with masala chai, chaas, or a simple cup of filter coffee.',
+    image: '/images/products/jeera-salt.png',
+    imageLabel: 'Jeera Salt packet — front view',
+    gridBlurb: 'Cumin-kissed classic crunch',
+  },
+  {
+    id: 'plain-salted',
+    name: 'Plain Salted',
+    tagline: 'Classic crunch, tradition twisted',
+    description:
+      'The OG Kirik chip — plain salted, maximum crunch, zero drama.',
+    longDescription:
+      'Plain Salted Dosa Chips — tradition twisted. Rice bran oil, gluten free, and crunch loyalty in every bite.',
+    price: '₹20/-',
+    priceWas: '₹30/-',
+    isNew: false,
+    dietary: ['Gluten free', 'Rice bran oil'],
+    combo: 'Best with filter coffee or chai on rainy evenings.',
+    image: '/images/products/plain-salted.png',
+    imageLabel: 'Plain Salted packet — front view',
+    gridBlurb: 'Classic crunch, tradition twisted',
+  },
+  {
+    id: 'kara-podi',
+    name: 'Kara Podi',
+    tagline: 'Spice level: Kirik Certified',
+    description:
+      'Podi-powered punch for spice lovers. Crunch first, fire second, loyalty always.',
+    longDescription:
+      'Podi-powered punch for spice lovers. Spice level: Kirik Certified. Crunch first, fire second.',
+    price: '₹20/-',
+    priceWas: '₹30/-',
+    isNew: false,
+    dietary: ['Gluten free', 'Rice bran oil'],
+    combo: 'Stack with curd rice vibes or lemon soda — no judgment.',
+    image: '/images/products/kara-podi.png',
+    imageLabel: 'Kara Podi packet — front view',
+    gridBlurb: 'Spice level: Kirik Certified heat',
+  },
+  {
+    id: 'ginger-jaggery',
+    name: 'Ginger Jaggery',
+    tagline: 'Sweet heat, desi comfort',
+    description:
+      'Warm ginger meets jaggery sweetness on every crisp bite — nostalgic with a plot twist.',
+    longDescription:
+      'Ginger Jaggery Dosa Chips — sweet, spicy, and certified crunchy. Real dosa base, rice bran oil, gluten free.',
+    price: '₹20/-',
+    priceWas: '₹30/-',
+    isNew: false,
+    dietary: ['Gluten free', 'Rice bran oil'],
+    combo: 'Pair with filter coffee or warm milk for peak comfort-snack mode.',
+    image: '/images/products/ginger-jaggery.png',
+    imageLabel: 'Ginger Jaggery packet — front view',
+    gridBlurb: 'Sweet heat, desi comfort',
+  },
+]
+
+export const faqs = [
+  {
+    question: 'Is this real Dosa?',
+    answer:
+      'Yes. KIRIK Dosa Chips are made from a real dosa base. Crispy enough to confuse your brain, tasty enough to finish the packet.',
+  },
+  {
+    question: 'Is this healthy?',
+    answer:
+      'Healthier than finishing an entire family-size chips packet at 2AM. KIRIK Dosa Chips are made with authentic dosa ingredients and fried with no palm oil. Nutritional information is available on the packaging — but honestly, your taste buds may ignore it after the first bite.',
+  },
+  {
+    question: "Who's the founder?",
+    answer:
+      'Nice try. Even our snacks don’t reveal secrets that easily. But yes, the founder is real, slightly snack-obsessed, and probably arguing about chutney somewhere right now. For the full story, check out the “Our Story” section.',
+  },
+  {
+    question: 'What are the available flavors?',
+    answer:
+      'We currently offer Jeera Salt, Green Chutney, Kara Podi, and Ginger Jaggery. Stay tuned for new releases!',
+  },
+  {
+    question: 'Where can I buy Kirik Dosa Chips?',
+    answer:
+      'Online, in select stores, and possibly from that one friend who never shares snacks.',
+  },
+  {
+    question: 'Do you ship internationally?',
+    answer:
+      'Currently, we primarily ship within India. We are working to expand our reach internationally.',
+  },
+  {
+    question: 'Are Kirik Dosa Chips gluten-free?',
+    answer:
+      'Yes, the chips are naturally gluten-free as they are made from fermented rice and lentil batter. We are also allergen free.',
+  },
+  {
+    question: 'What is the shelf life of the chips?',
+    answer: 'Check the best by date on the back of packaging.',
+  },
+  {
+    question: 'What is the main ingredient?',
+    answer:
+      'Kirik Dosa Chips are primarily made from a batter of rice and lentils (like urad dal), fermented like traditional dosa.',
+  },
+  {
+    question: 'Are there any preservatives or artificial colors?',
+    answer:
+      'We pride ourselves on using only natural ingredients and spices. There are minimal salts to maximize our shelf life.',
+  },
+  {
+    question: 'Can I use these chips with dips?',
+    answer:
+      'Absolutely! They pair excellently with traditional chutneys (like coconut or tomato) or modern dips like hummus or salsa.',
+  },
+  {
+    question: 'Are the chips vegan?',
+    answer:
+      'Yes. 100% vegan. No dairy. No animal products. Just pure crunch and questionable self-control.',
+  },
+  {
+    question: 'How many calories are in a serving?',
+    answer:
+      'A typical serving (30grams) contains approximately ___ calories, depending on the flavor. Full nutritional facts are on the packaging.',
+  },
+  {
+    question: 'Do you offer corporate or bulk orders?',
+    answer:
+      'Yes. Whether it’s office gifting, events, or feeding an entire team during a boring meeting — we’ve got bulk orders covered. Contact us at sales@kirikdosachips.in and let the crunch begin.',
+  },
+  {
+    question: 'Do your snacks contain artificial preservatives?',
+    answer:
+      'We aim to maintain quality and freshness while using ingredients that meet food safety and industry standards.',
+  },
+  {
+    question: 'How can I become a distributor or retailer?',
+    answer:
+      'You can contact us through our official communication info@kirikdosachips.in and provide us with your business details for distributorship opportunities.',
+  },
+  {
+    question: 'Can I collaborate with your brand?',
+    answer:
+      'Yes, we welcome collaborations when it’s a good fit with distributors, retailers, influencers, etc.',
+  },
+  {
+    question: 'Are your snacks suitable for all age groups?',
+    answer:
+      'Absolutely. Kids love the crunch, adults love the nostalgia, and grandparents secretly ask for a second packet.',
+  },
+  {
+    question: 'How can customers stay updated about new launches?',
+    answer:
+      'Easy. Follow our socials before your friends do and act like you discovered the flavor first.',
+  },
+  {
+    question: 'Which snack goes best with chai?',
+    answer:
+      'That depends on your mood — but our crunchy flavors are made to pair perfectly with tea-time cravings.',
+  },
+  {
+    question: "What's the best way to enjoy Cheeky snacks?",
+    answer:
+      'Open the pack immediately. Waiting is overrated. Pair it with chai, coffee, cold drinks, or your favorite dip. Crumble it over your usual meals for extra crunch, or just eat it straight from the packet like a true KIRIK professional.',
+  },
+  {
+    question: 'Do you offer return or replacement support?',
+    answer:
+      'Yes. If you receive a damaged or defective product, our team will review the concern and assist you with the appropriate support. Customer satisfaction matters to us — just reach out with the product details and we’ll take it from there.',
+  },
+  {
+    question: 'Is batch tracking available for products?',
+    answer:
+      'Yes, product batch details are available on the packaging for traceability purposes.',
+  },
+  {
+    question: 'How quickly can orders be processed?',
+    answer:
+      'Order timelines depend on quantity, location, and operational schedules.',
+  },
+  {
+    question: 'Is this gym-friendly?',
+    answer: 'Depends. Are you doing cardio between bites?',
+  },
+  {
+    question: 'Which flavor is the spiciest?',
+    answer: "Kara Podi doesn't believe in peace.",
+  },
+]
+
+export const stickers = [
+  {
+    title: 'KIRIK CERTIFIED DOSA',
+    visual: 'Kirik above a dosa saying Certified Dosa.',
+    imageLabel: 'Certified Dosa badge sticker',
+  },
+  {
+    title: 'Dosa Walked So I Could Run',
+    visual: 'Sticker of a chip sprinting past a sleepy folded dosa.',
+    imageLabel: 'Sprinting chip vs sleepy dosa',
+  },
+  {
+    title: 'Emotionally Unavailable. Crunchy AF.',
+    visual: 'A chip ghosting a chutney dip.',
+    imageLabel: 'Chip ghosting chutney',
+  },
+  {
+    title: "Kirik, I'm the Plot Twist.",
+    visual: 'Plot twist scene — train scene.',
+    imageLabel: 'Train scene plot twist',
+  },
+  {
+    title: 'Caution: may result in kirik nature',
+    visual:
+      'Cautionary warning style on the packet or next to it — like a hazard label for certified chaos.',
+    imageLabel: 'Caution warning sticker',
+  },
+  {
+    title: 'Crunchy vs. Crispy (Dosa Fight Club)',
+    visual: 'Two chip-shaped characters arguing; optional referee (chip or masala shaker) between them.',
+    dialogue: [
+      'Character 1 (pointing): “It’s crunchy!”',
+      'Character 2 (crossed arms): “No, it’s crispy, bro!”',
+      'Referee: “Let the chips decide.”',
+    ],
+    imageLabel: 'Crunchy vs crispy fight club',
+  },
+  {
+    title: 'Mind Blown (Flavor Explosion)',
+    visual: 'A character holding a chip, wide-eyed — dialogue above their head.',
+    dialogue: ['“Bro… It’s a FLAVOR BOMB 💣🤯”'],
+    imageLabel: 'Flavor bomb reaction',
+  },
+  {
+    title: 'Kirik Chip Hero (Super Snack)',
+    visual:
+      'A dosa chip with a cape, arms on hips, sunglasses on. Text on the side: “Saving snacks. One crunch at a time.”',
+    imageLabel: 'Superhero chip with cape',
+  },
+  {
+    title: 'Snack Whisperer (Secret Flavor)',
+    visual: 'One chip-shaped character whispering to another.',
+    dialogue: [
+      'Whispering character: “Psst… It’s dosa magic.”',
+      'Other character (shocked): “Whaaat?!”',
+    ],
+    imageLabel: 'Whispering chips',
+  },
+  {
+    title: 'Heartbreaker Chips (Jealous Snacks)',
+    visual: 'Dosa chip walking confidently while cookies and nachos cry in the background.',
+    dialogue: [
+      'Crying cookie: “They left us…”',
+      'Nacho (devastated): “For Kirik??!”',
+      'Chip (walking away): “Crunch loyalty, baby.”',
+    ],
+    imageLabel: 'Jealous snacks scene',
+  },
+  {
+    title: 'Monkeying Around (Wild Crunch)',
+    visual: 'A monkey eating a dosa chip while looking smug.',
+    dialogue: [
+      'Monkey 1: “Too crunchy for humans?”',
+      'Monkey 2 (grinning): “Naah. Too addictive.”',
+    ],
+    imageLabel: 'Monkeys eating chips',
+  },
+  {
+    title: 'Movie Night Vibes (Upgrade Snack)',
+    visual: 'Two characters on a couch.',
+    dialogue: [
+      'Character 1 (holding popcorn bowl): “You brought popcorn?”',
+      'Character 2 (lifting Kirik Chips): “Nope. Upgraded.”',
+    ],
+    imageLabel: 'Couch movie night',
+  },
+  {
+    title: 'Snack Attack (Stealthy Crunch)',
+    visual: 'Chip character in ninja pose sneaking up.',
+    dialogue: ['Floating text: “They never saw the crunch coming…”'],
+    imageLabel: 'Ninja chip sneak attack',
+  },
+]
+
+export const meters = [
+  {
+    title: 'Crunch Charge Meter',
+    label: 'CRUNCH CHARGED: 100% ⚡',
+    visual: 'Icon: battery with dosa chip inside.',
+    imageLabel: 'Crunch charge meter',
+  },
+  {
+    title: 'Spice-O-Meter',
+    label: 'SPICE LEVEL: 🔥🔥🔥 Kirik Certified.',
+    visual: 'Thermometer bursting flames.',
+    imageLabel: 'Spice-O-Meter',
+  },
+]
+
+export const stickerBrandCloud = {
+  title: 'Fluffy Dosa Cloud Bubble',
+  visual: 'Floating text in a dosa-shaped cloud.',
+  tags: ['Wholesome.', 'Local.', 'LOUD.'],
+}
+
+export const stickersPageFooter = 'Kirik nan maga stickers'
+
+export const howToEatFlavors = [
+  {
+    id: 'green-chutney',
+    name: 'GREEN CHUTNEY',
+    imageLabel: 'How to eat — Green Chutney pairing / serving',
+  },
+  {
+    id: 'kara-podi',
+    name: 'KARA PODI',
+    imageLabel: 'How to eat — Kara Podi pairing / serving',
+  },
+  {
+    id: 'plain-salted',
+    name: 'PLAIN SALTED',
+    imageLabel: 'How to eat — Plain Salted pairing / serving',
+  },
+]
+
+export const aboutContent = {
+  paragraphs: [
+    'At KIRIK, snacks are never just snacks. They’re moods, moments, cravings, chaos, and comfort all packed into one crunchy bite.',
+    'We’re here for the snack obsessed, the midnight munchers, the flavor chasers, and the meme lovers who believe food should come with a little drama. Inspired by iconic desi tastes and street-side cravings, KIRIK transforms familiar flavors into bold, crispy, snackable experiences made for today’s generation.',
+    'From chai-time cravings to 3AM binge sessions, our snacks are built for every vibe. Loud flavors, nostalgic twists, and unapologetically fun energy — that’s what makes KIRIK different.',
+  ],
+  tagline: 'No rules. Just flavor. Just vibes.',
+  founder: {
+    title: 'Meet the founder',
+    paragraphs: [
+      'Our founder isn’t who you picture when you think of a brand of dosa chips. Dosa inevitably conjures your friend’s grandma or an Udupi restaurant uncle. Tell us we’re wrong. We’re not wrong.',
+      'But our founder is Taylor Forman, an American who has embraced India and its cuisine over the past decade — especially its dosa.',
+      'She observed its deliciousness, its ubiquity, and its popularity across India. She thought. She pondered. And she got inspired to turn her favourite part of the dosa (and yours) — the crispy edges — into a unique chip.',
+    ],
+    bornTagline: 'Kirik was born.',
+  },
+  closing:
+    'And this is the guide to how it speaks, lives, and grows.',
+}
+
+export const storyContent = {
+  heroLead:
+    'KIRIK was born from the kind of energy you can’t ignore — the buzz of crowded streets, late-night conversations, roadside food stalls, college canteens, endless reels, and heated debates over which chutney hits harder.',
+  paragraphs: [
+    'We grew up loving desi flavors — the spicy, tangy, chatpata snacks that were part of every memory. But we wanted to remix that experience for a new generation. Something bolder. More fun. More expressive. A snack brand with personality.',
+    'That’s how KIRIK started — taking familiar flavors and turning them into crunchy, crave-worthy snacks that feel nostalgic and new at the same time.',
+    'Today, KIRIK is more than just a snack brand. It’s for people who want more flavor, more fun, and more moments worth sharing. Whether you’re on a midnight scroll, hanging out with friends, watching movies, gaming, working late, or simply too lazy to cook — KIRIK is always part of the vibe.',
+  ],
+  tagline: 'Crunch loud. Snack louder.',
+}
+
+export const brandTags = ['Wholesome.', 'Local.', 'LOUD.']
+
+export const offers = [
+  { title: 'New Launch', description: 'Green Chutney drop — limited batch', date: 'Coming soon', imageLabel: 'New launch banner' },
+  { title: 'Events', description: 'Pop-up tastings & crunch labs in your city', date: 'TBA', imageLabel: 'Events promo' },
+  { title: 'Collabs', description: 'Creator packs & sticker drops', date: 'TBA', imageLabel: 'Collab placeholder' },
+]
