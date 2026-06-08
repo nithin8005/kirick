@@ -1,4 +1,5 @@
 import { Link, NavLink, Outlet } from 'react-router-dom'
+import { assetUrl } from '../lib/assets'
 import DosaBabu from './DosaBabu'
 import DosaCursor from './DosaCursor'
 import FooterStamp from './FooterStamp'
@@ -19,7 +20,7 @@ export default function Layout() {
         <div className="container header__inner">
           <Link to="/" className="logo">
             <img
-              src="/images/kirik-logo.png"
+              src={assetUrl('/images/kirik-logo.png')}
               alt="KIRIK"
               className="logo__img"
               loading="eager"
