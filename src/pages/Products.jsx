@@ -14,7 +14,7 @@ export default function Products() {
           <p className="eyebrow">Products</p>
           <h1>Our flavors</h1>
           <p className="page-hero__lead">
-            Five flavors — details, showcase, dietary specs, and best combos.
+            Four flavors — details, showcase, dietary specs, and best combos.
           </p>
         </div>
       </section>

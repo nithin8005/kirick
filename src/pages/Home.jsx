@@ -9,6 +9,8 @@ import HowToEat from '../components/HowToEat'
 import { brandTags, products, dietaryFeatures } from '../data/content'
 
 export default function Home() {
+  const heroProducts = [products[0], products[1], products[2]]
+
   return (
     <>
       <section className="hero section">
@@ -38,6 +40,21 @@ export default function Home() {
                   {tag}
                 </span>
               ))}
+            </div>
+          </div>
+
+          <div className="hero__visual" aria-hidden="true">
+            <div className="hero__product-stack">
+              <div className="hero__glow" />
+              <div className="hero__product-card hero__product-card--back-left">
+                <img src={heroProducts[1].image} alt="" />
+              </div>
+              <div className="hero__product-card hero__product-card--back-right">
+                <img src={heroProducts[2].image} alt="" />
+              </div>
+              <div className="hero__product-card hero__product-card--front">
+                <img src={heroProducts[0].image} alt="" />
+              </div>
             </div>
           </div>
         </div>

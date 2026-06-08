@@ -87,12 +87,12 @@ function navSuggestion(input) {
 
 function flavorSuggestion() {
   const spicy = products.find((p) => p.id === 'kara-podi')
-  const mild = products.find((p) => p.id === 'jeera-salt' || p.id === 'plain-salted')
+  const mild = products.find((p) => p.id === 'tangy-salty')
   const bold = products.find((p) => p.id === 'green-chutney')
   const sweet = products.find((p) => p.id === 'ginger-jaggery')
 
   return {
-    text: 'Quick picks from Babu: Kara Podi for heat, Green Chutney for zing, Jeera Salt for classic vibes, Ginger Jaggery for sweet comfort. Can’t decide? Grab one of each — research purposes only.',
+    text: 'Quick picks from Babu: Kara Podi for heat, Green Chutney for zing, Tangy & Salty for classic chatpata vibes, Ginger Jaggery for sweet comfort. Can’t decide? Grab one of each — research purposes only.',
     links: [
       { to: `/products#${spicy?.id}`, label: spicy?.name },
       { to: `/products#${bold?.id}`, label: bold?.name },
@@ -260,11 +260,11 @@ export function getDosaBabuReply(rawInput) {
     includesAny(input, [
       'flavor',
       'flavour',
-      'jeera',
+      'tangy',
       'chutney',
       'podi',
       'jaggery',
-      'salted',
+      'salty',
       'spicy',
       'product detail',
     ])

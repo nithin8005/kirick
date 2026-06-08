@@ -88,7 +88,7 @@ export default function DosaBabu() {
   }
 
   return (
-    <div className={`dosa-babu${open ? ' dosa-babu--open' : ''}`}>
+    <div className={`dosa-babu${open ? ' dosa-babu--open' : ''}${typing ? ' dosa-babu--typing' : ''}`}>
       {open && (
         <section
           id="dosa-babu-panel"

@@ -21,7 +21,6 @@ export default function SocialMediaSection() {
             </div>
           ))}
         </div>
-        <p className="ref-note center">Social Media Banner — feed placeholders</p>
       </div>
     </section>
   )

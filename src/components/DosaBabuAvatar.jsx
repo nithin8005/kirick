@@ -1,18 +1,11 @@
-export default function DosaBabuAvatar({ size = 'md', className = '' }) {
+export default function DosaBabuAvatar({ size = 'lg', className = '' }) {
   return (
-    <span
-      className={`dosa-babu-dosa dosa-babu-dosa--${size} ${className}`.trim()}
+    <img
+      src="/images/dosa-babu.png"
+      alt=""
       aria-hidden="true"
-    >
-      <span className="dosa-babu-dosa__steam" />
-      <span className="dosa-babu-dosa__tawa" />
-      <span className="dosa-babu-dosa__crisp">
-        <span className="dosa-babu-dosa__face">
-          <span className="dosa-babu-dosa__eye" />
-          <span className="dosa-babu-dosa__eye" />
-          <span className="dosa-babu-dosa__smile" />
-        </span>
-      </span>
-    </span>
+      className={`dosa-babu-avatar dosa-babu-avatar--${size} ${className}`.trim()}
+      loading="lazy"
+    />
   )
 }

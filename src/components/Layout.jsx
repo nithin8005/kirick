@@ -18,8 +18,13 @@ export default function Layout() {
       <header className="header">
         <div className="container header__inner">
           <Link to="/" className="logo">
-            <span className="logo__mark">K</span>
-            <span className="logo__text">KIRIK</span>
+            <img
+              src="/images/kirik-logo.png"
+              alt="KIRIK"
+              className="logo__img"
+              loading="eager"
+              decoding="async"
+            />
           </Link>
           <nav className="nav" aria-label="Main">
             {navLinks.map(({ to, label }) => (
