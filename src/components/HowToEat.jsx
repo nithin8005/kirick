@@ -8,21 +8,25 @@ export default function HowToEat() {
 
         <div className="how-to-eat__flavors">
           {howToEatFlavors.map((item) => (
-            <article key={item.id} className="how-to-eat__col">
+            <article key={item.id} className={`how-to-eat__col pack-theme--${item.id}`}>
               <h3 className="how-to-eat__flavor-name">{item.name}</h3>
               <div className="how-to-eat__packs">
-                <img
-                  src={item.image}
-                  alt={`${item.name} — front`}
-                  className="how-to-eat__pack-img"
-                  loading="lazy"
-                />
-                <img
-                  src={item.imageBack}
-                  alt={`${item.name} — back`}
-                  className="how-to-eat__pack-img"
-                  loading="lazy"
-                />
+                <div className="how-to-eat__pack-frame">
+                  <img
+                    src={item.image}
+                    alt={`${item.name} — front`}
+                    className="how-to-eat__pack-img pack-blend-img"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="how-to-eat__pack-frame">
+                  <img
+                    src={item.imageBack}
+                    alt={`${item.name} — back`}
+                    className="how-to-eat__pack-img pack-blend-img"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </article>
           ))}

@@ -19,10 +19,10 @@ export default function MostLovedProduct({ products, defaultIndex = 0 }) {
                   role="tab"
                   aria-selected={activeIndex === i}
                   aria-label={p.name}
-                  className={`most-loved__thumb${activeIndex === i ? ' most-loved__thumb--active' : ''}`}
+                  className={`most-loved__thumb pack-theme--${p.id}${activeIndex === i ? ' most-loved__thumb--active' : ''}`}
                   onClick={() => setActiveIndex(i)}
                 >
-                  <img src={p.image} alt="" className="most-loved__thumb-img" />
+                  <img src={p.image} alt="" className="most-loved__thumb-img pack-blend-img" />
                 </button>
               ))}
             </div>
@@ -30,6 +30,7 @@ export default function MostLovedProduct({ products, defaultIndex = 0 }) {
               src={active.image}
               alt={`${active.name} — KIRIK Dosa Chips`}
               showNew={active.isNew}
+              themeId={active.id}
               className="most-loved__main"
             />
           </div>

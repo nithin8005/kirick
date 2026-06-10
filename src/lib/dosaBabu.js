@@ -16,23 +16,60 @@ const NAV_HINTS = [
   { keywords: ['term', 'legal', 'policy'], to: '/terms', label: 'Terms' },
 ]
 
+export const BABU_TRAITS = ['Crunch certified', 'Spice negotiator', 'Chai-time advisor', 'Plot twist energy']
+
+export const BABU_STATUS_LINES = [
+  'Sizzling on tawa',
+  'Crunch mode: ON',
+  'Flavor locked in',
+  'Podi levels stable',
+  'Certified snack uncle',
+]
+
+export const BABU_TYPING_LINES = [
+  'Flipping on tawa…',
+  'Consulting the podi council…',
+  'Crunching the numbers…',
+  'Asking the chutney…',
+]
+
+export const DOSA_BABU_PLACEHOLDERS = [
+  'Ask Babu about flavors…',
+  'Which chip hits harder?',
+  'Need a crunch recommendation?',
+  'Podi level check, saar?',
+]
+
 export const DOSA_BABU_OPENINGS = [
-  'Vanakkam! I’m Dosa Babu. What are we craving today?',
-  'Need help, saar? Dosa Babu is here.',
-  'Confused between flavors? I got you.',
-  'Ask me anything… except sharing my snacks.',
+  'Vanakkam, saar! Dosa Babu here — your certified crunch guide. What mood are we snacking in today?',
+  'Need help? Babu is online, tawa is hot, and the podi is loaded. Shoot your question.',
+  'Confused between flavors? Normal. Even Babu argues with himself at 2AM. Tell me your vibe.',
+  'Ask me anything… except to share my snacks. That boundary is Kirik-certified.',
+  'Plot twist: I’m a dosa who runs customer support. What can Babu sort for you?',
 ]
 
 export const DOSA_BABU_QUICK_REPLIES = [
-  { id: 'track', label: 'Track Order' },
-  { id: 'products', label: 'Product Details' },
-  { id: 'flavors', label: 'Available Flavors' },
-  { id: 'distributor', label: 'Become a Distributor' },
-  { id: 'contact', label: 'Contact Team' },
-  { id: 'complaint', label: 'Raise a Complaint' },
-  { id: 'collab', label: 'Collaboration Enquiry' },
-  { id: 'stores', label: 'Store Locations' },
+  { id: 'track', label: 'Track Order', emoji: '📦' },
+  { id: 'products', label: 'Product Details', emoji: '🥡' },
+  { id: 'flavors', label: 'Available Flavors', emoji: '🌶️' },
+  { id: 'distributor', label: 'Become a Distributor', emoji: '🏪' },
+  { id: 'contact', label: 'Contact Team', emoji: '📞' },
+  { id: 'complaint', label: 'Raise a Complaint', emoji: '🛠️' },
+  { id: 'collab', label: 'Collaboration Enquiry', emoji: '🤝' },
+  { id: 'stores', label: 'Store Locations', emoji: '📍' },
 ]
+
+export function getBabuStatus() {
+  return BABU_STATUS_LINES[Math.floor(Math.random() * BABU_STATUS_LINES.length)]
+}
+
+export function getBabuTypingLine() {
+  return BABU_TYPING_LINES[Math.floor(Math.random() * BABU_TYPING_LINES.length)]
+}
+
+export function getBabuPlaceholder() {
+  return DOSA_BABU_PLACEHOLDERS[Math.floor(Math.random() * DOSA_BABU_PLACEHOLDERS.length)]
+}
 
 export function getRandomOpening() {
   const text = DOSA_BABU_OPENINGS[Math.floor(Math.random() * DOSA_BABU_OPENINGS.length)]
@@ -92,7 +129,7 @@ function flavorSuggestion() {
   const sweet = products.find((p) => p.id === 'ginger-jaggery')
 
   return {
-    text: 'Quick picks from Babu: Kara Podi for heat, Green Chutney for zing, Tangy & Salty for classic chatpata vibes, Ginger Jaggery for sweet comfort. Can’t decide? Grab one of each — research purposes only.',
+    text: 'Babu’s honest menu: Kara Podi if you want fire, Green Chutney for zing, Tangy & Salty for chatpata classics, Ginger Jaggery for sweet comfort. Can’t decide? Buy all four. Call it “sensory research.”',
     links: [
       { to: `/products#${spicy?.id}`, label: spicy?.name },
       { to: `/products#${bold?.id}`, label: bold?.name },
@@ -105,17 +142,17 @@ export function getQuickReplyResponse(id) {
   switch (id) {
     case 'track':
       return {
-        text: 'Live order tracking is coming soon. For now, share your order ID and phone number at our support email — we’ll check status and reply diplomatically fast.',
+        text: 'Live tracking is still crisping in the oven, saar. For now, email your order ID + phone — Babu will chase it faster than you chase the last chip in the packet.',
         links: [{ href: `mailto:${CONTACT.general}?subject=Track%20my%20KIRIK%20order`, label: 'Email support' }],
       }
     case 'products':
       return {
-        text: 'KIRIK Dosa Chips are made from real fermented dosa batter — gluten free, rice bran oil, certified crunch. Full specs and combos on the Products page.',
+        text: 'Real dosa batter. Fermented. Fried in rice bran oil. Gluten free. Zero boring-snack energy. Full flavor breakdown and combo crimes on the Products page.',
         links: [{ to: '/products', label: 'Product Details' }],
       }
     case 'flavors':
       return {
-        text: `Available flavors: ${products.map((p) => p.name).join(', ')}.`,
+        text: `Current lineup, loud and proud: ${products.map((p) => p.name).join(', ')}. Babu-approved chaos in every pack.`,
         links: [{ to: '/products', label: 'Available Flavors' }],
       }
     case 'distributor':
@@ -125,7 +162,7 @@ export function getQuickReplyResponse(id) {
       }
     case 'contact':
       return {
-        text: `Reach the KIRIK team anytime — we’re friendly humans behind the crunch.`,
+        text: 'Humans behind the crunch, saar — not bots pretending to be dosa. (Except me. I am literally dosa.)',
         links: [
           { href: `mailto:${CONTACT.general}`, label: 'Email team' },
           { href: `tel:${CONTACT.phone.replace(/\s/g, '')}`, label: CONTACT.phone },
@@ -168,7 +205,7 @@ export function getQuickReplyMessage(id) {
 export function getDosaBabuReply(rawInput) {
   const input = normalize(rawInput)
   if (!input) {
-    return { text: 'Type a message or tap a menu option below — I’m listening (and sizzling).' }
+    return { text: 'Empty message? Even an idle tawa makes noise, saar. Type something or tap a menu chip below.' }
   }
 
   if (includesAny(input, ['hi', 'hello', 'hey', 'namaste', 'vanakkam', 'start', 'saar'])) {
@@ -177,7 +214,7 @@ export function getDosaBabuReply(rawInput) {
 
   if (includesAny(input, ['bye', 'thanks', 'thank you', 'see you'])) {
     return {
-      text: 'Anytime, saar! May your next bite be KIRIK-certified crunchy.',
+      text: 'Anytime, saar! May your chai be hot and your crunch be certified. Babu is always one click away.',
       links: [{ to: '/', label: 'Back to Home' }],
     }
   }
@@ -295,7 +332,7 @@ export function getDosaBabuReply(rawInput) {
   }
 
   return {
-    text: 'Hmm, even Babu needs a second serving to understand that. Try a menu button below — flavors, orders, stores, complaints, or partner enquiries.',
+    text: 'Hmm… Babu flipped the dosa twice and still didn’t catch that. Try a menu chip — flavors, orders, stores, complaints, or collabs. Or just say “recommend a flavor.”',
     links: [
       { to: '/faq', label: 'FAQ' },
       { href: `mailto:${CONTACT.general}`, label: 'Contact Team' },

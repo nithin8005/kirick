@@ -98,6 +98,7 @@ export default function Products() {
               src={featuredProduct.image}
               alt={featuredProduct.imageLabel}
               showNew={featuredProduct.isNew}
+              themeId={featuredProduct.id}
               className="showcase__product"
             />
           </div>
@@ -121,6 +122,7 @@ export default function Products() {
                   src={p.image}
                   alt={p.imageLabel}
                   showNew={p.isNew}
+                  themeId={p.id}
                   framed
                 />
               </div>

@@ -46,14 +46,20 @@ export default function Home() {
           <div className="hero__visual" aria-hidden="true">
             <div className="hero__product-stack">
               <div className="hero__glow" />
-              <div className="hero__product-card hero__product-card--back-left">
-                <img src={heroProducts[1].image} alt="" />
+              <div
+                className={`hero__product-card hero__product-card--back-left pack-theme--${heroProducts[1].id}`}
+              >
+                <img src={heroProducts[1].image} alt="" className="pack-blend-img" />
               </div>
-              <div className="hero__product-card hero__product-card--back-right">
-                <img src={heroProducts[2].image} alt="" />
+              <div
+                className={`hero__product-card hero__product-card--back-right pack-theme--${heroProducts[2].id}`}
+              >
+                <img src={heroProducts[2].image} alt="" className="pack-blend-img" />
               </div>
-              <div className="hero__product-card hero__product-card--front">
-                <img src={heroProducts[0].image} alt="" />
+              <div
+                className={`hero__product-card hero__product-card--front pack-theme--${heroProducts[0].id}`}
+              >
+                <img src={heroProducts[0].image} alt="" className="pack-blend-img" />
               </div>
             </div>
           </div>
