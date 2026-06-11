@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import PackShowcase from './PackShowcase'
 import ProductImage from './ProductImage'
+import { packThemeClass } from '../lib/packTheme'
 
 export default function MostLovedProduct({ products, defaultIndex = 0 }) {
   const [activeIndex, setActiveIndex] = useState(defaultIndex)
@@ -19,16 +21,26 @@ export default function MostLovedProduct({ products, defaultIndex = 0 }) {
                   role="tab"
                   aria-selected={activeIndex === i}
                   aria-label={p.name}
-                  className={`most-loved__thumb pack-theme--${p.id}${activeIndex === i ? ' most-loved__thumb--active' : ''}`}
+                  className={`most-loved__thumb${p.showcaseImage ? ' most-loved__thumb--prebuilt' : ''} ${packThemeClass(p.id)}${activeIndex === i ? ' most-loved__thumb--active' : ''}`.trim()}
                   onClick={() => setActiveIndex(i)}
                 >
-                  <img src={p.image} alt="" className="most-loved__thumb-img pack-blend-img" />
+                  {p.showcaseImage ? (
+                    <img src={p.showcaseImage} alt="" className="most-loved__thumb-showcase" />
+                  ) : (
+                    <PackShowcase
+                      src={p.image}
+                      alt=""
+                      themeId={p.id}
+                      imgClassName="most-loved__thumb-img"
+                    />
+                  )}
                 </button>
               ))}
             </div>
             <ProductImage
               src={active.image}
               alt={`${active.name} — KIRIK Dosa Chips`}
+              showcaseImage={active.showcaseImage}
               showNew={active.isNew}
               themeId={active.id}
               className="most-loved__main"
@@ -58,4 +70,3 @@ export default function MostLovedProduct({ products, defaultIndex = 0 }) {
     </section>
   )
 }
-

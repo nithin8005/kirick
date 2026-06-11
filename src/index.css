@@ -195,9 +195,92 @@ svg {
 
 /* Layout */
 .layout {
+  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.layout > :not(.page-floating-chips):not(.dosa-babu) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Floating chips — behind all page content */
+.page-floating-chips {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.page-floating-chips__cluster {
+  position: absolute;
+  top: -20%;
+  width: var(--cluster-width, 300px);
+  height: auto;
+  filter: drop-shadow(0 8px 20px rgba(26, 18, 8, 0.12));
+  transform: rotate(var(--cluster-rotate, 0deg));
+  animation: page-chip-fall var(--cluster-duration, 26s) linear infinite;
+  animation-delay: var(--cluster-delay, 0s);
+  will-change: transform, opacity;
+}
+
+@keyframes page-chip-fall {
+  0% {
+    translate: 0 0;
+    rotate: var(--cluster-rotate, 0deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.22;
+  }
+  18% {
+    translate: calc(var(--cluster-drift, 12px) * 0.4) 20vh;
+    rotate: calc(var(--cluster-rotate, 0deg) + 5deg);
+  }
+  40% {
+    translate: calc(var(--cluster-drift, 12px) * -0.25) 45vh;
+    rotate: calc(var(--cluster-rotate, 0deg) + 11deg);
+  }
+  62% {
+    translate: calc(var(--cluster-drift, 12px) * 0.65) 68vh;
+    rotate: calc(var(--cluster-rotate, 0deg) + 18deg);
+  }
+  82% {
+    translate: var(--cluster-drift, 12px) 92vh;
+    rotate: calc(var(--cluster-rotate, 0deg) + 24deg);
+    opacity: 0.18;
+  }
+  100% {
+    translate: var(--cluster-drift, 12px) calc(118vh + 60px);
+    rotate: calc(var(--cluster-rotate, 0deg) + 30deg);
+    opacity: 0;
+  }
+}
+
+/* Let chip bg show through main sections */
+.layout:has(.page-floating-chips) .hero {
+  background:
+    radial-gradient(ellipse 80% 60% at 85% 15%, rgba(244, 168, 37, 0.22), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 10% 85%, rgba(232, 93, 4, 0.1), transparent 50%),
+    transparent;
+}
+
+.layout:has(.page-floating-chips) .featured-grid,
+.layout:has(.page-floating-chips) .most-loved {
+  background: transparent;
+}
+
+.layout:has(.page-floating-chips) .section--alt {
+  background: rgba(247, 236, 216, 0.72);
+}
+
+@media (max-width: 640px) {
+  .page-floating-chips__cluster:nth-child(n + 2) {
+    display: none;
+  }
 }
 
 .main {
@@ -365,7 +448,131 @@ svg {
 
 .hero .container {
   position: relative;
+  z-index: 2;
+}
+
+/* Floating dosa chips in hero background */
+.hero__floating-chips {
+  position: absolute;
+  inset: 0;
   z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero__floating-chip {
+  position: absolute;
+  width: var(--chip-size, 36px);
+  height: auto;
+  opacity: 0.22;
+  filter: drop-shadow(0 4px 8px rgba(26, 18, 8, 0.12));
+  transform: rotate(var(--chip-rotate, 0deg));
+  animation: hero-chip-float var(--chip-duration, 7s) ease-in-out infinite;
+  animation-delay: var(--chip-delay, 0s);
+}
+
+@keyframes hero-chip-float {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: var(--chip-rotate, 0deg);
+  }
+  33% {
+    translate: 8px -14px;
+    rotate: calc(var(--chip-rotate, 0deg) + 6deg);
+  }
+  66% {
+    translate: -6px -8px;
+    rotate: calc(var(--chip-rotate, 0deg) - 4deg);
+  }
+}
+
+/* Hero flavor carousel — all showcase images */
+.hero__carousel {
+  width: min(100%, 460px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.hero__carousel-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 6;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.hero__carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(0.96);
+  transition:
+    opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.hero__carousel-slide--active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.hero__carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.hero__carousel-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero__carousel-flavor {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.hero__carousel-dots {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.hero__carousel-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(26, 18, 8, 0.18);
+  cursor: pointer;
+  transition:
+    transform var(--transition),
+    background var(--transition);
+}
+
+.hero__carousel-dot:hover {
+  transform: scale(1.15);
+  background: rgba(26, 18, 8, 0.35);
+}
+
+.hero__carousel-dot--active {
+  background: var(--color-accent);
+  transform: scale(1.2);
 }
 
 .hero__grid {
@@ -408,12 +615,88 @@ svg {
   align-items: center;
 }
 
+.hero__visual--green-chutney {
+  padding: clamp(0.5rem, 2vw, 1rem);
+}
+
+.hero__product-stack--green-chutney,
+.hero__product-stack--prebuilt {
+  width: min(100%, 460px);
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+}
+
+.hero__product-stack--green-chutney {
+  background: linear-gradient(155deg, #f0ffd4 0%, #c8f135 38%, #7cb342 100%);
+}
+
+.hero__product-stack--prebuilt {
+  background: none;
+}
+
+.hero__product-stack--prebuilt .hero__glow {
+  display: none;
+}
+
+.hero__product-card--prebuilt {
+  background: none;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.hero__showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: var(--radius-lg);
+  transition: transform 0.45s cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+.hero__product-stack--prebuilt:hover .hero__showcase-img {
+  transform: scale(1.04);
+}
+
+.hero__product-stack--green-chutney .hero__glow {
+  display: none;
+}
+
+.pack-theme--green-chutney.hero__product-card {
+  overflow: visible;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.hero__product-stack--green-chutney .hero__product-card--front {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  transform: rotate(0deg);
+  opacity: 1;
+  z-index: 3;
+}
+
+.hero__product-stack--green-chutney .hero__product-card--back-left,
+.hero__product-stack--green-chutney .hero__product-card--back-right {
+  display: none;
+}
+
+.hero__product-stack--green-chutney:hover .hero__product-card--front {
+  transform: rotate(0deg) scale(1.02);
+}
+
 .hero__product-stack {
   position: relative;
   width: min(100%, 380px);
   aspect-ratio: 1;
   display: grid;
   place-items: center;
+  overflow: visible;
 }
 
 .hero__product-card {
@@ -422,17 +705,22 @@ svg {
   aspect-ratio: 4 / 5;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
   transition: transform var(--transition);
-  padding: 0.5rem;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
-.hero__product-card img {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.hero__product-card:not(.pack-theme--green-chutney) {
+  box-shadow: var(--shadow-lg);
+}
+
+.hero__product-card .pack-showcase {
+  padding: clamp(0.4rem, 1.5vw, 0.65rem);
+}
+
+.hero__product-card .pack-showcase__img {
+  width: min(94%, 100%);
 }
 
 .hero__product-card--back-left {
@@ -451,6 +739,9 @@ svg {
   transform: rotate(-3deg);
   z-index: 2;
   width: 62%;
+}
+
+.hero__product-card--front:not(.pack-theme--green-chutney) {
   box-shadow: var(--shadow-lg), 0 0 0 4px rgba(255, 255, 255, 0.6);
 }
 
@@ -1465,103 +1756,378 @@ svg {
   padding-bottom: 3rem;
 }
 
-/* Flavor pack themes — blend white packaging into colored surfaces */
+/* FMCG product showcase — pack sits directly on brand bg, effects stay behind */
 .pack-theme--green-chutney {
   --pack-gradient: linear-gradient(155deg, #f0ffd4 0%, #c8f135 38%, #7cb342 100%);
-  --pack-glow: rgba(200, 241, 53, 0.35);
-}
-
-.pack-theme--tangy-salty {
-  --pack-gradient: linear-gradient(155deg, #f3e8ff 0%, #b794f6 42%, #6b46c1 100%);
-  --pack-glow: rgba(183, 148, 246, 0.35);
 }
 
 .pack-theme--kara-podi {
-  --pack-gradient: linear-gradient(155deg, #ffd6d6 0%, #ff6b6b 40%, #c62828 100%);
-  --pack-glow: rgba(255, 107, 107, 0.35);
+  --pack-gradient: linear-gradient(155deg, #ff9e80 0%, #ef5350 32%, #c62828 62%, #7f0000 100%);
 }
 
-.pack-theme--ginger-jaggery {
-  --pack-gradient: linear-gradient(155deg, #fff8e8 0%, #f4c56a 45%, #d4891f 100%);
-  --pack-glow: rgba(244, 168, 37, 0.35);
+.pack-showcase {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.5rem, 2vw, 0.85rem);
+  isolation: isolate;
 }
 
-.pack-blend-img {
-  mix-blend-mode: multiply;
-  filter: contrast(1.05) saturate(1.08);
+.pack-showcase--green-chutney,
+.pack-showcase--kara-podi {
+  padding: clamp(0.65rem, 2.5vw, 1rem);
 }
 
-.pack-theme--green-chutney .how-to-eat__pack-frame,
+/* ── Background-layer effects (z-index 1) — never touch the pack ── */
+.pack-showcase__ambient {
+  position: absolute;
+  inset: 12% 18% 22%;
+  z-index: 1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 60%, rgba(255, 255, 255, 0.28) 0%, transparent 68%);
+  pointer-events: none;
+}
+
+.pack-showcase__light {
+  position: absolute;
+  top: 8%;
+  left: 14%;
+  z-index: 1;
+  width: 38%;
+  height: 28%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, transparent 72%);
+  pointer-events: none;
+}
+
+.pack-showcase__shadow {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  z-index: 1;
+  width: min(70%, 260px);
+  height: clamp(16px, 4vw, 24px);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(14, 28, 8, 0.42) 0%,
+    rgba(14, 28, 8, 0.18) 50%,
+    transparent 76%
+  );
+  pointer-events: none;
+  transition: transform 0.45s cubic-bezier(0.34, 1.2, 0.64, 1), opacity 0.45s ease;
+}
+
+/* ── Floating props (z-index 2) — behind the pack ── */
+.pack-showcase__float {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+}
+
+.pack-showcase__float--chip-1 {
+  top: 10%;
+  right: 6%;
+  width: clamp(28px, 14%, 52px);
+  height: auto;
+  object-fit: contain;
+  transform: rotate(18deg);
+  opacity: 0.92;
+  filter: drop-shadow(0 4px 8px rgba(12, 22, 6, 0.28));
+  animation: pack-float-drift 4.2s ease-in-out infinite;
+}
+
+.pack-showcase__float--chip-2 {
+  bottom: 18%;
+  left: 4%;
+  width: clamp(22px, 11%, 42px);
+  height: auto;
+  object-fit: contain;
+  transform: rotate(-24deg);
+  opacity: 0.85;
+  filter: drop-shadow(0 3px 6px rgba(12, 22, 6, 0.24));
+  animation: pack-float-drift 5s ease-in-out infinite 0.6s;
+}
+
+.pack-showcase__float--chip-3 {
+  top: 38%;
+  left: 3%;
+  width: clamp(20px, 10%, 38px);
+  height: auto;
+  object-fit: contain;
+  transform: rotate(8deg);
+  opacity: 0.8;
+  filter: drop-shadow(0 3px 6px rgba(12, 22, 6, 0.22));
+  animation: pack-float-drift 4.8s ease-in-out infinite 1.2s;
+}
+
+.pack-showcase__float--curry-1,
+.pack-showcase__float--curry-2,
+.pack-showcase__float--curry-3 {
+  width: clamp(18px, 9%, 30px);
+  height: clamp(28px, 12%, 42px);
+  border-radius: 2% 78% 2% 78%;
+  background: linear-gradient(160deg, #8bc34a 0%, #33691e 55%, #1b5e20 100%);
+  opacity: 0.82;
+  filter: drop-shadow(0 2px 5px rgba(12, 22, 6, 0.22));
+}
+
+.pack-showcase__float--curry-1 {
+  top: 18%;
+  left: 8%;
+  transform: rotate(-38deg);
+  animation: pack-float-drift 4.6s ease-in-out infinite 0.3s;
+}
+
+.pack-showcase__float--curry-2 {
+  top: 10%;
+  right: 10%;
+  transform: rotate(52deg) scaleX(-1);
+  animation: pack-float-drift 5.4s ease-in-out infinite 0.9s;
+}
+
+.pack-showcase__float--curry-3 {
+  bottom: 22%;
+  right: 5%;
+  width: clamp(14px, 7%, 24px);
+  height: clamp(22px, 10%, 34px);
+  transform: rotate(24deg);
+  animation: pack-float-drift 5.1s ease-in-out infinite 0.5s;
+}
+
+.pack-showcase__float--chutney {
+  bottom: 16%;
+  left: 7%;
+  width: clamp(26px, 13%, 44px);
+  height: clamp(14px, 7%, 22px);
+  border-radius: 50% 50% 42% 42%;
+  background: linear-gradient(180deg, #aed581 0%, #558b2f 55%, #33691e 100%);
+  box-shadow: inset 0 -3px 6px rgba(20, 40, 10, 0.25);
+  opacity: 0.88;
+  filter: drop-shadow(0 3px 5px rgba(12, 22, 6, 0.2));
+  animation: pack-float-drift 4.4s ease-in-out infinite 0.7s;
+}
+
+.pack-showcase__ambient--spice {
+  inset: 6% 10% 16%;
+  background: radial-gradient(ellipse at 50% 48%, rgba(255, 120, 80, 0.38) 0%, transparent 68%);
+}
+
+.pack-showcase__light--spice {
+  top: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 52%;
+  height: 36%;
+  background: radial-gradient(circle, rgba(255, 200, 120, 0.28) 0%, transparent 72%);
+}
+
+.pack-showcase__float--spice-dust {
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 120, 90, 0.55) 1px, transparent 1px),
+    radial-gradient(circle, rgba(180, 40, 30, 0.45) 1.5px, transparent 1.5px);
+  background-size: 36px 36px, 54px 54px;
+  background-position: 12% 24%, 72% 58%;
+  opacity: 0.32;
+  animation: pack-spice-drift 9s linear infinite;
+}
+
+@keyframes pack-spice-drift {
+  to {
+    background-position: 28% 38%, 86% 72%;
+  }
+}
+
+.pack-showcase__float--chili-1,
+.pack-showcase__float--chili-2 {
+  width: clamp(11px, 5.5%, 20px);
+  height: clamp(34px, 15%, 52px);
+  border-radius: 42% 42% 38% 38%;
+  background: linear-gradient(
+    180deg,
+    #66bb6a 0%,
+    #66bb6a 10%,
+    #e53935 10%,
+    #ef5350 50%,
+    #b71c1c 100%
+  );
+  opacity: 0.92;
+  filter: drop-shadow(0 3px 7px rgba(40, 0, 0, 0.32));
+}
+
+.pack-showcase__float--chili-1 {
+  top: 7%;
+  left: 10%;
+  transform: rotate(-28deg);
+  animation: pack-float-drift 4.5s ease-in-out infinite;
+}
+
+.pack-showcase__float--chili-2 {
+  top: 12%;
+  right: 7%;
+  transform: rotate(36deg);
+  animation: pack-float-drift 5.2s ease-in-out infinite 0.7s;
+}
+
+.pack-showcase--kara-podi .pack-showcase__float--curry-1 {
+  top: 20%;
+  left: 6%;
+  width: clamp(14px, 7%, 22px);
+  height: clamp(22px, 10%, 32px);
+  transform: rotate(-42deg);
+}
+
+.pack-showcase--kara-podi .pack-showcase__float--curry-2 {
+  top: 8%;
+  right: 16%;
+  width: clamp(12px, 6%, 18px);
+  height: clamp(20px, 9%, 28px);
+  transform: rotate(58deg) scaleX(-1);
+}
+
+.pack-showcase__float--spice-bowl {
+  bottom: 9%;
+  right: 5%;
+  width: clamp(24px, 12%, 38px);
+  height: clamp(12px, 6%, 18px);
+  border-radius: 0 0 45% 45%;
+  background: linear-gradient(180deg, #a1887f 0%, #5d4037 100%);
+  box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.25);
+  animation: pack-float-drift 5.6s ease-in-out infinite 1s;
+}
+
+.pack-showcase__float--spice-bowl::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 8%;
+  width: 84%;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, #ef5350 0%, #b71c1c 70%, #7f0000 100%);
+  box-shadow: 0 1px 3px rgba(40, 0, 0, 0.3);
+}
+
+.pack-showcase--kara-podi .pack-showcase__shadow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(50, 0, 0, 0.48) 0%,
+    rgba(50, 0, 0, 0.2) 50%,
+    transparent 76%
+  );
+}
+
+@keyframes pack-float-drift {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -5px;
+  }
+}
+
+/* ── Product pack (z-index 3) — transparent PNG, centered, 40% larger ── */
+.pack-showcase__img {
+  position: relative;
+  z-index: 3;
+  width: auto;
+  height: auto;
+  max-width: 72%;
+  max-height: 88%;
+  display: block;
+  object-fit: contain;
+  object-position: center center;
+}
+
+.pack-showcase--green-chutney .pack-showcase__img,
+.pack-showcase--kara-podi .pack-showcase__img {
+  transform: none;
+  transform-origin: center center;
+  transition: transform 0.45s cubic-bezier(0.34, 1.2, 0.64, 1), filter 0.45s ease;
+}
+
+.pack-showcase--green-chutney .pack-showcase__img {
+  filter: drop-shadow(0 26px 36px rgba(10, 20, 6, 0.48))
+    drop-shadow(0 10px 18px rgba(10, 20, 6, 0.3))
+    drop-shadow(0 3px 6px rgba(10, 20, 6, 0.2));
+}
+
+.pack-showcase--kara-podi .pack-showcase__img {
+  filter: drop-shadow(0 26px 36px rgba(40, 0, 0, 0.5))
+    drop-shadow(0 10px 18px rgba(40, 0, 0, 0.32))
+    drop-shadow(0 3px 6px rgba(40, 0, 0, 0.22));
+}
+
+.hero__product-stack--green-chutney .pack-showcase__img {
+  width: 78%;
+  max-width: none;
+  max-height: 94%;
+  transform: none;
+}
+
+.hero__product-stack--green-chutney:hover .pack-showcase__img {
+  transform: scale(1.06);
+}
+
+.hero__product-stack--green-chutney .pack-showcase__shadow {
+  bottom: 16%;
+  width: min(52%, 200px);
+}
+
+/* Branded background on product areas — no white panels */
 .pack-theme--green-chutney.featured-grid__image-wrap,
+.pack-theme--green-chutney.how-to-eat__pack-frame,
 .pack-theme--green-chutney.product-image--framed,
 .pack-theme--green-chutney.most-loved__thumb,
 .pack-theme--green-chutney.hero__product-card,
-.pack-theme--tangy-salty .how-to-eat__pack-frame,
-.pack-theme--tangy-salty.featured-grid__image-wrap,
-.pack-theme--tangy-salty.product-image--framed,
-.pack-theme--tangy-salty.most-loved__thumb,
-.pack-theme--tangy-salty.hero__product-card,
-.pack-theme--kara-podi .how-to-eat__pack-frame,
 .pack-theme--kara-podi.featured-grid__image-wrap,
+.pack-theme--kara-podi.how-to-eat__pack-frame,
 .pack-theme--kara-podi.product-image--framed,
 .pack-theme--kara-podi.most-loved__thumb,
-.pack-theme--kara-podi.hero__product-card,
-.pack-theme--ginger-jaggery .how-to-eat__pack-frame,
-.pack-theme--ginger-jaggery.featured-grid__image-wrap,
-.pack-theme--ginger-jaggery.product-image--framed,
-.pack-theme--ginger-jaggery.most-loved__thumb,
-.pack-theme--ginger-jaggery.hero__product-card {
+.pack-theme--kara-podi.hero__product-card {
   background: var(--pack-gradient);
-  position: relative;
+  box-shadow: none;
+  border: none;
+}
+
+.pack-theme--green-chutney.product-image--framed,
+.pack-theme--green-chutney.hero__product-card,
+.pack-theme--green-chutney.featured-grid__image-wrap,
+.pack-theme--green-chutney.how-to-eat__pack-frame,
+.pack-theme--kara-podi.product-image--framed,
+.pack-theme--kara-podi.hero__product-card,
+.pack-theme--kara-podi.featured-grid__image-wrap,
+.pack-theme--kara-podi.how-to-eat__pack-frame {
+  overflow: visible;
+}
+
+.pack-theme--green-chutney.most-loved__thumb,
+.pack-theme--kara-podi.most-loved__thumb {
   overflow: hidden;
 }
 
-.pack-theme--green-chutney .how-to-eat__pack-frame::before,
-.pack-theme--green-chutney.featured-grid__image-wrap::before,
-.pack-theme--green-chutney.product-image--framed::before,
-.pack-theme--green-chutney.most-loved__thumb::before,
-.pack-theme--green-chutney.hero__product-card::before,
-.pack-theme--tangy-salty .how-to-eat__pack-frame::before,
-.pack-theme--tangy-salty.featured-grid__image-wrap::before,
-.pack-theme--tangy-salty.product-image--framed::before,
-.pack-theme--tangy-salty.most-loved__thumb::before,
-.pack-theme--tangy-salty.hero__product-card::before,
-.pack-theme--kara-podi .how-to-eat__pack-frame::before,
-.pack-theme--kara-podi.featured-grid__image-wrap::before,
-.pack-theme--kara-podi.product-image--framed::before,
-.pack-theme--kara-podi.most-loved__thumb::before,
-.pack-theme--kara-podi.hero__product-card::before,
-.pack-theme--ginger-jaggery .how-to-eat__pack-frame::before,
-.pack-theme--ginger-jaggery.featured-grid__image-wrap::before,
-.pack-theme--ginger-jaggery.product-image--framed::before,
-.pack-theme--ginger-jaggery.most-loved__thumb::before,
-.pack-theme--ginger-jaggery.hero__product-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 25% 18%, var(--pack-glow), transparent 58%);
-  pointer-events: none;
-  z-index: 1;
+/* Hide decorative floats in compact thumbs */
+.most-loved__thumb .pack-showcase__float,
+.most-loved__thumb .pack-showcase__ambient,
+.most-loved__thumb .pack-showcase__light {
+  display: none;
 }
 
-.pack-theme--green-chutney .how-to-eat__col {
-  background: linear-gradient(180deg, rgba(200, 241, 53, 0.12) 0%, var(--color-cream) 100%);
-  border-color: rgba(124, 179, 66, 0.25);
+.most-loved__thumb .pack-showcase--green-chutney .pack-showcase__img,
+.most-loved__thumb .pack-showcase--kara-podi .pack-showcase__img {
+  transform: scale(1.15);
+  max-width: 78%;
 }
 
-.pack-theme--tangy-salty .how-to-eat__col {
-  background: linear-gradient(180deg, rgba(183, 148, 246, 0.14) 0%, var(--color-cream) 100%);
-  border-color: rgba(107, 70, 193, 0.22);
-}
-
-.pack-theme--kara-podi .how-to-eat__col {
-  background: linear-gradient(180deg, rgba(255, 107, 107, 0.12) 0%, var(--color-cream) 100%);
-  border-color: rgba(198, 40, 40, 0.22);
-}
-
-.pack-theme--ginger-jaggery .how-to-eat__col {
-  background: linear-gradient(180deg, rgba(244, 168, 37, 0.14) 0%, var(--color-cream) 100%);
-  border-color: rgba(212, 137, 31, 0.25);
+.most-loved__thumb .pack-showcase__img {
+  filter: drop-shadow(0 6px 10px rgba(10, 20, 6, 0.32));
 }
 
 /* Featured product grid row */
@@ -1589,9 +2155,77 @@ svg {
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
-.featured-grid__card:hover {
+.featured-grid__card--showcase {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.featured-grid__card:not(.featured-grid__card--showcase):hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
+}
+
+.featured-grid__card--showcase:hover {
+  transform: translateY(-4px);
+}
+
+.featured-grid__card--showcase .featured-grid__image-wrap {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.featured-grid__image-wrap--prebuilt {
+  background: none;
+  padding: 0;
+}
+
+.featured-grid__showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.featured-grid__card--showcase:hover .featured-grid__showcase-img {
+  transform: scale(1.06);
+}
+
+.featured-grid__card--showcase .pack-showcase {
+  padding: 0.5rem;
+}
+
+.featured-grid__card--showcase .pack-showcase__img {
+  width: 82%;
+  max-width: none;
+  max-height: 92%;
+  transform: none;
+}
+
+.featured-grid__card--showcase:hover .pack-showcase__img {
+  transform: scale(1.1);
+  filter: drop-shadow(0 30px 42px rgba(10, 20, 6, 0.52))
+    drop-shadow(0 12px 22px rgba(10, 20, 6, 0.34))
+    drop-shadow(0 4px 8px rgba(10, 20, 6, 0.22));
+}
+
+.featured-grid__card--showcase:hover .pack-showcase__float {
+  animation-duration: 2.8s;
+}
+
+.featured-grid__card--showcase:hover .pack-showcase__shadow {
+  transform: translateX(-50%) scale(1.12);
+  opacity: 0.95;
+  transition: transform 0.45s cubic-bezier(0.34, 1.2, 0.64, 1), opacity 0.45s ease;
+}
+
+.featured-grid__card--showcase .featured-grid__meta {
+  background: var(--color-cream);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  margin-top: 0.65rem;
 }
 
 .featured-grid__image-wrap {
@@ -1601,27 +2235,22 @@ svg {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(165deg, #f5f2ea 0%, #ebe6dc 100%);
 }
 
-.featured-grid__card:hover .featured-grid__img {
-  transform: scale(1.06);
+.featured-grid__card:hover .featured-grid__img:not(.pack-showcase__img) {
+  transform: scale(1.06) translateY(-2px);
 }
 
 .featured-grid__img {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 1rem;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
 }
 
 .featured-grid__new {
   position: absolute;
   top: 0.75rem;
   left: 0.75rem;
-  z-index: 2;
+  z-index: 4;
   font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -1738,13 +2367,30 @@ svg {
 .most-loved__thumb {
   width: 58px;
   aspect-ratio: 4 / 5;
-  padding: 3px;
+  padding: 0;
   border: 2px solid transparent;
   border-radius: 10px;
   cursor: pointer;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  background: linear-gradient(165deg, #f5f2ea 0%, #ebe6dc 100%);
+}
+
+.most-loved__thumb .pack-showcase {
+  padding: 0.35rem 0.25rem 0.45rem;
+}
+
+.most-loved__thumb .pack-showcase__shadow {
+  width: 72%;
+  height: 6px;
+  bottom: 0.35rem;
+}
+
+.most-loved__thumb .pack-showcase__img,
+.most-loved__thumb-img {
+  width: 88%;
+  max-height: 92%;
 }
 
 .most-loved__thumb:hover {
@@ -1779,7 +2425,64 @@ svg {
   border-radius: var(--radius-lg);
   padding: 0;
   overflow: hidden;
+}
+
+.product-image--framed:not(.pack-theme--green-chutney):not(.pack-theme--kara-podi) {
   box-shadow: var(--shadow-lg);
+}
+
+.pack-theme--green-chutney.product-image--framed {
+  overflow: visible;
+}
+
+.product-image--prebuilt {
+  padding: 0;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: none;
+}
+
+.product-image--prebuilt.product-image--framed .product-image__showcase {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.product-image__showcase {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.most-loved__thumb--prebuilt {
+  padding: 0;
+  background: none;
+}
+
+.most-loved__thumb-showcase {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.how-to-eat__pack-frame--prebuilt {
+  padding: 0;
+  background: none;
+  overflow: hidden;
+}
+
+.how-to-eat__showcase-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
 .most-loved__main.product-image--framed {
@@ -1804,16 +2507,14 @@ svg {
   margin-inline: auto;
 }
 
-.product-image--framed .product-image__img {
+.product-image--framed .pack-showcase {
   position: absolute;
   inset: 0;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: contain;
-  object-position: center;
-  padding: 0.75rem;
+}
+
+.product-image--framed .product-image__img {
+  max-width: 72%;
+  max-height: 88%;
 }
 
 .product-image__img {
@@ -1871,18 +2572,7 @@ svg {
   position: absolute;
   top: 0.65rem;
   left: 0.65rem;
-}
-
-.most-loved__thumb-img {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  display: block;
-  border-radius: 4px;
-  padding: 2px;
+  z-index: 3;
 }
 
 .most-loved__desc-box {
@@ -2182,18 +2872,42 @@ svg {
 
 .how-to-eat__pack-frame {
   border-radius: calc(var(--radius) - 4px);
-  padding: 0.45rem;
-  box-shadow: var(--shadow-sm);
+  padding: 0;
+  overflow: hidden;
+  background: linear-gradient(165deg, #f5f2ea 0%, #ebe6dc 100%);
+}
+
+.pack-theme--green-chutney.how-to-eat__pack-frame,
+.pack-theme--kara-podi.how-to-eat__pack-frame {
+  box-shadow: none;
+  border: none;
+  overflow: visible;
+}
+
+.how-to-eat__pack-frame .pack-showcase__float--chip-2,
+.how-to-eat__pack-frame .pack-showcase__float--chip-3,
+.how-to-eat__pack-frame .pack-showcase__float--chutney,
+.how-to-eat__pack-frame .pack-showcase__float--curry-3,
+.how-to-eat__pack-frame .pack-showcase__float--chili-2,
+.how-to-eat__pack-frame .pack-showcase__float--spice-bowl,
+.how-to-eat__pack-frame .pack-showcase__float--spice-dust {
+  display: none;
+}
+
+.how-to-eat__pack-frame .pack-showcase__float--chip-1 {
+  width: clamp(18px, 22%, 32px);
+  top: 6%;
+  right: 4%;
+}
+
+.how-to-eat__pack-frame .pack-showcase__float--curry-1,
+.how-to-eat__pack-frame .pack-showcase__float--curry-2 {
+  width: clamp(10px, 12%, 16px);
+  height: clamp(16px, 18%, 22px);
 }
 
 .how-to-eat__pack-img {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: auto;
   display: block;
-  border-radius: calc(var(--radius) - 6px);
-  background: transparent;
 }
 
 /* Home more links */
@@ -2263,8 +2977,8 @@ body.has-dosa-cursor * {
 /* Dosa Babu assistant */
 .dosa-babu {
   position: fixed;
-  right: 1.25rem;
-  bottom: 1.25rem;
+  right: 0.5rem;
+  bottom: 0.5rem;
   z-index: 200;
   display: flex;
   flex-direction: column;
@@ -2286,8 +3000,12 @@ body.has-dosa-cursor * {
   filter: drop-shadow(0 6px 12px rgba(26, 18, 8, 0.2));
 }
 
-.dosa-babu__launcher:hover .dosa-babu-avatar {
+.dosa-babu__launcher:hover .dosa-babu-avatar-wrap {
   animation-duration: 2.5s;
+}
+
+.dosa-babu__launcher:hover .dosa-babu-face__eye--right {
+  transform: translateY(-12%);
 }
 
 @keyframes dosa-babu-orbit {
@@ -2308,7 +3026,7 @@ body.has-dosa-cursor * {
   }
 }
 
-.dosa-babu__launcher .dosa-babu-avatar,
+.dosa-babu__launcher .dosa-babu-avatar-wrap,
 .dosa-babu__header-avatar {
   animation: dosa-babu-orbit 2.2s ease-in-out infinite;
   transform-origin: 50% 88%;
@@ -2338,9 +3056,15 @@ body.has-dosa-cursor * {
 }
 
 /* Dosa Babu avatar image */
+.dosa-babu-avatar-wrap {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
 .dosa-babu-avatar {
   display: block;
-  flex-shrink: 0;
   object-fit: contain;
   transition: transform var(--transition);
 }
@@ -2358,6 +3082,107 @@ body.has-dosa-cursor * {
 .dosa-babu-avatar--xs {
   width: 1.75rem;
   height: auto;
+}
+
+.dosa-babu-face {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  width: 54%;
+  height: 32%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.dosa-babu-face__eye {
+  position: absolute;
+  top: 0;
+  width: 34%;
+  aspect-ratio: 1;
+  background: #fff;
+  border: 2px solid #2a1506;
+  border-radius: 50%;
+  box-shadow: inset 0 -1px 2px rgba(42, 21, 6, 0.12);
+  transition: transform 0.2s ease;
+}
+
+.dosa-babu-face__eye::after {
+  content: '';
+  position: absolute;
+  width: 42%;
+  height: 42%;
+  right: 18%;
+  bottom: 16%;
+  background: #2a1506;
+  border-radius: 50%;
+}
+
+.dosa-babu-face__eye--left {
+  left: 6%;
+  transform: rotate(-6deg);
+}
+
+.dosa-babu-face__eye--right {
+  right: 4%;
+  top: 10%;
+  transform: rotate(8deg);
+}
+
+.dosa-babu-face__mouth {
+  position: absolute;
+  left: 50%;
+  bottom: -4%;
+  width: 62%;
+  height: 42%;
+  transform: translateX(-50%);
+  border: 2.5px solid #2a1506;
+  border-top: none;
+  border-radius: 0 0 50% 50%;
+  background: linear-gradient(180deg, rgba(120, 35, 20, 0.08) 0%, rgba(80, 20, 10, 0.22) 100%);
+}
+
+.dosa-babu-face__mouth::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 18%;
+  width: 28%;
+  height: 22%;
+  transform: translateX(-50%);
+  background: #c45a3a;
+  border-radius: 50% 50% 40% 40%;
+}
+
+.dosa-babu-avatar-wrap--sm .dosa-babu-face {
+  top: 31%;
+  width: 52%;
+  height: 30%;
+}
+
+.dosa-babu-avatar-wrap--sm .dosa-babu-face__eye {
+  border-width: 1.5px;
+}
+
+.dosa-babu-avatar-wrap--sm .dosa-babu-face__mouth {
+  border-width: 2px;
+}
+
+.dosa-babu-avatar-wrap--xs .dosa-babu-face {
+  top: 32%;
+  width: 50%;
+  height: 28%;
+}
+
+.dosa-babu-avatar-wrap--xs .dosa-babu-face__eye {
+  border-width: 1px;
+}
+
+.dosa-babu-avatar-wrap--xs .dosa-babu-face__mouth {
+  border-width: 1.5px;
+}
+
+.dosa-babu-avatar-wrap--xs .dosa-babu-face__mouth::after {
+  display: none;
 }
 
 /* Legacy cone avatar (cursor only) */
@@ -2878,8 +3703,8 @@ body.has-dosa-cursor * {
 
 @media (max-width: 480px) {
   .dosa-babu {
-    right: 0.75rem;
-    bottom: 0.75rem;
+    right: 0.35rem;
+    bottom: 0.35rem;
   }
 
   .dosa-babu__launcher-label {
@@ -2896,7 +3721,7 @@ body.has-dosa-cursor * {
     animation: none;
   }
 
-  .dosa-babu__launcher .dosa-babu-avatar,
+  .dosa-babu__launcher .dosa-babu-avatar-wrap,
   .dosa-babu__header-avatar {
     animation: none;
   }
@@ -2907,8 +3732,20 @@ body.has-dosa-cursor * {
     animation: none;
   }
 
+  .page-floating-chips__cluster {
+    animation: none;
+  }
+
   body.has-dosa-cursor,
   body.has-dosa-cursor * {
     cursor: auto !important;
+  }
+
+  .hero__floating-chip {
+    animation: none;
+  }
+
+  .hero__carousel-slide {
+    transition: none;
   }
 }

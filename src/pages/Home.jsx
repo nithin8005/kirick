@@ -5,15 +5,15 @@ import MostLovedProduct from '../components/MostLovedProduct'
 import OffersSection from '../components/OffersSection'
 import DietarySpecs from '../components/DietarySpecs'
 import SocialMediaSection from '../components/SocialMediaSection'
-import HowToEat from '../components/HowToEat'
+import HeroFloatingChips from '../components/HeroFloatingChips'
+import HeroProductCarousel from '../components/HeroProductCarousel'
 import { brandTags, products, dietaryFeatures } from '../data/content'
 
 export default function Home() {
-  const heroProducts = [products[0], products[1], products[2]]
-
   return (
     <>
       <section className="hero section">
+        <HeroFloatingChips />
         <div className="container hero__grid hero__grid--solo">
           <div className="hero__copy">
             <p className="eyebrow">KIRIK CERTIFIED DOSA</p>
@@ -44,24 +44,7 @@ export default function Home() {
           </div>
 
           <div className="hero__visual" aria-hidden="true">
-            <div className="hero__product-stack">
-              <div className="hero__glow" />
-              <div
-                className={`hero__product-card hero__product-card--back-left pack-theme--${heroProducts[1].id}`}
-              >
-                <img src={heroProducts[1].image} alt="" className="pack-blend-img" />
-              </div>
-              <div
-                className={`hero__product-card hero__product-card--back-right pack-theme--${heroProducts[2].id}`}
-              >
-                <img src={heroProducts[2].image} alt="" className="pack-blend-img" />
-              </div>
-              <div
-                className={`hero__product-card hero__product-card--front pack-theme--${heroProducts[0].id}`}
-              >
-                <img src={heroProducts[0].image} alt="" className="pack-blend-img" />
-              </div>
-            </div>
+            <HeroProductCarousel products={products} />
           </div>
         </div>
       </section>
@@ -77,8 +60,6 @@ export default function Home() {
       <DietarySpecs features={dietaryFeatures} />
 
       <SocialMediaSection />
-
-      <HowToEat />
     </>
   )
 }

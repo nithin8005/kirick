@@ -1,8 +1,8 @@
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { assetUrl } from '../lib/assets'
 import DosaBabu from './DosaBabu'
-import DosaCursor from './DosaCursor'
 import FooterStamp from './FooterStamp'
+import PageFloatingChips from './PageFloatingChips'
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -16,6 +16,7 @@ const navLinks = [
 export default function Layout() {
   return (
     <div className="layout">
+      <PageFloatingChips />
       <header className="header">
         <div className="container header__inner">
           <Link to="/" className="logo">
@@ -84,7 +85,6 @@ export default function Layout() {
         </div>
       </footer>
 
-      <DosaCursor />
       <DosaBabu />
     </div>
   )

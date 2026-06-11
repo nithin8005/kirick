@@ -1,4 +1,6 @@
 import { howToEatFlavors } from '../data/content'
+import PackShowcase from './PackShowcase'
+import { packThemeClass } from '../lib/packTheme'
 
 export default function HowToEat() {
   return (
@@ -8,23 +10,34 @@ export default function HowToEat() {
 
         <div className="how-to-eat__flavors">
           {howToEatFlavors.map((item) => (
-            <article key={item.id} className={`how-to-eat__col pack-theme--${item.id}`}>
+            <article key={item.id} className="how-to-eat__col">
               <h3 className="how-to-eat__flavor-name">{item.name}</h3>
               <div className="how-to-eat__packs">
-                <div className="how-to-eat__pack-frame">
-                  <img
-                    src={item.image}
-                    alt={`${item.name} — front`}
-                    className="how-to-eat__pack-img pack-blend-img"
-                    loading="lazy"
-                  />
+                <div
+                  className={`how-to-eat__pack-frame${item.showcaseImage ? ' how-to-eat__pack-frame--prebuilt' : ''} ${packThemeClass(item.id)}`.trim()}
+                >
+                  {item.showcaseImage ? (
+                    <img
+                      src={item.showcaseImage}
+                      alt={`${item.name} — showcase`}
+                      className="how-to-eat__showcase-img"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <PackShowcase
+                      src={item.image}
+                      alt={`${item.name} — front`}
+                      themeId={item.id}
+                      imgClassName="how-to-eat__pack-img"
+                    />
+                  )}
                 </div>
-                <div className="how-to-eat__pack-frame">
-                  <img
+                <div className={`how-to-eat__pack-frame ${packThemeClass(item.id)}`.trim()}>
+                  <PackShowcase
                     src={item.imageBack}
                     alt={`${item.name} — back`}
-                    className="how-to-eat__pack-img pack-blend-img"
-                    loading="lazy"
+                    themeId={item.id}
+                    imgClassName="how-to-eat__pack-img"
                   />
                 </div>
               </div>

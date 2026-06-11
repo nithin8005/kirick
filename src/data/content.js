@@ -22,6 +22,7 @@ export const products = [
     combo: 'Pair with mint yogurt dip or masala chai for peak kirik.',
     image: assetUrl('/images/products/green-chutney-front.png'),
     imageBack: assetUrl('/images/products/green-chutney-back.png'),
+    showcaseImage: assetUrl('/images/products/green-chutney-showcase.png'),
     imageLabel: 'Green Chutney packet — front view',
     gridBlurb: 'Bold, fresh and filled with umami flavour',
   },
@@ -40,6 +41,7 @@ export const products = [
     combo: 'Best with masala chai, chaas, or a simple cup of filter coffee.',
     image: assetUrl('/images/products/tangy-salty-front.png'),
     imageBack: assetUrl('/images/products/tangy-salty-back.png'),
+    showcaseImage: assetUrl('/images/products/tangy-salty-showcase.png'),
     imageLabel: 'Tangy & Salty packet — front view',
     gridBlurb: 'Chatpata crunch, salt with swagger',
   },
@@ -58,6 +60,7 @@ export const products = [
     combo: 'Stack with curd rice vibes or lemon soda — no judgment.',
     image: assetUrl('/images/products/kara-podi-front.png'),
     imageBack: assetUrl('/images/products/kara-podi-back.png'),
+    showcaseImage: assetUrl('/images/products/kara-podi-showcase.png'),
     imageLabel: 'Kara Podi packet — front view',
     gridBlurb: 'Spice level: Kirik Certified heat',
   },
@@ -76,6 +79,7 @@ export const products = [
     combo: 'Pair with filter coffee or warm milk for peak comfort-snack mode.',
     image: assetUrl('/images/products/ginger-jaggery-front.png'),
     imageBack: assetUrl('/images/products/ginger-jaggery-back.png'),
+    showcaseImage: assetUrl('/images/products/ginger-jaggery-showcase.png'),
     imageLabel: 'Ginger Jaggery packet — front view',
     gridBlurb: 'Sweet heat, desi comfort',
   },
@@ -334,6 +338,7 @@ export const howToEatFlavors = [
     name: 'GREEN CHUTNEY',
     image: assetUrl('/images/products/green-chutney-front.png'),
     imageBack: assetUrl('/images/products/green-chutney-back.png'),
+    showcaseImage: assetUrl('/images/products/green-chutney-showcase.png'),
     imageLabel: 'Green Chutney — front and back packaging',
   },
   {
@@ -341,6 +346,7 @@ export const howToEatFlavors = [
     name: 'TANGY & SALTY',
     image: assetUrl('/images/products/tangy-salty-front.png'),
     imageBack: assetUrl('/images/products/tangy-salty-back.png'),
+    showcaseImage: assetUrl('/images/products/tangy-salty-showcase.png'),
     imageLabel: 'Tangy & Salty — front and back packaging',
   },
   {
@@ -348,6 +354,7 @@ export const howToEatFlavors = [
     name: 'KARA PODI',
     image: assetUrl('/images/products/kara-podi-front.png'),
     imageBack: assetUrl('/images/products/kara-podi-back.png'),
+    showcaseImage: assetUrl('/images/products/kara-podi-showcase.png'),
     imageLabel: 'Kara Podi — front and back packaging',
   },
   {
@@ -355,6 +362,7 @@ export const howToEatFlavors = [
     name: 'GINGER JAGGERY',
     image: assetUrl('/images/products/ginger-jaggery-front.png'),
     imageBack: assetUrl('/images/products/ginger-jaggery-back.png'),
+    showcaseImage: assetUrl('/images/products/ginger-jaggery-showcase.png'),
     imageLabel: 'Ginger Jaggery — front and back packaging',
   },
 ]
