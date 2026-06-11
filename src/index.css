@@ -2997,48 +2997,41 @@ body.has-dosa-cursor * {
   border: none;
   background: transparent;
   cursor: pointer;
-  filter: drop-shadow(0 6px 12px rgba(26, 18, 8, 0.2));
-}
-
-.dosa-babu__launcher:hover .dosa-babu-avatar-wrap {
-  animation-duration: 2.5s;
 }
 
 .dosa-babu__launcher:hover .dosa-babu-face__eye--right {
   transform: translateY(-12%);
 }
 
-@keyframes dosa-babu-orbit {
-  0% {
-    transform: translate(0, -3px) rotate(-6deg);
+@keyframes dosa-babu-spin {
+  from {
+    transform: rotate(0deg) translateZ(0);
   }
-  25% {
-    transform: translate(3px, 0) rotate(0deg);
+  to {
+    transform: rotate(360deg) translateZ(0);
+  }
+}
+
+@keyframes dosa-babu-float {
+  0%,
+  100% {
+    transform: translateY(0) translateZ(0);
   }
   50% {
-    transform: translate(0, 3px) rotate(6deg);
+    transform: translateY(var(--dosa-babu-float-lift, -10px)) translateZ(0);
   }
-  75% {
-    transform: translate(-3px, 0) rotate(0deg);
-  }
+}
+
+@keyframes dosa-babu-shadow-pulse {
+  0%,
   100% {
-    transform: translate(0, -3px) rotate(-6deg);
+    transform: translateX(-50%) scale(1) translateZ(0);
+    opacity: 0.9;
   }
-}
-
-.dosa-babu__launcher .dosa-babu-avatar-wrap,
-.dosa-babu__header-avatar {
-  animation: dosa-babu-orbit 2.2s ease-in-out infinite;
-  transform-origin: 50% 88%;
-  transition: none;
-}
-
-.dosa-babu--open .dosa-babu__header-avatar {
-  animation-duration: 2.1s;
-}
-
-.dosa-babu--typing .dosa-babu__header-avatar {
-  animation-duration: 1.2s;
+  50% {
+    transform: translateX(-50%) scale(0.88) translateZ(0);
+    opacity: 0.55;
+  }
 }
 
 .dosa-babu__launcher-label {
@@ -3061,6 +3054,54 @@ body.has-dosa-cursor * {
   display: inline-block;
   flex-shrink: 0;
   line-height: 0;
+}
+
+.dosa-babu-avatar-wrap--premium {
+  --dosa-babu-spin-duration: 18s;
+  --dosa-babu-float-duration: 4.5s;
+  --dosa-babu-float-lift: -10px;
+  padding-bottom: 0.35rem;
+}
+
+.dosa-babu-avatar-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 0;
+  width: 62%;
+  height: 16%;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(26, 18, 8, 0.34) 0%,
+    rgba(26, 18, 8, 0.12) 45%,
+    transparent 72%
+  );
+  filter: blur(4px);
+  transform: translateX(-50%) translateZ(0);
+  will-change: transform, opacity;
+  animation: dosa-babu-shadow-pulse var(--dosa-babu-float-duration) ease-in-out infinite;
+}
+
+.dosa-babu-avatar-float {
+  position: relative;
+  z-index: 1;
+  display: block;
+  will-change: transform;
+  animation: dosa-babu-float var(--dosa-babu-float-duration) ease-in-out infinite;
+}
+
+.dosa-babu-avatar-spin {
+  position: relative;
+  display: block;
+  transform-origin: center center;
+  will-change: transform;
+  animation: dosa-babu-spin var(--dosa-babu-spin-duration) ease-in-out infinite;
+}
+
+.dosa-babu-avatar-wrap--premium .dosa-babu-avatar {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .dosa-babu-avatar {
@@ -3714,6 +3755,11 @@ body.has-dosa-cursor * {
   .dosa-babu-avatar--lg {
     width: 3.5rem;
   }
+
+  .dosa-babu-avatar-wrap--premium {
+    --dosa-babu-spin-duration: 20s;
+    --dosa-babu-float-lift: -6px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3721,8 +3767,9 @@ body.has-dosa-cursor * {
     animation: none;
   }
 
-  .dosa-babu__launcher .dosa-babu-avatar-wrap,
-  .dosa-babu__header-avatar {
+  .dosa-babu-avatar-wrap--premium .dosa-babu-avatar-float,
+  .dosa-babu-avatar-wrap--premium .dosa-babu-avatar-spin,
+  .dosa-babu-avatar-wrap--premium .dosa-babu-avatar-shadow {
     animation: none;
   }
 

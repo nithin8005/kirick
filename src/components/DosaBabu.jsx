@@ -214,7 +214,7 @@ export default function DosaBabu() {
         aria-controls="dosa-babu-panel"
         aria-label={open ? 'Close Dosa Babu' : 'Open Dosa Babu assistant'}
       >
-        <DosaBabuAvatar size="lg" className="dosa-babu__launcher-dosa" />
+        <DosaBabuAvatar size="lg" className="dosa-babu__launcher-dosa" animated />
         <span className="dosa-babu__launcher-label">Dosa Babu</span>
       </button>
     </div>

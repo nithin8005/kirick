@@ -1,10 +1,8 @@
 import { assetUrl } from '../lib/assets'
 
-export default function DosaBabuAvatar({ size = 'lg', className = '' }) {
-  return (
-    <span
-      className={`dosa-babu-avatar-wrap dosa-babu-avatar-wrap--${size} ${className}`.trim()}
-    >
+export default function DosaBabuAvatar({ size = 'lg', className = '', animated = false }) {
+  const dosa = (
+    <>
       <img
         src={assetUrl('/images/dosa-babu.png')}
         alt=""
@@ -18,6 +16,23 @@ export default function DosaBabuAvatar({ size = 'lg', className = '' }) {
         <span className="dosa-babu-face__eye dosa-babu-face__eye--right" />
         <span className="dosa-babu-face__mouth" />
       </span>
+    </>
+  )
+
+  return (
+    <span
+      className={`dosa-babu-avatar-wrap dosa-babu-avatar-wrap--${size}${animated ? ' dosa-babu-avatar-wrap--premium' : ''} ${className}`.trim()}
+    >
+      {animated ? (
+        <>
+          <span className="dosa-babu-avatar-shadow" aria-hidden="true" />
+          <span className="dosa-babu-avatar-float">
+            <span className="dosa-babu-avatar-spin">{dosa}</span>
+          </span>
+        </>
+      ) : (
+        dosa
+      )}
     </span>
   )
 }
