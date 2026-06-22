@@ -7,11 +7,9 @@ import SocialMediaSection from '../components/SocialMediaSection'
 import HeroFloatingChips from '../components/HeroFloatingChips'
 import HeroProductCarousel from '../components/HeroProductCarousel'
 import HomeTaglineBanner from '../components/HomeTaglineBanner'
-import { isComicTheme } from '../config/theme.js'
 import { brandTags, products, dietaryFeatures } from '../data/content'
-import Comic from './Comic'
 
-function HomeDefault() {
+export default function Home() {
   return (
     <>
       <section className="hero section">
@@ -61,9 +59,4 @@ function HomeDefault() {
       <SocialMediaSection />
     </>
   )
-}
-
-export default function Home() {
-  if (isComicTheme) return <Comic />
-  return <HomeDefault />
 }

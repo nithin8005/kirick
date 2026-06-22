@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { assetUrl } from '../lib/assets'
-import { isComicTheme } from '../config/theme.js'
 import DosaBabu from './DosaBabu'
 import FooterStamp from './FooterStamp'
 import PageFloatingChips from './PageFloatingChips'
@@ -14,7 +13,6 @@ const navLinksLeft = [
 const navLinksRight = [
   { to: '/offers', label: 'Offers' },
   { to: '/about', label: 'About' },
-  { to: '/comic', label: 'Comic' },
   { to: '/faq', label: 'FAQ' },
 ]
 
@@ -86,7 +84,7 @@ export default function Layout() {
   const [newsletterEmail, setNewsletterEmail] = useState('')
 
   return (
-    <div className={isComicTheme ? 'layout layout--comic' : 'layout'}>
+    <div className="layout">
       <PageFloatingChips />
       <header className="header">
         <div className="container header__inner">
@@ -133,9 +131,6 @@ export default function Layout() {
               </Link>
               <Link to="/about" className="footer-premium__link">
                 About Us
-              </Link>
-              <Link to="/comic" className="footer-premium__link">
-                Comic
               </Link>
               <a
                 href="mailto:info@kirikdosachips.in?subject=Distributor%20enquiry"

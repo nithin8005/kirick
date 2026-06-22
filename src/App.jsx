@@ -7,7 +7,6 @@ import Products from './pages/Products'
 import Offers from './pages/Offers'
 import FAQ from './pages/FAQ'
 import Story from './pages/Story'
-import Comic from './pages/Comic'
 import Terms from './pages/Terms'
 
 export default function App() {
@@ -22,7 +21,6 @@ export default function App() {
           <Route path="offers" element={<Offers />} />
           <Route path="faq" element={<FAQ />} />
           <Route path="story" element={<Story />} />
-          <Route path="comic" element={<Comic />} />
           <Route path="terms" element={<Terms />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
