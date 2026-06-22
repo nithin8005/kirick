@@ -1,9 +1,11 @@
 import { assetUrl } from '../lib/assets.js'
+import { INSTAGRAM_URL } from '../lib/instagram.js'
 
 export const dietaryFeatures = [
-  { id: 'no-bad', label: 'No Bad Stuff', icon: '⚗', sublabel: 'No junk — clean crunch' },
-  { id: 'organic', label: 'Organic', icon: '🌿', sublabel: 'Organic' },
-  { id: 'non-gmo', label: 'Non-GMO', icon: 'GMO', sublabel: 'Non-GMO' },
+  { id: 'rice-bran-oil', label: 'Rice bran oil' },
+  { id: 'tradition-twisted', label: 'Tradition twisted' },
+  { id: 'gluten-free', label: 'Gluten free' },
+  { id: 'real-dosa', label: 'Real dosa' },
 ]
 
 export const products = [
@@ -15,8 +17,8 @@ export const products = [
       'Our Green Chutney flavor hits like your favorite chutney — bold herb notes with a clean crunch finish.',
     longDescription:
       'No...Yes... DOSA CHIPS is made from Dosa, but not your regular dosa. Bold chutney notes, certified crunch, and plot-twist flavor in every bite.',
-    price: '₹20/-',
-    priceWas: '₹30/-',
+    price: '₹38/-',
+    priceWas: '₹40/-',
     isNew: true,
     dietary: ['Gluten free', 'Rice bran oil'],
     combo: 'Pair with mint yogurt dip or masala chai for peak kirik.',
@@ -34,9 +36,9 @@ export const products = [
       'Black salt, pink salt, and amchur tang on a real dosa crunch — familiar desi vibes with a plot twist.',
     longDescription:
       'Tangy & Salty Dosa Chips — black salt, pink salt, sea salt, cumin, and amchur on an authentic dosa base. Gluten free, rice bran oil, and crunch loyalty in every bite.',
-    price: '₹20/-',
-    priceWas: '₹30/-',
-    isNew: false,
+    price: '₹38/-',
+    priceWas: '₹40/-',
+    isNew: true,
     dietary: ['Gluten free', 'Rice bran oil'],
     combo: 'Best with masala chai, chaas, or a simple cup of filter coffee.',
     image: assetUrl('/images/products/tangy-salty-front.png'),
@@ -53,9 +55,9 @@ export const products = [
       'Podi-powered punch for spice lovers. Crunch first, fire second, loyalty always.',
     longDescription:
       'Podi-powered punch for spice lovers. Spice level: Kirik Certified. Crunch first, fire second.',
-    price: '₹20/-',
-    priceWas: '₹30/-',
-    isNew: false,
+    price: '₹38/-',
+    priceWas: '₹40/-',
+    isNew: true,
     dietary: ['Gluten free', 'Rice bran oil'],
     combo: 'Stack with curd rice vibes or lemon soda — no judgment.',
     image: assetUrl('/images/products/kara-podi-front.png'),
@@ -72,9 +74,9 @@ export const products = [
       'Warm ginger meets jaggery sweetness on every crisp bite — nostalgic with a plot twist.',
     longDescription:
       'Ginger Jaggery Dosa Chips — sweet, spicy, and certified crunchy. Real dosa base, rice bran oil, gluten free.',
-    price: '₹20/-',
-    priceWas: '₹30/-',
-    isNew: false,
+    price: '₹38/-',
+    priceWas: '₹40/-',
+    isNew: true,
     dietary: ['Gluten free', 'Rice bran oil'],
     combo: 'Pair with filter coffee or warm milk for peak comfort-snack mode.',
     image: assetUrl('/images/products/ginger-jaggery-front.png'),
@@ -82,6 +84,74 @@ export const products = [
     showcaseImage: assetUrl('/images/products/ginger-jaggery-showcase.png'),
     imageLabel: 'Ginger Jaggery packet — front view',
     gridBlurb: 'Sweet heat, desi comfort',
+  },
+]
+
+export const instagramFallbackPosts = [
+  ...products.map((p) => ({
+    id: `ig-fallback-${p.id}`,
+    mediaUrl: p.showcaseImage,
+    permalink: INSTAGRAM_URL,
+    caption: `${p.name} — KIRIK Dosa Chips`,
+    mediaType: 'IMAGE',
+  })),
+  {
+    id: 'ig-fallback-chips',
+    mediaUrl: assetUrl('/images/chips-scatter.png'),
+    permalink: INSTAGRAM_URL,
+    caption: 'KIRIK crunch energy',
+    mediaType: 'IMAGE',
+  },
+  {
+    id: 'ig-fallback-dosa',
+    mediaUrl: assetUrl('/images/dosa-chip.png'),
+    permalink: INSTAGRAM_URL,
+    caption: 'Certified dosa chips',
+    mediaType: 'IMAGE',
+  },
+].slice(0, 6)
+
+/** Add more videos: drop .mp4 files in public/videos/ and add an entry here. */
+export const socialVideos = [
+  {
+    id: 'video-633',
+    src: '/videos/Video-633.mp4',
+    label: 'KIRIK brand video',
+  },
+  {
+    id: 'video-113',
+    src: '/videos/Video-113.mp4',
+    label: 'KIRIK social video',
+  },
+  {
+    id: 'video-471',
+    src: '/videos/Video-471.mp4',
+    label: 'KIRIK social video',
+  },
+  {
+    id: 'video-473',
+    src: '/videos/Video-473.mp4',
+    label: 'KIRIK social video',
+  },
+  {
+    id: 'video-458',
+    src: '/videos/Video-458.mp4',
+    label: 'KIRIK social video',
+  },
+  {
+    id: 'video-459',
+    src: '/videos/Video-459.mp4',
+    label: 'KIRIK social video',
+  },
+  {
+    id: 'video-460',
+    src: '/videos/Video-460.mp4',
+    label: 'KIRIK social video',
+  },
+  {
+    id: 'video-470',
+    src: '/videos/Video-470.mp4',
+    label: 'KIRIK social video',
   },
 ]
 
@@ -327,7 +397,7 @@ export const meters = [
 export const stickerBrandCloud = {
   title: 'Fluffy Dosa Cloud Bubble',
   visual: 'Floating text in a dosa-shaped cloud.',
-  tags: ['Wholesome.', 'Local.', 'LOUD.'],
+  tags: ['Wholesome.', 'Local.', 'Real dosa'],
 }
 
 export const stickersPageFooter = 'Kirik nan maga stickers'
@@ -373,7 +443,7 @@ export const aboutContent = {
     'We’re here for the snack obsessed, the midnight munchers, the flavor chasers, and the meme lovers who believe food should come with a little drama. Inspired by iconic desi tastes and street-side cravings, KIRIK transforms familiar flavors into bold, crispy, snackable experiences made for today’s generation.',
     'From chai-time cravings to 3AM binge sessions, our snacks are built for every vibe. Loud flavors, nostalgic twists, and unapologetically fun energy — that’s what makes KIRIK different.',
   ],
-  tagline: 'No rules. Just flavor. Just vibes.',
+  tagline: 'No rules. Just vibe. Just scenes.',
   founder: {
     title: 'Meet the founder',
     paragraphs: [
@@ -398,7 +468,7 @@ export const storyContent = {
   tagline: 'Crunch loud. Snack louder.',
 }
 
-export const brandTags = ['Wholesome.', 'Local.', 'LOUD.']
+export const brandTags = ['Wholesome.', 'Local.', 'Real dosa']
 
 export const offers = [
   { title: 'New Launch', description: 'Green Chutney drop — limited batch', date: 'Coming soon', imageLabel: 'New launch banner' },

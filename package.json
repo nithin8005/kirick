@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "fetch:instagram": "node scripts/fetch-instagram.mjs",
+    "prebuild": "node scripts/fetch-instagram.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },

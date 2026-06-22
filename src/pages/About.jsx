@@ -1,9 +1,7 @@
-import { aboutContent, storyContent, brandTags } from '../data/content'
+import { aboutContent, brandTags } from '../data/content'
 
 export default function About() {
   const { paragraphs, tagline, founder, closing } = aboutContent
-  const { heroLead: storyLead, paragraphs: storyParagraphs, tagline: storyTagline } =
-    storyContent
 
   return (
     <div className="page page--about">
@@ -20,8 +18,6 @@ export default function About() {
           </div>
           <nav className="about-jump" aria-label="On this page">
             <a href="#founder">Founder</a>
-            <span aria-hidden="true">·</span>
-            <a href="#our-story">Our Story</a>
           </nav>
         </div>
       </section>
@@ -45,17 +41,6 @@ export default function About() {
           ))}
           <p className="about-tagline about-tagline--accent">{founder.bornTagline}</p>
           <p className="about-founder__closing">{closing}</p>
-        </div>
-      </section>
-
-      <section id="our-story" className="section about-story-section">
-        <div className="container about-story">
-          <h2 className="about-story__title">Our Story</h2>
-          <p className="about-story__lead">{storyLead}</p>
-          {storyParagraphs.map((text) => (
-            <p key={text.slice(0, 40)}>{text}</p>
-          ))}
-          <p className="about-tagline">{storyTagline}</p>
         </div>
       </section>
     </div>

@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import PromoStickerBanner from '../components/PromoStickerBanner'
 import FeaturedProductGrid from '../components/FeaturedProductGrid'
 import MostLovedProduct from '../components/MostLovedProduct'
 import OffersSection from '../components/OffersSection'
@@ -7,9 +6,12 @@ import DietarySpecs from '../components/DietarySpecs'
 import SocialMediaSection from '../components/SocialMediaSection'
 import HeroFloatingChips from '../components/HeroFloatingChips'
 import HeroProductCarousel from '../components/HeroProductCarousel'
+import HomeTaglineBanner from '../components/HomeTaglineBanner'
+import { isComicTheme } from '../config/theme.js'
 import { brandTags, products, dietaryFeatures } from '../data/content'
+import Comic from './Comic'
 
-export default function Home() {
+function HomeDefault() {
   return (
     <>
       <section className="hero section">
@@ -30,9 +32,6 @@ export default function Home() {
               <Link to="/products" className="btn btn--primary">
                 Shop flavors
               </Link>
-              <Link to="/stickers" className="btn btn--outline">
-                See stickers
-              </Link>
             </div>
             <div className="hero__badges">
               {brandTags.map((tag) => (
@@ -49,11 +48,11 @@ export default function Home() {
         </div>
       </section>
 
-      <PromoStickerBanner />
+      <HomeTaglineBanner />
 
       <FeaturedProductGrid products={products} />
 
-      <MostLovedProduct products={products} defaultIndex={0} />
+      <MostLovedProduct product={products.find((p) => p.id === 'tangy-salty')} />
 
       <OffersSection />
 
@@ -62,4 +61,9 @@ export default function Home() {
       <SocialMediaSection />
     </>
   )
+}
+
+export default function Home() {
+  if (isComicTheme) return <Comic />
+  return <HomeDefault />
 }

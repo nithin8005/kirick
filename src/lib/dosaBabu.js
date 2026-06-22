@@ -9,7 +9,6 @@ const CONTACT = {
 const NAV_HINTS = [
   { keywords: ['home', 'start'], to: '/', label: 'Home' },
   { keywords: ['product', 'flavor', 'flavour', 'menu', 'catalog', 'chip'], to: '/products', label: 'Products' },
-  { keywords: ['sticker', 'character', 'meme'], to: '/stickers', label: 'Stickers' },
   { keywords: ['offer', 'sale', 'launch', 'event'], to: '/offers', label: 'Offers' },
   { keywords: ['about', 'founder', 'story', 'taylor'], to: '/about', label: 'About Us' },
   { keywords: ['faq', 'question', 'help'], to: '/faq', label: 'FAQ' },
@@ -285,7 +284,7 @@ export function getDosaBabuReply(rawInput) {
 
   if (includesAny(input, ['order', 'buy', 'purchase', 'price', 'checkout'])) {
     return {
-      text: `Packs are ₹20/- (MRP ₹30/-). Order online, visit select stores, or call ${CONTACT.phone} for help.`,
+      text: `Packs are ₹38/- (MRP ₹40/-). Order online, visit select stores, or call ${CONTACT.phone} for help.`,
       links: [
         { to: '/products', label: 'Available Flavors' },
         { to: '/offers', label: 'Offers' },

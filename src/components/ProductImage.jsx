@@ -16,7 +16,7 @@ export default function ProductImage({
     <div
       className={`product-image${framed ? ' product-image--framed' : ''}${showcaseImage ? ' product-image--prebuilt' : ''}${themeClass ? ` ${themeClass}` : ''} ${className}`.trim()}
     >
-      {showNew && !showcaseImage && (
+      {showNew && (
         <span className="badge-new badge-new--on-image" aria-label="New product">
           NEW
         </span>
