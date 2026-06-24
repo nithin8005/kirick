@@ -207,7 +207,7 @@ svg {
 }
 
 /* Full-page hero-style background behind all sections */
-.layout:has(.page-floating-chips) {
+.layout:not(.layout--comic):has(.page-floating-chips) {
   background:
     radial-gradient(ellipse 80% 60% at 85% 15%, rgba(244, 168, 37, 0.22), transparent 55%),
     radial-gradient(ellipse 70% 50% at 10% 85%, rgba(232, 93, 4, 0.1), transparent 50%),
@@ -215,7 +215,7 @@ svg {
     var(--color-cream);
 }
 
-.layout:has(.page-floating-chips)::before {
+.layout:not(.layout--comic):has(.page-floating-chips)::before {
   content: '';
   position: fixed;
   inset: 0;
@@ -280,19 +280,19 @@ svg {
 }
 
 /* Let hero bg show through all main sections */
-.layout:has(.page-floating-chips) .hero,
-.layout:has(.page-floating-chips) .section,
-.layout:has(.page-floating-chips) .section--alt,
-.layout:has(.page-floating-chips) .section--warm,
-.layout:has(.page-floating-chips) .featured-grid,
-.layout:has(.page-floating-chips) .most-loved,
-.layout:has(.page-floating-chips) .offers-wire,
-.layout:has(.page-floating-chips) .social-wire,
-.layout:has(.page-floating-chips) .product-brand-intro {
+.layout:not(.layout--comic):has(.page-floating-chips) .hero,
+.layout:not(.layout--comic):has(.page-floating-chips) .section,
+.layout:not(.layout--comic):has(.page-floating-chips) .section--alt,
+.layout:not(.layout--comic):has(.page-floating-chips) .section--warm,
+.layout:not(.layout--comic):has(.page-floating-chips) .featured-grid,
+.layout:not(.layout--comic):has(.page-floating-chips) .most-loved,
+.layout:not(.layout--comic):has(.page-floating-chips) .offers-wire,
+.layout:not(.layout--comic):has(.page-floating-chips) .social-wire,
+.layout:not(.layout--comic):has(.page-floating-chips) .product-brand-intro {
   background: transparent;
 }
 
-.layout:has(.page-floating-chips) .dietary-icons--band {
+.layout:not(.layout--comic):has(.page-floating-chips) .dietary-icons--band {
   background: var(--color-dietary-band);
   isolation: isolate;
 }

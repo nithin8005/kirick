@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { AppLink } from '../lib/ComicThemeContext'
 import FeaturedProductGrid from '../components/FeaturedProductGrid'
 import MostLovedProduct from '../components/MostLovedProduct'
 import OffersSection from '../components/OffersSection'
@@ -27,9 +27,9 @@ export default function Home() {
               Loud flavors. Zero boring snacks.
             </p>
             <div className="hero__cta">
-              <Link to="/products" className="btn btn--primary">
+              <AppLink to="/products" className="btn btn--primary">
                 Shop flavors
-              </Link>
+              </AppLink>
             </div>
             <div className="hero__badges">
               {brandTags.map((tag) => (

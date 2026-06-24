@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { assetUrl } from '../lib/assets'
+import { AppLink, ComicThemeProvider, useComicPath } from '../lib/ComicThemeContext'
+import { COMIC_PATH_PREFIX } from '../lib/useComicTheme'
 import DosaBabu from './DosaBabu'
 import FooterStamp from './FooterStamp'
 import PageFloatingChips from './PageFloatingChips'
@@ -17,10 +19,12 @@ const navLinksRight = [
 ]
 
 function NavLinks({ links }) {
+  const { resolvePath } = useComicPath()
+
   return links.map(({ to, label }) => (
     <NavLink
       key={to}
-      to={to}
+      to={resolvePath(to)}
       end={to === '/'}
       className={({ isActive }) => `nav__link${isActive ? ' nav__link--active' : ''}`}
     >
@@ -80,18 +84,19 @@ const socialLinks = [
   },
 ]
 
-export default function Layout() {
+function LayoutShell() {
   const [newsletterEmail, setNewsletterEmail] = useState('')
+  const { isComicTheme } = useComicPath()
 
   return (
-    <div className="layout">
+    <div className={isComicTheme ? 'layout layout--comic' : 'layout'}>
       <PageFloatingChips />
       <header className="header">
         <div className="container header__inner">
           <nav className="nav nav--left" aria-label="Main navigation left">
             <NavLinks links={navLinksLeft} />
           </nav>
-          <Link to="/" className="logo header__logo">
+          <AppLink to="/" className="logo header__logo">
             <img
               src={assetUrl('/images/kirik-logo.png')}
               alt="KIRIK"
@@ -99,7 +104,7 @@ export default function Layout() {
               loading="eager"
               decoding="async"
             />
-          </Link>
+          </AppLink>
           <nav className="nav nav--right" aria-label="Main navigation right">
             <NavLinks links={navLinksRight} />
           </nav>
@@ -115,23 +120,32 @@ export default function Layout() {
 
         <div className="container footer-premium__grid">
           <div className="footer-premium__col footer-premium__brand">
-            <Link to="/" className="footer-premium__logo" aria-label="KIRIK home">
+            <AppLink to="/" className="footer-premium__logo" aria-label="KIRIK home">
               <FooterStamp />
-            </Link>
+            </AppLink>
           </div>
 
           <div className="footer-premium__col">
             <p className="footer-premium__title">Quick Links</p>
             <div className="footer-premium__links">
-              <Link to="/" className="footer-premium__link">
+              <AppLink to="/" className="footer-premium__link">
                 Home
-              </Link>
-              <Link to="/products" className="footer-premium__link">
+              </AppLink>
+              <AppLink to="/products" className="footer-premium__link">
                 Catalog
-              </Link>
-              <Link to="/about" className="footer-premium__link">
+              </AppLink>
+              <AppLink to="/about" className="footer-premium__link">
                 About Us
-              </Link>
+              </AppLink>
+              {isComicTheme ? (
+                <Link to="/" className="footer-premium__link">
+                  Classic site
+                </Link>
+              ) : (
+                <Link to={COMIC_PATH_PREFIX} className="footer-premium__link">
+                  Comic edition
+                </Link>
+              )}
               <a
                 href="mailto:info@kirikdosachips.in?subject=Distributor%20enquiry"
                 className="footer-premium__link"
@@ -171,8 +185,6 @@ export default function Layout() {
               </button>
             </form>
           </div>
-
-          {/* Contact column removed as requested */}
         </div>
 
         <div className="footer-premium__divider" aria-hidden="true" />
@@ -182,12 +194,12 @@ export default function Layout() {
             © {new Date().getFullYear()} Cheeky Factory Private Limited. All rights reserved.
           </p>
           <div className="footer-premium__bottom-links" aria-label="Footer legal links">
-            <Link to="/terms" className="footer-premium__bottom-link">
+            <AppLink to="/terms" className="footer-premium__bottom-link">
               Terms &amp; Conditions
-            </Link>
-            <Link to="/terms" className="footer-premium__bottom-link">
+            </AppLink>
+            <AppLink to="/terms" className="footer-premium__bottom-link">
               Privacy Policy
-            </Link>
+            </AppLink>
           </div>
           <div className="footer-premium__bottom-social" aria-label="Social media">
             {socialLinks.map(({ label, href, icon }) => (
@@ -208,5 +220,13 @@ export default function Layout() {
 
       <DosaBabu />
     </div>
+  )
+}
+
+export default function Layout() {
+  return (
+    <ComicThemeProvider>
+      <LayoutShell />
+    </ComicThemeProvider>
   )
 }

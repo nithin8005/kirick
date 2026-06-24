@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { AppLink } from '../lib/ComicThemeContext'
 import { offers } from '../data/content'
 import ImagePlaceholder from './ImagePlaceholder'
 
@@ -45,9 +45,9 @@ export default function OffersSection({ showCta = true }) {
         </div>
         {showCta && (
           <p className="offers-wire__cta">
-            <Link to="/offers" className="btn btn--outline">
+            <AppLink to="/offers" className="btn btn--outline">
               View all offers
-            </Link>
+            </AppLink>
           </p>
         )}
       </div>

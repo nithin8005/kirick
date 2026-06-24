@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { AppLink } from '../lib/ComicThemeContext'
 import FeaturedProductGrid from '../components/FeaturedProductGrid'
 import DietarySpecs from '../components/DietarySpecs'
 import { aboutContent, products, dietaryFeatures } from '../data/content'
@@ -29,9 +29,9 @@ export default function Products() {
 
       <section className="section product-brand-intro-cta">
         <div className="container center">
-          <Link to="/offers" className="btn btn--outline">
+          <AppLink to="/offers" className="btn btn--outline">
             See launches &amp; events
-          </Link>
+          </AppLink>
         </div>
       </section>
     </div>

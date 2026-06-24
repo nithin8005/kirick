@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { AppLink } from '../lib/ComicThemeContext'
 import PackShowcase from './PackShowcase'
 import { packThemeClass, isShowcaseCard } from '../lib/packTheme'
 
@@ -43,9 +43,9 @@ function ProductCard({ product, linked }) {
 
   if (linked) {
     return (
-      <Link to="/products" className={cardClass}>
+      <AppLink to="/products" className={cardClass}>
         {content}
-      </Link>
+      </AppLink>
     )
   }
 
