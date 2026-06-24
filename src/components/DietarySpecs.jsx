@@ -65,6 +65,13 @@ export default function DietarySpecs({ features }) {
   return (
     <section className="dietary-icons section dietary-icons--band">
       <div className="container">
+        <header className="dietary-icons__header">
+          <p className="eyebrow">Real talk</p>
+          <h2 className="dietary-icons__title">The good stuff in every bag</h2>
+          <p className="dietary-icons__lead">
+            No fake claims — just dosa chips your amma would actually nod at.
+          </p>
+        </header>
         <div className="dietary-icons__row">
           {features.map((f) => (
             <div key={f.id} className={`dietary-icons__item dietary-icons__item--${f.id}`}>
@@ -72,6 +79,7 @@ export default function DietarySpecs({ features }) {
                 <span className="dietary-icons__icon-svg">{featureIcons[f.id]}</span>
               </div>
               <p className="dietary-icons__label">{f.label}</p>
+              {f.blurb && <p className="dietary-icons__sublabel">{f.blurb}</p>}
             </div>
           ))}
         </div>

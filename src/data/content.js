@@ -2,10 +2,10 @@ import { assetUrl } from '../lib/assets.js'
 import { INSTAGRAM_URL } from '../lib/instagram.js'
 
 export const dietaryFeatures = [
-  { id: 'rice-bran-oil', label: 'Rice bran oil' },
-  { id: 'tradition-twisted', label: 'Tradition twisted' },
-  { id: 'gluten-free', label: 'Gluten free' },
-  { id: 'real-dosa', label: 'Real dosa' },
+  { id: 'rice-bran-oil', label: 'Rice bran oil', blurb: 'Light fry, full crunch' },
+  { id: 'tradition-twisted', label: 'Tradition twisted', blurb: 'Dosa vibes, snack format' },
+  { id: 'gluten-free', label: 'Gluten free', blurb: 'Snack easy, worry less' },
+  { id: 'real-dosa', label: 'Real dosa', blurb: 'Not potato chips in disguise' },
 ]
 
 export const products = [
@@ -471,7 +471,20 @@ export const storyContent = {
 export const brandTags = ['Wholesome.', 'Local.', 'Real dosa']
 
 export const offers = [
-  { title: 'New Launch', description: 'Green Chutney drop — limited batch', date: 'Coming soon', imageLabel: 'New launch banner' },
-  { title: 'Events', description: 'Pop-up tastings & crunch labs in your city', date: 'TBA', imageLabel: 'Events promo' },
-  { title: 'Collabs', description: 'Creator packs & sticker drops', date: 'TBA', imageLabel: 'Collab placeholder' },
+  {
+    tag: 'Launch',
+    title: 'Green Chutney Drop',
+    description: 'Fresh, zesty, certified chaos. Intro price ₹38/- (was ₹40/-) — limited batch.',
+    date: 'Live now',
+    image: assetUrl('/images/products/green-chutney-showcase.png'),
+    imageLabel: 'Green Chutney pack',
+  },
+  {
+    tag: 'Bundle',
+    title: 'Crunch Quartet',
+    description: 'All four flavors in one haul. Green Chutney, Tangy & Salty, Kara Podi & Ginger Jaggery.',
+    date: 'Save on 4-pack',
+    image: assetUrl('/images/products/tangy-salty-showcase.png'),
+    imageLabel: 'Tangy & Salty pack',
+  },
 ]

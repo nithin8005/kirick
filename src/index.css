@@ -206,6 +206,25 @@ svg {
   z-index: 1;
 }
 
+/* Full-page hero-style background behind all sections */
+.layout:has(.page-floating-chips) {
+  background:
+    radial-gradient(ellipse 80% 60% at 85% 15%, rgba(244, 168, 37, 0.22), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 10% 85%, rgba(232, 93, 4, 0.1), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(200, 241, 53, 0.06), transparent 60%),
+    var(--color-cream);
+}
+
+.layout:has(.page-floating-chips)::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(26, 18, 8, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
 /* Floating chips — behind all page content */
 .page-floating-chips {
   position: fixed;
@@ -260,21 +279,22 @@ svg {
   }
 }
 
-/* Let chip bg show through main sections */
-.layout:has(.page-floating-chips) .hero {
-  background:
-    radial-gradient(ellipse 80% 60% at 85% 15%, rgba(244, 168, 37, 0.22), transparent 55%),
-    radial-gradient(ellipse 70% 50% at 10% 85%, rgba(232, 93, 4, 0.1), transparent 50%),
-    transparent;
-}
-
+/* Let hero bg show through all main sections */
+.layout:has(.page-floating-chips) .hero,
+.layout:has(.page-floating-chips) .section,
+.layout:has(.page-floating-chips) .section--alt,
+.layout:has(.page-floating-chips) .section--warm,
 .layout:has(.page-floating-chips) .featured-grid,
-.layout:has(.page-floating-chips) .most-loved {
+.layout:has(.page-floating-chips) .most-loved,
+.layout:has(.page-floating-chips) .offers-wire,
+.layout:has(.page-floating-chips) .social-wire,
+.layout:has(.page-floating-chips) .product-brand-intro {
   background: transparent;
 }
 
-.layout:has(.page-floating-chips) .section--alt {
-  background: rgba(240, 240, 240, 0.72);
+.layout:has(.page-floating-chips) .dietary-icons--band {
+  background: var(--color-dietary-band);
+  isolation: isolate;
 }
 
 @media (max-width: 640px) {
@@ -449,21 +469,11 @@ svg {
   padding-top: clamp(2.5rem, 5vw, 4rem);
   padding-bottom: clamp(2rem, 4vw, 3rem);
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 80% 60% at 85% 15%, rgba(244, 168, 37, 0.28), transparent 55%),
-    radial-gradient(ellipse 70% 50% at 10% 85%, rgba(232, 93, 4, 0.12), transparent 50%),
-    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(200, 241, 53, 0.08), transparent 60%),
-    var(--color-cream);
+  background: transparent;
 }
 
 .hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(26, 18, 8, 0.04) 1px, transparent 1px);
-  background-size: 28px 28px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 80%);
-  pointer-events: none;
+  display: none;
 }
 
 .hero .container {
@@ -471,11 +481,11 @@ svg {
   z-index: 2;
 }
 
-/* Floating dosa chips in hero background */
+/* Floating dosa chips — full-page decoration on home */
 .hero__floating-chips {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
 }
@@ -886,6 +896,16 @@ svg {
   margin-bottom: 1rem;
 }
 
+.section-header--center {
+  max-width: 42rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-header--center .section-header__sub {
+  margin-inline: auto;
+}
+
 .section-header__sub {
   color: var(--color-ink-muted);
   margin: 0.5rem 0 0;
@@ -1163,6 +1183,12 @@ svg {
   gap: 1.5rem;
 }
 
+.offers-grid--home {
+  max-width: 720px;
+  margin-inline: auto;
+  margin-top: 1.5rem;
+}
+
 .offer-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -1181,6 +1207,27 @@ svg {
   padding: 1.25rem;
 }
 
+.offer-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.offer-card__tag {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  background: var(--color-lime);
+  border: 1.5px solid var(--color-ink);
+  border-radius: 999px;
+}
+
 .offer-card__date {
   font-size: 0.8rem;
   font-weight: 700;
@@ -1190,6 +1237,27 @@ svg {
 
 .offer-card h3 {
   margin: 0.35rem 0;
+}
+
+.offer-card__img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  background: transparent;
+}
+
+.offer-card p {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.offers-wire__cta {
+  text-align: center;
+  margin: 2rem 0 0;
 }
 
 /* Dietary */
@@ -3147,6 +3215,27 @@ svg {
 /* Dietary icons row */
 .dietary-icons--band {
   background: var(--color-dietary-band);
+  border-block: 1px solid rgba(26, 18, 8, 0.06);
+}
+
+.dietary-icons__header {
+  max-width: 34rem;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.dietary-icons__title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.65rem, 4vw, 2.15rem);
+}
+
+.dietary-icons__lead {
+  margin: 0;
+  font-family: var(--font-hand);
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-ink-muted);
 }
 
 .dietary-icons__row {
@@ -3204,9 +3293,11 @@ svg {
 }
 
 .dietary-icons__sublabel {
-  font-size: 0.75rem;
+  margin: 0.2rem 0 0;
+  font-family: var(--font-hand);
+  font-weight: 600;
+  font-size: 1rem;
   color: var(--color-ink-muted);
-  margin: 0.25rem 0 0;
 }
 
 .dietary-icons__note {
