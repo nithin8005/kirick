@@ -75,12 +75,20 @@ function SocialVideoCard({ video }) {
   )
 }
 
-export default function SocialMediaSection() {
+export default function SocialMediaSection({ comicTitle = false }) {
   return (
     <section className="social-wire section section--warm">
       <div className="container">
         <div className="social-wire__header">
-          <h2 className="wire-title wire-title--center">Social Media</h2>
+          <h2 className={comicTitle ? 'comic-section-title comic-section-title--social' : 'wire-title wire-title--center'}>
+            {comicTitle ? (
+              <>
+                GET TO KNOW THE <span className="comic-section-title__handle">@{INSTAGRAM_HANDLE}</span>
+              </>
+            ) : (
+              'Social Media'
+            )}
+          </h2>
           <a
             href={INSTAGRAM_URL}
             target="_blank"

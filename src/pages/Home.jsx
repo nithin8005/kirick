@@ -1,62 +1,57 @@
 import { AppLink } from '../lib/ComicThemeContext'
-import FeaturedProductGrid from '../components/FeaturedProductGrid'
-import MostLovedProduct from '../components/MostLovedProduct'
+import ComicSpotlight from '../components/ComicSpotlight'
+import ComicShopRow from '../components/ComicShopRow'
+import ComicCtaBand from '../components/ComicCtaBand'
 import OffersSection from '../components/OffersSection'
 import DietarySpecs from '../components/DietarySpecs'
 import SocialMediaSection from '../components/SocialMediaSection'
-import HeroFloatingChips from '../components/HeroFloatingChips'
 import HeroProductCarousel from '../components/HeroProductCarousel'
-import HomeTaglineBanner from '../components/HomeTaglineBanner'
-import { brandTags, products, dietaryFeatures } from '../data/content'
+import { products, dietaryFeatures } from '../data/content'
 
 export default function Home() {
   return (
     <>
-      <section className="hero section">
-        <HeroFloatingChips />
-        <div className="container hero__grid hero__grid--solo">
-          <div className="hero__copy">
-            <p className="eyebrow">KIRIK CERTIFIED DOSA</p>
-            <h1 className="hero__title">
-              Dosa walked.
-              <br />
-              <span className="text-accent">We ran.</span>
-            </h1>
-            <p className="hero__subtitle">
-              DOSA CHIPS — made from dosa, but not your regular dosa. Crunchy AF.
-              Loud flavors. Zero boring snacks.
+      <section className="comic-hero section">
+        <div className="container comic-hero__inner">
+          <div className="comic-hero__copy">
+            <p className="comic-hero__eyebrow">KIRIK CERTIFIED DOSA</p>
+            <h1 className="comic-hero__title">The internet&apos;s favorite dosa chip.</h1>
+            <p className="comic-hero__subtitle">
+              Made from real dosa. Crunchy AF. Loud flavors. Zero boring snacks.
             </p>
-            <div className="hero__cta">
-              <AppLink to="/products" className="btn btn--primary">
-                Shop flavors
-              </AppLink>
-            </div>
-            <div className="hero__badges">
-              {brandTags.map((tag) => (
-                <span key={tag} className="badge">
-                  {tag}
-                </span>
-              ))}
-            </div>
+            <AppLink to="/products" className="btn btn--comic-lg">
+              Shop KIRIK flavors!
+            </AppLink>
           </div>
-
-          <div className="hero__visual" aria-hidden="true">
+          <div className="comic-hero__visual" aria-hidden="true">
             <HeroProductCarousel products={products} />
           </div>
         </div>
       </section>
 
-      <HomeTaglineBanner />
+      <ComicSpotlight products={products} />
 
-      <FeaturedProductGrid products={products} />
+      <ComicShopRow products={products} />
 
-      <MostLovedProduct product={products.find((p) => p.id === 'tangy-salty')} />
+      <ComicCtaBand
+        title="THE INTERNET'S FAVORITE CRUNCH"
+        ctaLabel="SHOP NOW"
+        variant="orange"
+      />
 
-      <OffersSection />
+      <OffersSection showCta />
 
       <DietarySpecs features={dietaryFeatures} />
 
-      <SocialMediaSection />
+      <SocialMediaSection comicTitle />
+
+      <ComicCtaBand
+        title="Hey you!"
+        subtitle="Be the first to know about flavor drops, offers & exclusive crunch."
+        ctaLabel="JOIN THE CLUB"
+        ctaTo="/about"
+        variant="lime"
+      />
     </>
   )
 }

@@ -1,20 +1,22 @@
 import { useState } from 'react'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { assetUrl } from '../lib/assets'
+import { isComicTheme as siteComicTheme } from '../config/theme.js'
 import { AppLink, ComicThemeProvider, useComicPath } from '../lib/ComicThemeContext'
 import { COMIC_PATH_PREFIX } from '../lib/useComicTheme'
 import DosaBabu from './DosaBabu'
 import FooterStamp from './FooterStamp'
 import PageFloatingChips from './PageFloatingChips'
+import PromoMarquee from './PromoMarquee'
 
 const navLinksLeft = [
   { to: '/', label: 'Home' },
-  { to: '/products', label: 'Products' },
+  { to: '/products', label: 'Shop' },
 ]
 
 const navLinksRight = [
   { to: '/offers', label: 'Offers' },
-  { to: '/about', label: 'About' },
+  { to: '/about', label: 'Our story' },
   { to: '/faq', label: 'FAQ' },
 ]
 
@@ -86,11 +88,13 @@ const socialLinks = [
 
 function LayoutShell() {
   const [newsletterEmail, setNewsletterEmail] = useState('')
-  const { isComicTheme } = useComicPath()
+  const { isComicTheme: routeComic } = useComicPath()
+  const isComicTheme = siteComicTheme || routeComic
 
   return (
-    <div className={isComicTheme ? 'layout layout--comic' : 'layout'}>
-      <PageFloatingChips />
+    <div className={isComicTheme ? 'layout layout--comic layout--good-girl' : 'layout'}>
+      {isComicTheme && <PromoMarquee />}
+      {!isComicTheme && <PageFloatingChips />}
       <header className="header">
         <div className="container header__inner">
           <nav className="nav nav--left" aria-label="Main navigation left">
@@ -137,7 +141,7 @@ function LayoutShell() {
               <AppLink to="/about" className="footer-premium__link">
                 About Us
               </AppLink>
-              {isComicTheme ? (
+              {siteComicTheme ? null : isComicTheme ? (
                 <Link to="/" className="footer-premium__link">
                   Classic site
                 </Link>

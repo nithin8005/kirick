@@ -1,6 +1,23 @@
 import { assetUrl } from '../lib/assets.js'
 import { INSTAGRAM_URL } from '../lib/instagram.js'
 
+export const promoMarqueeText = 'Save on 4-packs! ★'
+
+export const comicSpotlights = [
+  {
+    productId: 'green-chutney',
+    badge: '★ BUILD YOUR CRUNCH ★',
+  },
+  {
+    productId: 'tangy-salty',
+    badge: "★ EVERYONE'S FAVE RN ★",
+  },
+  {
+    productId: 'kara-podi',
+    badge: '★ SPICE ALERT ★',
+  },
+]
+
 export const dietaryFeatures = [
   { id: 'rice-bran-oil', label: 'Rice bran oil', blurb: 'Light fry, full crunch' },
   { id: 'tradition-twisted', label: 'Tradition twisted', blurb: 'Dosa vibes, snack format' },
