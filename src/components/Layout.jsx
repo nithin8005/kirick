@@ -8,6 +8,7 @@ import DosaBabu from './DosaBabu'
 import FooterStamp from './FooterStamp'
 import PageFloatingChips from './PageFloatingChips'
 import PromoMarquee from './PromoMarquee'
+import ComicWireHeader from './ComicWireHeader'
 
 const navLinksLeft = [
   { to: '/', label: 'Home' },
@@ -95,25 +96,29 @@ function LayoutShell() {
     <div className={isComicTheme ? 'layout layout--comic layout--good-girl' : 'layout'}>
       {isComicTheme && <PromoMarquee />}
       {!isComicTheme && <PageFloatingChips />}
-      <header className="header">
-        <div className="container header__inner">
-          <nav className="nav nav--left" aria-label="Main navigation left">
-            <NavLinks links={navLinksLeft} />
-          </nav>
-          <AppLink to="/" className="logo header__logo">
-            <img
-              src={assetUrl('/images/kirik-logo.png')}
-              alt="KIRIK"
-              className="logo__img"
-              loading="eager"
-              decoding="async"
-            />
-          </AppLink>
-          <nav className="nav nav--right" aria-label="Main navigation right">
-            <NavLinks links={navLinksRight} />
-          </nav>
-        </div>
-      </header>
+      {siteComicTheme ? (
+        <ComicWireHeader />
+      ) : (
+        <header className="header">
+          <div className="container header__inner">
+            <nav className="nav nav--left" aria-label="Main navigation left">
+              <NavLinks links={navLinksLeft} />
+            </nav>
+            <AppLink to="/" className="logo header__logo">
+              <img
+                src={assetUrl('/images/kirik-logo.png')}
+                alt="KIRIK"
+                className="logo__img"
+                loading="eager"
+                decoding="async"
+              />
+            </AppLink>
+            <nav className="nav nav--right" aria-label="Main navigation right">
+              <NavLinks links={navLinksRight} />
+            </nav>
+          </div>
+        </header>
+      )}
 
       <main className="main">
         <Outlet />

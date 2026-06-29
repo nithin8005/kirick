@@ -1,7 +1,7 @@
 import { assetUrl } from '../lib/assets.js'
 import { INSTAGRAM_URL } from '../lib/instagram.js'
 
-export const promoMarqueeText = 'Save on 4-packs! ★'
+export const promoMarqueeText = '10% off 4 pack * Dosa went Rogue *'
 
 export const comicSpotlights = [
   {
