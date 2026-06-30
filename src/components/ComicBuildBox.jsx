@@ -1,4 +1,5 @@
 import { AppLink } from '../lib/ComicThemeContext'
+import { assetUrl } from '../lib/assets'
 import { comicBuildBox } from '../data/content'
 
 export default function ComicBuildBox() {
@@ -8,7 +9,7 @@ export default function ComicBuildBox() {
         <AppLink to="/offers" className="comic-build-box__card">
           <img
             className="comic-build-box__box"
-            src="/build-box-illo.png"
+            src={assetUrl('/build-box-illo.png')}
             alt=""
             width={425}
             height={398}
