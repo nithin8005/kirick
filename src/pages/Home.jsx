@@ -5,8 +5,10 @@ import ComicBuildBox from '../components/ComicBuildBox'
 import ComicRogueSection from '../components/ComicRogueSection'
 import ComicDietaryBand from '../components/ComicDietaryBand'
 import SocialMediaSection from '../components/SocialMediaSection'
-import HeroProductCarousel from '../components/HeroProductCarousel'
+import HeroProductShowcase from '../components/HeroProductShowcase'
 import { products, dietaryFeatures, comicTaglineRibbon } from '../data/content'
+
+const heroProduct = products.find((p) => p.id === 'green-chutney') || products[0]
 
 export default function Home() {
   return (
@@ -15,7 +17,7 @@ export default function Home() {
         <div className="container comic-wire-hero__grid">
           <ComicHeroBurst />
           <div className="comic-wire-hero__visual">
-            <HeroProductCarousel products={products} />
+            <HeroProductShowcase product={heroProduct} />
           </div>
         </div>
       </section>

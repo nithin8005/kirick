@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
-import ProductDualPhoto from './ProductDualPhoto'
+
+const HERO_FLAVOR_IDS = ['green-chutney', 'kara-podi']
 
 export default function HeroProductCarousel({ products }) {
-  const flavors = products.filter((p) => p.showcaseImage)
+  const flavors = products.filter(
+    (p) => HERO_FLAVOR_IDS.includes(p.id) && (p.heroImage || p.image),
+  )
   const [activeIndex, setActiveIndex] = useState(0)
   const active = flavors[activeIndex]
 
@@ -11,34 +14,32 @@ export default function HeroProductCarousel({ products }) {
 
     const timer = window.setInterval(() => {
       setActiveIndex((i) => (i + 1) % flavors.length)
-    }, 3000)
+    }, 4000)
 
     return () => window.clearInterval(timer)
   }, [flavors.length])
 
-  if (!flavors.length) return null
+  if (!active) return null
+
+  const heroSrc = active.heroImage || active.image
 
   return (
-    <div className="hero__carousel">
-      <div className="hero__carousel-stage">
-        {flavors.map((p, i) => (
-          <div
-            key={p.id}
-            className={`hero__carousel-slide${i === activeIndex ? ' hero__carousel-slide--active' : ''}`}
-            aria-hidden={i !== activeIndex}
-          >
-            <ProductDualPhoto
-              product={p}
-              imgClassName="hero__carousel-img"
-              className="hero__carousel-dual"
-            />
-          </div>
-        ))}
+    <div className="hero-product-showcase">
+      <div className="hero-product-showcase__stage">
+        <figure key={active.id} className="hero-product-showcase__figure">
+          <img
+            src={heroSrc}
+            alt={active.imageLabel || `${active.name} — KIRIK Dosa Chips`}
+            className="hero-product-showcase__img"
+            loading="eager"
+            decoding="async"
+          />
+        </figure>
       </div>
 
-      <div className="hero__carousel-footer">
-        <p className="hero__carousel-flavor">{active.name}</p>
-        <div className="hero__carousel-dots" role="tablist" aria-label="Product flavors">
+      <div className="hero-product-showcase__footer">
+        <p className="hero-product-showcase__name">{active.name}</p>
+        <div className="hero-product-showcase__dots" role="tablist" aria-label="Product flavors">
           {flavors.map((p, i) => (
             <button
               key={p.id}
@@ -46,7 +47,7 @@ export default function HeroProductCarousel({ products }) {
               role="tab"
               aria-selected={i === activeIndex}
               aria-label={p.name}
-              className={`hero__carousel-dot${i === activeIndex ? ' hero__carousel-dot--active' : ''}`}
+              className={`hero-product-showcase__dot${i === activeIndex ? ' hero-product-showcase__dot--active' : ''}`}
               onClick={() => setActiveIndex(i)}
             />
           ))}

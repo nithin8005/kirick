@@ -27,9 +27,9 @@
   --font-brutal-accent: 'Fredoka', var(--font-brutal-body);
 
   /* Brand palette (desi-pop) */
-  --comic-cream: #f5efe0;
+  --comic-cream: #f8f2e8;
   --comic-pink: #ff4d8d;
-  --comic-purple: #9b5de5;
+  --comic-mango: #f4a825;
   --comic-panel: #fff9f0;
   --font-blocky: var(--font-brutal-heading);
 }
@@ -63,7 +63,6 @@
 /* ── Utility: clean menu / body on background ── */
 .layout--good-girl .brutal-body,
 .layout--good-girl .comic-wire-nav__link,
-.layout--good-girl .comic-hero-copy__subline,
 .layout--good-girl .promo-marquee__item {
   font-family: var(--font-brutal-body);
 }
@@ -93,6 +92,7 @@
 
 /* ── Product cards: neo-brutalist standard ── */
 .layout--good-girl .comic-shop__card,
+.layout--good-girl .comic-pack-card,
 .layout--good-girl .comic-shop__pop,
 .layout--good-girl .comic-shop__pack-bubble,
 .layout--good-girl .social-wire--comic-box .container {
@@ -100,7 +100,8 @@
   box-shadow: var(--brutal-shadow);
 }
 
-.layout--good-girl .comic-shop__card:hover {
+.layout--good-girl .comic-shop__card:hover,
+.layout--good-girl .comic-pack-card:hover {
   box-shadow: var(--brutal-shadow-hover);
 }
 
@@ -137,7 +138,6 @@
   font-family: var(--font-brutal-heading);
 }
 
-.layout--good-girl .comic-hero-copy__subline-line,
 .layout--good-girl .comic-hero-copy__hook {
   font-family: var(--font-brutal-heading);
 }

@@ -1,31 +1,35 @@
 import { AppLink } from '../lib/ComicThemeContext'
 import { comicProductMeta } from '../data/content'
-import ProductDualPhoto from './ProductDualPhoto'
 import ProductNewBadge from './ProductNewBadge'
 
-function ShopCard({ product }) {
+function PackCard({ product }) {
   const meta = comicProductMeta[product.id] || {}
+  const imgSrc = product.heroImage || product.showcaseImage || product.image
 
   return (
     <AppLink
       to="/products"
-      className="comic-shop__card"
+      className="comic-pack-card"
       style={{ '--comic-card-bg': meta.cardBg || '#fff9f0' }}
     >
       <ProductNewBadge />
-      <span className="comic-shop__pop" aria-hidden="true">
-        {meta.flavorPop}
-      </span>
-      <div className="comic-shop__img-wrap">
-        <ProductDualPhoto product={product} imgClassName="comic-shop__img" />
+      <div className="comic-pack-card__visual">
+        <img
+          src={imgSrc}
+          alt={product.imageLabel || `${product.name} — KIRIK Dosa Chips`}
+          className="comic-pack-card__img"
+          loading="lazy"
+          decoding="async"
+        />
+        <span className="comic-pack-card__hover-name">{product.name}</span>
       </div>
-      <div className="comic-shop__meta">
-        <h3 className="comic-shop__name">{product.name}</h3>
-        <p className="comic-shop__desc">{product.gridBlurb || product.tagline}</p>
-        <p className="comic-shop__price">
-          <span className="comic-shop__price-was">{product.priceWas}</span>
-          <span className="comic-shop__price-now">{product.price}</span>
-          <span className="comic-shop__price-each"> each</span>
+      <div className="comic-pack-card__meta">
+        <h3 className="comic-pack-card__name">{product.name}</h3>
+        <p className="comic-pack-card__desc">{product.gridBlurb || product.tagline}</p>
+        <p className="comic-pack-card__price">
+          <span className="comic-pack-card__price-was">{product.priceWas}</span>
+          <span className="comic-pack-card__price-now">{product.price}</span>
+          <span className="comic-pack-card__price-each"> each</span>
         </p>
       </div>
     </AppLink>
@@ -44,11 +48,13 @@ export default function ComicShopRow({ products }) {
             Pack of 4
           </span>
         </div>
-        <div className="comic-shop__grid">
+
+        <div className="comic-pack-grid">
           {products.map((product) => (
-            <ShopCard key={product.id} product={product} />
+            <PackCard key={product.id} product={product} />
           ))}
         </div>
+
         <p className="comic-shop__cta">
           <AppLink to="/products" className="btn btn--try-kirik btn--try-kirik-lg">
             Shop all!!!
