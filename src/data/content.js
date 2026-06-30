@@ -3,19 +3,56 @@ import { INSTAGRAM_URL } from '../lib/instagram.js'
 
 export const promoMarqueeText = '10% off 4 pack * Dosa went Rogue *'
 
-export const comicSpotlights = [
-  {
-    productId: 'green-chutney',
-    badge: '★ BUILD YOUR CRUNCH ★',
-  },
-  {
-    productId: 'tangy-salty',
-    badge: "★ EVERYONE'S FAVE RN ★",
-  },
-  {
-    productId: 'kara-podi',
-    badge: '★ SPICE ALERT ★',
-  },
+export const comicTaglineRibbon = "Flavours that slap harder than Amma's Chappal"
+
+export const comicHeroCopy = {
+  headline: ['TRY THE ENTIRE', 'ZOOOOM LINE!'],
+  subline: ['PURE CHAOS.', 'SERIOUS CRUNCH.', 'MAXIMUM TROUBLE.'],
+  tagline: 'DOSA CHIPS — Made from Dosa but not your regular Dosa.',
+}
+
+export const comicProductMeta = {
+  'green-chutney': { flavorPop: 'Pudina fresh!', cardBg: '#dff5c8' },
+  'tangy-salty': { flavorPop: 'Chaat tangy!', cardBg: '#ffe8cc' },
+  'kara-podi': { flavorPop: 'Yum spicy!', cardBg: '#ffd4d4' },
+  'ginger-jaggery': { flavorPop: 'Sweet heat!', cardBg: '#fff3b0' },
+}
+
+export const comicBuildBox = {
+  titleLines: ['BUILD YOUR', 'OWN BOX'],
+  subtitleLines: ['You Choose. We Pack.', 'The Perfect Box of Crunch'],
+}
+
+export const comicRogueSection = {
+  smallHeading: ['WANT A', 'TASTE?'],
+  smallHeadingAccent: 'THE DOSA THAT WENT ROGUE...',
+  mainHeading: 'The good stuff in every bag',
+  paragraph: 'No fake claims — just dosa chips your amma would actually nod at.',
+  description:
+    'Made from Real Dosa, Naturally Gluten Free, NO Palm Oil, Ridiculous Crunch, Indian Flavours, No Artificial Colors, nostalgia in every bite, farm to banana leaf',
+  chips: [
+    'Made From Real Dosa',
+    'Gluten Free',
+    'NO Palm Oil',
+    'Ridiculous Crunch',
+    'Indian Flavours',
+    'No Artificial Colors',
+    'Farm to Banana Leaf',
+    'Nostalgia in Every Bite',
+  ],
+  image: assetUrl('/dosa-rogue.png'),
+  imageAlt: 'Illustration of dosa with chips on a plate',
+}
+
+export const comicDietaryBullets = [
+  'Made from Real Dosa',
+  'Naturally Gluten Free',
+  'NO Palm Oil',
+  'Ridiculous Crunch',
+  'Indian Flavours',
+  'No Artificial colours',
+  'Nostalgia in every bite',
+  'Farm to banana leaf',
 ]
 
 export const dietaryFeatures = [

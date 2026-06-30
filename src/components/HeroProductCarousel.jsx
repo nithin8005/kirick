@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import ProductDualPhoto from './ProductDualPhoto'
 
 export default function HeroProductCarousel({ products }) {
   const flavors = products.filter((p) => p.showcaseImage)
@@ -10,7 +11,7 @@ export default function HeroProductCarousel({ products }) {
 
     const timer = window.setInterval(() => {
       setActiveIndex((i) => (i + 1) % flavors.length)
-    }, 2000)
+    }, 3000)
 
     return () => window.clearInterval(timer)
   }, [flavors.length])
@@ -26,10 +27,10 @@ export default function HeroProductCarousel({ products }) {
             className={`hero__carousel-slide${i === activeIndex ? ' hero__carousel-slide--active' : ''}`}
             aria-hidden={i !== activeIndex}
           >
-            <img
-              src={p.showcaseImage}
-              alt={`${p.name} — KIRIK Dosa Chips`}
-              className="hero__carousel-img"
+            <ProductDualPhoto
+              product={p}
+              imgClassName="hero__carousel-img"
+              className="hero__carousel-dual"
             />
           </div>
         ))}

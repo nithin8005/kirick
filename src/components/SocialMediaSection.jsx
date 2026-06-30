@@ -75,11 +75,11 @@ function SocialVideoCard({ video }) {
   )
 }
 
-export default function SocialMediaSection({ comicTitle = false, sectionId }) {
+export default function SocialMediaSection({ comicTitle = false, sectionId, comicBox = false }) {
   return (
     <section
       id={sectionId}
-      className="social-wire section section--warm"
+      className={`social-wire section section--warm${comicBox ? ' social-wire--comic-box' : ''}`}
     >
       <div className="container">
         <div className="social-wire__header">

@@ -1,12 +1,12 @@
-import { AppLink } from '../lib/ComicThemeContext'
 import ComicHeroBurst from '../components/ComicHeroBurst'
 import ComicTiltedRibbon from '../components/ComicTiltedRibbon'
 import ComicShopRow from '../components/ComicShopRow'
-import DietarySpecs from '../components/DietarySpecs'
+import ComicBuildBox from '../components/ComicBuildBox'
+import ComicRogueSection from '../components/ComicRogueSection'
+import ComicDietaryBand from '../components/ComicDietaryBand'
 import SocialMediaSection from '../components/SocialMediaSection'
-import { products, dietaryFeatures } from '../data/content'
-
-const heroProduct = products.find((p) => p.id === 'green-chutney') || products[0]
+import HeroProductCarousel from '../components/HeroProductCarousel'
+import { products, dietaryFeatures, comicTaglineRibbon } from '../data/content'
 
 export default function Home() {
   return (
@@ -15,23 +15,22 @@ export default function Home() {
         <div className="container comic-wire-hero__grid">
           <ComicHeroBurst />
           <div className="comic-wire-hero__visual">
-            <img
-              src={heroProduct.showcaseImage || heroProduct.image}
-              alt={heroProduct.imageLabel}
-              className="comic-wire-hero__pack"
-              loading="eager"
-            />
+            <HeroProductCarousel products={products} />
           </div>
         </div>
       </section>
 
-      <ComicTiltedRibbon text="PRODUCTS" />
+      <ComicTiltedRibbon text={comicTaglineRibbon} variant="full-tape" />
 
       <ComicShopRow products={products} />
 
-      <DietarySpecs features={dietaryFeatures} />
+      <ComicBuildBox />
 
-      <SocialMediaSection comicTitle sectionId="reviews" />
+      <ComicRogueSection />
+
+      <ComicDietaryBand features={dietaryFeatures} />
+
+      <SocialMediaSection comicTitle sectionId="reviews" comicBox />
     </>
   )
 }

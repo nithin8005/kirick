@@ -1,12 +1,8 @@
 import { useState } from 'react'
-import { Link, NavLink, Outlet } from 'react-router-dom'
-import { assetUrl } from '../lib/assets'
-import { isComicTheme as siteComicTheme } from '../config/theme.js'
+import { NavLink, Outlet } from 'react-router-dom'
 import { AppLink, ComicThemeProvider, useComicPath } from '../lib/ComicThemeContext'
-import { COMIC_PATH_PREFIX } from '../lib/useComicTheme'
 import DosaBabu from './DosaBabu'
 import FooterStamp from './FooterStamp'
-import PageFloatingChips from './PageFloatingChips'
 import PromoMarquee from './PromoMarquee'
 import ComicWireHeader from './ComicWireHeader'
 
@@ -89,36 +85,11 @@ const socialLinks = [
 
 function LayoutShell() {
   const [newsletterEmail, setNewsletterEmail] = useState('')
-  const { isComicTheme: routeComic } = useComicPath()
-  const isComicTheme = siteComicTheme || routeComic
 
   return (
-    <div className={isComicTheme ? 'layout layout--comic layout--good-girl' : 'layout'}>
-      {isComicTheme && <PromoMarquee />}
-      {!isComicTheme && <PageFloatingChips />}
-      {siteComicTheme ? (
-        <ComicWireHeader />
-      ) : (
-        <header className="header">
-          <div className="container header__inner">
-            <nav className="nav nav--left" aria-label="Main navigation left">
-              <NavLinks links={navLinksLeft} />
-            </nav>
-            <AppLink to="/" className="logo header__logo">
-              <img
-                src={assetUrl('/images/kirik-logo.png')}
-                alt="KIRIK"
-                className="logo__img"
-                loading="eager"
-                decoding="async"
-              />
-            </AppLink>
-            <nav className="nav nav--right" aria-label="Main navigation right">
-              <NavLinks links={navLinksRight} />
-            </nav>
-          </div>
-        </header>
-      )}
+    <div className="layout layout--comic layout--good-girl">
+      <PromoMarquee />
+      <ComicWireHeader />
 
       <main className="main">
         <Outlet />
@@ -146,15 +117,6 @@ function LayoutShell() {
               <AppLink to="/about" className="footer-premium__link">
                 About Us
               </AppLink>
-              {siteComicTheme ? null : isComicTheme ? (
-                <Link to="/" className="footer-premium__link">
-                  Classic site
-                </Link>
-              ) : (
-                <Link to={COMIC_PATH_PREFIX} className="footer-premium__link">
-                  Comic edition
-                </Link>
-              )}
               <a
                 href="mailto:info@kirikdosachips.in?subject=Distributor%20enquiry"
                 className="footer-premium__link"

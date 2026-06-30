@@ -1,0 +1,148 @@
+/**
+ * Neo-Brutalist / Bold Desi-Pop design system
+ * Scoped to comic wireframe layout (.layout--good-girl)
+ */
+
+.layout--good-girl {
+  /* Ink & contrast */
+  --brutal-ink: #000000;
+  --color-ink: #000000;
+
+  /* Borders & shadows (uniform 4px / 5px offset) */
+  --brutal-border-width: 4px;
+  --brutal-border: 4px solid #000000;
+  --brutal-border-thin: 2px solid #000000;
+  --brutal-shadow: 5px 5px 0 #000000;
+  --brutal-shadow-sm: 3px 3px 0 #000000;
+  --brutal-shadow-lg: 8px 8px 0 #000000;
+  --brutal-shadow-hover: 7px 7px 0 #000000;
+
+  /* Playful transforms */
+  --brutal-tilt: -2deg;
+  --brutal-tilt-alt: 2deg;
+
+  /* Typography */
+  --font-brutal-heading: 'Syne', 'Montserrat', 'Archivo Black', sans-serif;
+  --font-brutal-body: 'DM Sans', system-ui, sans-serif;
+  --font-brutal-accent: 'Fredoka', var(--font-brutal-body);
+
+  /* Brand palette (desi-pop) */
+  --comic-cream: #f5efe0;
+  --comic-pink: #ff4d8d;
+  --comic-purple: #9b5de5;
+  --comic-panel: #fff9f0;
+  --font-blocky: var(--font-brutal-heading);
+}
+
+/* ── Utility: thick outline box ── */
+.layout--good-girl .brutal-box {
+  border: var(--brutal-border);
+  box-shadow: var(--brutal-shadow);
+  background: var(--comic-panel);
+}
+
+.layout--good-girl .brutal-box:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--brutal-shadow-hover);
+}
+
+/* ── Utility: blocky heading ── */
+.layout--good-girl .brutal-heading,
+.layout--good-girl .comic-shop__title,
+.layout--good-girl .comic-build-box__title,
+.layout--good-girl .comic-rogue__title,
+.layout--good-girl .comic-shop__name,
+.layout--good-girl .comic-section-title,
+.layout--good-girl .dietary-icons__title {
+  font-family: var(--font-brutal-heading);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Utility: clean menu / body on background ── */
+.layout--good-girl .brutal-body,
+.layout--good-girl .comic-wire-nav__link,
+.layout--good-girl .comic-hero-copy__subline,
+.layout--good-girl .promo-marquee__item {
+  font-family: var(--font-brutal-body);
+}
+
+/* ── Utility: comic button ── */
+.layout--good-girl .brutal-btn,
+.layout--good-girl .btn--try-kirik {
+  border: var(--brutal-border);
+  box-shadow: var(--brutal-shadow-sm);
+  font-family: var(--font-brutal-heading);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.layout--good-girl .btn--try-kirik:hover {
+  box-shadow: var(--brutal-shadow);
+}
+
+/* ── Utility: cartoon speech bubble ── */
+.layout--good-girl .brutal-bubble {
+  border: var(--brutal-border);
+  box-shadow: var(--brutal-shadow-sm);
+  border-radius: 50% 45% 52% 48% / 48% 52% 45% 55%;
+  transform: rotate(var(--brutal-tilt-alt));
+}
+
+/* ── Product cards: neo-brutalist standard ── */
+.layout--good-girl .comic-shop__card,
+.layout--good-girl .comic-shop__pop,
+.layout--good-girl .comic-shop__pack-bubble,
+.layout--good-girl .social-wire--comic-box .container {
+  border: var(--brutal-border);
+  box-shadow: var(--brutal-shadow);
+}
+
+.layout--good-girl .comic-shop__card:hover {
+  box-shadow: var(--brutal-shadow-hover);
+}
+
+.layout--good-girl .comic-dietary-marquee__pill {
+  border: var(--brutal-border-thin);
+}
+
+.layout--good-girl .dietary-icons__circle {
+  border: var(--brutal-border);
+  box-shadow: var(--brutal-shadow);
+}
+
+.layout--good-girl .social-wire__post {
+  border: var(--brutal-border);
+  box-shadow: var(--brutal-shadow);
+}
+
+.layout--good-girl .comic-tilted-ribbon--solid .comic-tilted-ribbon__chip {
+  border: var(--brutal-border);
+  box-shadow: var(--brutal-shadow);
+}
+
+.layout--good-girl .comic-build-box__tag {
+  border: var(--brutal-border-thin);
+}
+
+/* Burst headline uses accent font */
+.layout--good-girl .comic-burst__title {
+  font-family: var(--font-brutal-accent);
+}
+
+.layout--good-girl .comic-burst__tag,
+.layout--good-girl .comic-rogue__subtitle {
+  font-family: var(--font-brutal-heading);
+}
+
+.layout--good-girl .comic-hero-copy__subline-line,
+.layout--good-girl .comic-hero-copy__hook {
+  font-family: var(--font-brutal-heading);
+}
+
+.layout--good-girl .comic-hero-copy__tag,
+.layout--good-girl .promo-marquee__item {
+  font-family: var(--font-brutal-body);
+}

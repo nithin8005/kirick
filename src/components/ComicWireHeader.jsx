@@ -2,10 +2,14 @@ import { AppLink } from '../lib/ComicThemeContext'
 import { assetUrl } from '../lib/assets'
 
 const wireNavLinks = [
-  { to: '/products', label: 'Products' },
-  { to: '/about', label: 'About' },
-  { to: '/faq', label: 'How it works' },
-  { to: '/#reviews', label: 'Reviews' },
+  { to: '/products', label: 'Shop' },
+  { to: '/offers', label: 'Merch' },
+  { to: '/about', label: 'About Us' },
+  {
+    href: 'mailto:info@kirikdosachips.in?subject=Contact%20the%20Team',
+    label: 'Contact the Team',
+    external: true,
+  },
 ]
 
 export default function ComicWireHeader() {
@@ -23,9 +27,9 @@ export default function ComicWireHeader() {
         </AppLink>
 
         <nav className="comic-wire-nav" aria-label="Main navigation">
-          {wireNavLinks.map(({ to, label }) =>
-            to.includes('#') ? (
-              <a key={to} href="#reviews" className="comic-wire-nav__link">
+          {wireNavLinks.map(({ to, href, label, external }) =>
+            external ? (
+              <a key={label} href={href} className="comic-wire-nav__link">
                 {label}
               </a>
             ) : (
