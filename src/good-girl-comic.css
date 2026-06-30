@@ -147,10 +147,10 @@
 }
 
 .comic-wire-nav__link {
-  font-family: 'Fredoka', var(--font-brutal-accent, sans-serif);
-  font-weight: 700;
-  font-size: clamp(0.8rem, 1.75vw, 0.95rem);
-  letter-spacing: 0.1em;
+  font-family: 'Arial Black', 'Montserrat', 'Helvetica Neue', sans-serif;
+  font-weight: 900;
+  font-size: clamp(0.72rem, 1.55vw, 0.88rem);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-ink);
@@ -304,11 +304,11 @@
   box-shadow: none !important;
 }
 
-/* Hero headline — 3-line embossed type */
+/* Hero headline — flat bold retro (reference) */
 .comic-hero-copy {
   display: flex;
   flex-direction: column;
-  gap: clamp(1.1rem, 2.5vw, 1.6rem);
+  gap: clamp(0.85rem, 2vw, 1.25rem);
   position: relative;
   z-index: 2;
 }
@@ -316,30 +316,30 @@
 .comic-hero-copy__headline {
   display: flex;
   flex-direction: column;
-  gap: 0.2em;
+  gap: 0.04em;
   width: fit-content;
   max-width: 100%;
   margin: 0;
   padding: 0;
   background: none;
+  text-align: left;
 }
 
 .layout--good-girl .comic-hero-copy__headline-line {
   display: block;
-  font-family: 'Arial Black', 'Montserrat', 'Helvetica Neue', sans-serif;
-  font-size: clamp(1.75rem, 3.1vw, 2.85rem);
-  font-weight: 900;
+  font-family: 'Bricolage Grotesque', 'Archivo Black', 'Baloo 2', sans-serif;
+  font-size: clamp(1.9rem, 3.5vw, 3.15rem);
+  font-weight: 800;
   font-style: normal;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-variation-settings: 'opsz' 72;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
   text-transform: uppercase;
-  color: #1c1410;
+  color: #111111;
   white-space: nowrap;
   max-width: 100%;
   -webkit-font-smoothing: antialiased;
-  text-shadow:
-    1px 1px 0 #3a2a1c,
-    2px 2px 0 rgba(58, 42, 28, 0.9);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
 }
 
 .comic-hero-copy__tag {
@@ -1495,13 +1495,11 @@
   }
 
   .layout--good-girl .comic-hero-copy__headline-line {
-    font-size: clamp(1.55rem, 6.8vw, 2.35rem);
-    line-height: 1.18;
-    letter-spacing: -0.015em;
+    font-size: clamp(1.65rem, 7.5vw, 2.35rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
     white-space: normal;
-    text-shadow:
-      1px 1px 0 #3a2a1c,
-      2px 2px 0 rgba(58, 42, 28, 0.85);
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
   }
 
   .comic-hero-copy__headline {
