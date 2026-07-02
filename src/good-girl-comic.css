@@ -4,6 +4,12 @@
 /* Cream page + yellow polka dots at bottom */
 .layout.layout--good-girl.layout--comic {
   background: var(--comic-cream);
+  /* Palette (from provided grid) */
+  --kirik-oxford: #05172a;
+  --kirik-teal: #22ddbf;
+  --kirik-coral: #ff7186;
+  --kirik-blush: #fff1f2;
+  --kirik-offwhite: #f8fafc;
 }
 
 .layout.layout--good-girl.layout--comic:has(.page-floating-chips) {
@@ -19,21 +25,322 @@
   content: '';
   position: fixed;
   inset: 14% 0 0;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
-  background-image: radial-gradient(rgba(244, 168, 37, 0.38) 22%, transparent 23%);
+  background-image: radial-gradient(circle, rgba(244, 168, 37, 0.4) 1.25px, transparent 1.25px);
   background-size: 26px 26px;
   background-position: 0 0;
-  opacity: 0.48;
+  opacity: 0.55;
   mask-image: linear-gradient(to bottom, transparent 0%, #000 6%, #000 100%);
 }
 
+/* Hero — dosa on tawa video / CSS scene */
+.layout.layout--good-girl > .dosa-tawa-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.dosa-tawa-bg__media {
+  position: absolute;
+  inset: 0;
+}
+
+.dosa-tawa-bg__video {
+  position: absolute;
+  right: -4%;
+  top: clamp(4.5rem, 11vw, 7rem);
+  width: min(62vw, 760px);
+  height: min(58vh, 620px);
+  object-fit: cover;
+  object-position: center 42%;
+  opacity: 0.46;
+  filter: saturate(1.08) contrast(1.04) blur(0.2px);
+  border-radius: 48% 52% 54% 46% / 44% 48% 52% 56%;
+  mask-image: radial-gradient(ellipse 88% 82% at 52% 46%, #000 18%, transparent 74%);
+  transform: rotate(-2deg);
+  transform-origin: center;
+}
+
+.dosa-tawa-bg__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      102deg,
+      var(--comic-cream) 0%,
+      rgba(248, 242, 232, 0.98) 34%,
+      rgba(248, 242, 232, 0.78) 52%,
+      rgba(248, 242, 232, 0.42) 72%,
+      rgba(248, 242, 232, 0.18) 100%
+    ),
+    linear-gradient(to bottom, var(--comic-cream) 0%, transparent 16%, transparent 78%, var(--comic-cream) 100%);
+}
+
+.dosa-tawa-bg__css-scene {
+  position: absolute;
+  right: clamp(0.5rem, 6vw, 4rem);
+  top: clamp(5.5rem, 14vw, 9rem);
+  width: clamp(240px, 40vw, 460px);
+  aspect-ratio: 1;
+  transform: rotate(-4deg);
+  opacity: 0.55;
+}
+
+.dosa-tawa-bg__pan {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.dosa-tawa-bg__pan::before {
+  content: '';
+  position: absolute;
+  inset: 8% 6% 10%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.08) 0%, transparent 42%),
+    radial-gradient(circle at 50% 55%, #3d3d3d 0%, #1a1a1a 68%, #0d0d0d 100%);
+  box-shadow:
+    inset 0 -8px 18px rgba(0, 0, 0, 0.45),
+    0 10px 28px rgba(0, 0, 0, 0.18);
+}
+
+.dosa-tawa-bg__heat {
+  position: absolute;
+  left: 50%;
+  bottom: 16%;
+  width: 72%;
+  height: 10%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 50%, rgba(255, 120, 40, 0.35) 0%, transparent 72%);
+  animation: dosa-tawa-heat 2.4s ease-in-out infinite;
+}
+
+.dosa-tawa-bg__batter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 74%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -52%) scale(0.12);
+  border-radius: 46% 54% 52% 48% / 48% 46% 54% 52%;
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.65) 0%, transparent 38%),
+    radial-gradient(circle at 62% 68%, rgba(210, 140, 40, 0.35) 0%, transparent 45%),
+    linear-gradient(155deg, #fff8dc 0%, #f0c060 35%, #d4891f 72%, #a85f12 100%);
+  box-shadow: inset 0 0 0 2px rgba(139, 90, 43, 0.2);
+  animation: dosa-tawa-spread 5.5s ease-in-out infinite;
+}
+
+.dosa-tawa-bg__batter::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: repeating-conic-gradient(
+    from 0deg,
+    transparent 0deg 14deg,
+    rgba(139, 90, 43, 0.07) 14deg 16deg
+  );
+}
+
+.dosa-tawa-bg__steam {
+  position: absolute;
+  left: 50%;
+  top: 18%;
+  width: 56%;
+  height: 34%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-inline: 12%;
+}
+
+.dosa-tawa-bg__steam span {
+  display: block;
+  width: clamp(0.55rem, 2vw, 0.85rem);
+  height: clamp(2rem, 6vw, 3.25rem);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  filter: blur(1.5px);
+  animation: dosa-tawa-steam 2.6s ease-in-out infinite;
+}
+
+.dosa-tawa-bg__steam span:nth-child(2) {
+  animation-delay: 0.8s;
+  height: clamp(2.4rem, 7vw, 3.75rem);
+}
+
+.dosa-tawa-bg__steam span:nth-child(3) {
+  animation-delay: 1.5s;
+}
+
+.dosa-tawa-bg__spatula {
+  position: absolute;
+  right: 6%;
+  top: 28%;
+  width: 34%;
+  height: 10%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #c9a06a 0%, #8b5a2b 100%);
+  transform-origin: 88% 50%;
+  animation: dosa-tawa-spatula 5.5s ease-in-out infinite;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dosa-tawa-bg__spatula::before {
+  content: '';
+  position: absolute;
+  right: -18%;
+  top: 50%;
+  width: 42%;
+  height: 180%;
+  transform: translateY(-50%);
+  border-radius: 40% 60% 55% 45%;
+  background: linear-gradient(165deg, #f5e6c8 0%, #e8c878 55%, #d4a84a 100%);
+  box-shadow: inset -2px 0 4px rgba(0, 0, 0, 0.08);
+}
+
+@keyframes dosa-tawa-spread {
+  0%,
+  100% {
+    transform: translate(-50%, -52%) scale(0.12);
+    border-radius: 50%;
+    opacity: 0.55;
+  }
+  18% {
+    transform: translate(-50%, -52%) scale(0.55);
+    border-radius: 48% 52% 50% 50% / 50% 48% 52% 50%;
+    opacity: 0.92;
+  }
+  42% {
+    transform: translate(-50%, -52%) scale(0.88);
+    border-radius: 46% 54% 52% 48% / 48% 46% 54% 52%;
+    opacity: 1;
+  }
+  58% {
+    transform: translate(-50%, -52%) scale(0.9) rotate(2deg);
+    border-radius: 44% 56% 54% 46% / 50% 44% 56% 50%;
+    opacity: 1;
+  }
+  72% {
+    transform: translate(-50%, -52%) scale(0.86) rotate(-1deg);
+    opacity: 0.95;
+  }
+}
+
+@keyframes dosa-tawa-steam {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.75);
+  }
+  35% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-28px) scale(1.15);
+  }
+}
+
+@keyframes dosa-tawa-heat {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translateX(-50%) scale(1.08);
+  }
+}
+
+@keyframes dosa-tawa-spatula {
+  0%,
+  30%,
+  100% {
+    transform: rotate(-18deg) translateY(0);
+    opacity: 0;
+  }
+  38% {
+    opacity: 1;
+    transform: rotate(-8deg) translateY(2%);
+  }
+  48% {
+    transform: rotate(14deg) translateY(-4%);
+  }
+  56% {
+    transform: rotate(28deg) translateY(-2%);
+    opacity: 1;
+  }
+  68% {
+    opacity: 0;
+    transform: rotate(42deg) translateY(6%);
+  }
+}
+
+@media (max-width: 900px) {
+  .dosa-tawa-bg__video {
+    right: -18%;
+    top: clamp(4rem, 10vw, 6rem);
+    width: min(88vw, 520px);
+    height: min(42vh, 420px);
+    opacity: 0.34;
+  }
+
+  .dosa-tawa-bg__css-scene {
+    right: -6%;
+    top: clamp(4.75rem, 12vw, 7rem);
+    width: clamp(200px, 52vw, 320px);
+    opacity: 0.42;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dosa-tawa-bg__video {
+    display: none;
+  }
+
+  .dosa-tawa-bg__batter,
+  .dosa-tawa-bg__steam span,
+  .dosa-tawa-bg__heat,
+  .dosa-tawa-bg__spatula {
+    animation: none;
+  }
+
+  .dosa-tawa-bg__batter {
+    transform: translate(-50%, -52%) scale(0.82);
+    opacity: 0.9;
+  }
+}
+
 /* Promo ticker */
+.layout.layout--good-girl.layout--comic > .site-top-chrome {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 300;
+  background: var(--comic-cream);
+  border-bottom: none;
+  box-shadow: none;
+}
+
 .promo-marquee {
   position: relative;
   z-index: 200;
   overflow: hidden;
   background: var(--comic-pink);
+}
+
+.layout.layout--good-girl.layout--comic .main {
+  /* promo (~32px) + header (~80px) ≈ 112px */
+  padding-top: 7rem;
 }
 
 .promo-marquee__item {
@@ -46,7 +353,7 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   white-space: nowrap;
-  color: #fff;
+  color: var(--kirik-offwhite);
 }
 
 .promo-marquee__track {
@@ -96,10 +403,11 @@
 
 /* Wireframe header */
 .comic-wire-header {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 100;
   background: var(--comic-cream);
+  border-bottom: none;
+  box-shadow: none;
 }
 
 .comic-wire-header__inner {
@@ -153,7 +461,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--color-ink);
+  color: color-mix(in srgb, var(--kirik-oxford) 88%, var(--kirik-teal));
   background: none;
   border: none;
   padding: 0.2rem 0.15rem;
@@ -162,9 +470,15 @@
 }
 
 .comic-wire-nav__link:hover {
-  color: var(--color-accent);
+  color: var(--kirik-teal);
   transform: translateY(-1px);
   opacity: 1;
+}
+
+.comic-wire-nav__link:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--kirik-teal) 55%, transparent);
+  outline-offset: 4px;
+  border-radius: 6px;
 }
 
 /* TRY KIRIK button */
@@ -174,14 +488,14 @@
   justify-content: center;
   padding: 0.55rem 1.15rem;
   background: var(--color-lime);
-  color: var(--color-ink);
+  color: var(--kirik-oxford);
   font-family: var(--font-display);
   font-size: clamp(0.9rem, 2vw, 1.05rem);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: none;
-  border: var(--brutal-border, 4px solid #000);
-  box-shadow: var(--brutal-shadow-sm, 3px 3px 0 #000);
+  border: var(--brutal-border, 4px solid var(--kirik-oxford));
+  box-shadow: var(--brutal-shadow-sm, 3px 3px 0 color-mix(in srgb, var(--kirik-oxford) 85%, transparent));
   transform: rotate(-4deg);
   white-space: nowrap;
   transition: transform var(--transition), box-shadow var(--transition);
@@ -189,7 +503,7 @@
 
 .btn--try-kirik:hover {
   transform: rotate(-2deg) translate(-1px, -1px);
-  box-shadow: var(--brutal-shadow, 5px 5px 0 #000);
+  box-shadow: var(--brutal-shadow, 5px 5px 0 color-mix(in srgb, var(--kirik-oxford) 85%, transparent));
 }
 
 .btn--try-kirik-lg {
@@ -206,12 +520,64 @@
   z-index: 1;
 }
 
+.comic-wire-hero--photo {
+  overflow: hidden;
+  isolation: isolate;
+  /* Taller hero so the full background photo shows */
+  min-height: clamp(520px, 64vh, 820px);
+  padding-block: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+.comic-wire-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--comic-cream);
+  overflow: hidden;
+}
+
+.comic-wire-hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    102deg,
+    rgba(248, 242, 232, 0.72) 0%,
+    rgba(248, 242, 232, 0.42) 42%,
+    rgba(248, 242, 232, 0.28) 68%,
+    rgba(248, 242, 232, 0.18) 100%
+  );
+}
+
+.comic-wire-hero__bg-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  /* Show more of the photo (less cropped) */
+  object-position: center 20%;
+  opacity: 0.58;
+}
+
+.layout.layout--good-girl.layout--comic:has(.comic-wire-hero--photo)::after {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent min(70vh, 820px),
+    #000 min(70vh, 820px)
+  );
+}
+
 .comic-wire-hero__grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(1.25rem, 3.5vw, 2.75rem);
   align-items: center;
-  min-height: clamp(380px, 48vh, 520px);
+  min-height: clamp(460px, 56vh, 700px);
 }
 
 .comic-wire-hero__grid > .comic-hero-copy {
@@ -224,19 +590,34 @@
 
 .comic-wire-hero__visual {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   min-width: 0;
   align-self: center;
   position: relative;
   z-index: 1;
   padding-inline: 0;
+  padding-right: clamp(0.25rem, 2.5vw, 1.25rem);
 }
 
 /* ── Hero product — static premium showcase ── */
 .hero-showcase {
   width: 100%;
   max-width: min(100%, 460px);
+  /* Nudge the packets to the right (requested) */
+  transform: translateX(clamp(0.5rem, 2.5vw, 1.75rem));
+}
+
+/* Hard override: always push hero packets right */
+.layout.layout--good-girl.layout--comic .comic-wire-hero .hero-showcase {
+  margin-left: auto;
+  transform: translateX(clamp(2rem, 7vw, 4.75rem)) !important;
+}
+
+.layout.layout--good-girl.layout--comic .comic-wire-hero .hero-showcase__front,
+.layout.layout--good-girl.layout--comic .comic-wire-hero .hero-showcase__back,
+.layout.layout--good-girl.layout--comic .comic-wire-hero .hero-showcase__combo {
+  transform: translateX(clamp(1rem, 3.5vw, 2.35rem)) !important;
 }
 
 .hero-showcase__stage {
@@ -313,33 +694,84 @@
   z-index: 2;
 }
 
+.comic-hero-copy__headline-wrap {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.35rem 0.5rem 0.85rem 0;
+}
+
 .comic-hero-copy__headline {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.04em;
   width: fit-content;
   max-width: 100%;
   margin: 0;
-  padding: 0;
-  background: none;
+  padding: clamp(1.1rem, 2.6vw, 1.65rem) clamp(1.25rem, 3vw, 1.9rem);
   text-align: left;
+  transform: rotate(-1.75deg);
+  transform-origin: left center;
+}
+
+.comic-hero-copy__headline::before {
+  content: '';
+  position: absolute;
+  inset: -10% -8% -14% -6%;
+  z-index: -1;
+  background: linear-gradient(148deg, #b4bde8 0%, #8b94d1 42%, #a394c8 100%);
+  border-radius: 58% 42% 55% 45% / 48% 52% 46% 54%;
+  box-shadow:
+    5px 7px 0 rgba(0, 0, 0, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.comic-hero-copy__headline::after {
+  content: '';
+  position: absolute;
+  right: -5%;
+  bottom: -18%;
+  width: clamp(3.5rem, 28%, 5.5rem);
+  height: clamp(2.5rem, 22%, 4rem);
+  z-index: -2;
+  background: linear-gradient(160deg, #ffe566 0%, #ffd54a 55%, #f4b429 100%);
+  border-radius: 48% 52% 58% 42% / 44% 56% 48% 52%;
+  transform: rotate(12deg);
+  box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.09);
 }
 
 .layout--good-girl .comic-hero-copy__headline-line {
   display: block;
-  font-family: 'Bricolage Grotesque', 'Archivo Black', 'Baloo 2', sans-serif;
+  font-family: 'Baloo 2', 'Fredoka', 'Archivo Black', sans-serif;
   font-size: clamp(1.9rem, 3.5vw, 3.15rem);
   font-weight: 800;
   font-style: normal;
-  font-variation-settings: 'opsz' 72;
-  line-height: 0.98;
-  letter-spacing: -0.025em;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
-  color: #111111;
+  color: var(--kirik-navy);
   white-space: nowrap;
   max-width: 100%;
   -webkit-font-smoothing: antialiased;
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
+}
+
+.layout--good-girl .comic-hero-copy__headline-line:nth-child(1) {
+  margin-left: 0;
+}
+
+.layout--good-girl .comic-hero-copy__headline-line:nth-child(2) {
+  margin-left: 0.06em;
+}
+
+.layout--good-girl .comic-hero-copy__headline-line:nth-child(3) {
+  margin-left: 0.12em;
+}
+
+.layout--good-girl .comic-hero-copy__headline-line--accent {
+  color: var(--kirik-offwhite);
+  text-shadow: 2px 3px 0 rgba(0, 0, 0, 0.18);
 }
 
 .comic-hero-copy__tag {
@@ -552,7 +984,10 @@
   line-height: 0.9;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--color-ink);
+  color: var(--kirik-oxford);
+  text-shadow:
+    3px 3px 0 color-mix(in srgb, var(--kirik-teal) 35%, transparent),
+    6px 6px 0 color-mix(in srgb, var(--kirik-coral) 22%, transparent);
   transform: rotate(-2deg);
 }
 
@@ -584,7 +1019,7 @@
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  color: var(--color-ink);
+  color: var(--comic-card-ink, var(--color-ink));
   background: var(--comic-card-bg, #fff9f0);
   border: 3px solid var(--color-ink);
   box-shadow: var(--brutal-shadow, 5px 5px 0 #000);
@@ -627,8 +1062,8 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background: rgba(26, 18, 8, 0.72);
-  color: #fff;
+  background: rgba(5, 23, 42, 0.78);
+  color: var(--kirik-blush);
   font-family: 'Fredoka', var(--font-body);
   font-size: clamp(0.95rem, 2vw, 1.1rem);
   font-weight: 700;
@@ -638,6 +1073,33 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
+}
+
+.comic-pack-card__pop {
+  position: absolute;
+  top: -0.85rem;
+  right: -0.35rem;
+  z-index: 3;
+  padding: 0.45rem 0.75rem;
+  background: rgba(248, 242, 232, 0.92);
+  border: 3px solid var(--color-ink);
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--comic-card-ink, var(--color-ink));
+  box-shadow: var(--brutal-shadow-sm, 3px 3px 0 #000);
+  opacity: 0;
+  transform: scale(0.85) rotate(8deg);
+  transition: opacity var(--transition), transform var(--transition);
+  pointer-events: none;
+}
+
+.comic-pack-card:hover .comic-pack-card__pop,
+.comic-pack-card:focus-visible .comic-pack-card__pop {
+  opacity: 1;
+  transform: scale(1) rotate(4deg);
 }
 
 .comic-pack-card:hover .comic-pack-card__hover-name,
@@ -684,7 +1146,7 @@
   font-family: var(--font-blocky, var(--font-display));
   font-size: 1.15rem;
   letter-spacing: 0.02em;
-  color: var(--color-accent);
+  color: var(--comic-card-accent, var(--color-accent));
 }
 
 .comic-pack-card__price-each {
@@ -1116,8 +1578,6 @@
   overflow: hidden;
   border-block: 4px solid var(--color-ink);
   background-color: #fff9f0;
-  background-image: radial-gradient(rgba(244, 168, 37, 0.35) 22%, transparent 23%);
-  background-size: 22px 22px;
   padding: 1.15rem 0;
 }
 
@@ -1197,26 +1657,11 @@
 /* Social comic box */
 .social-wire--comic-box .container {
   position: relative;
+  z-index: 1;
   padding: clamp(1.5rem, 4vw, 2.5rem);
   border: var(--brutal-border, 4px solid #000);
   box-shadow: var(--brutal-shadow-lg, 8px 8px 0 #000);
   background: #fff9f0;
-}
-
-.social-wire--comic-box::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image: radial-gradient(rgba(244, 168, 37, 0.35) 22%, transparent 23%);
-  background-size: 22px 22px;
-  opacity: 0.5;
-}
-
-.social-wire--comic-box .container {
-  position: relative;
-  z-index: 1;
 }
 
 .layout--good-girl .social-wire {
@@ -1457,6 +1902,10 @@
 
 /* Responsive */
 @media (max-width: 960px) {
+  .layout.layout--good-girl.layout--comic .main {
+    padding-top: 8.25rem;
+  }
+
   .comic-wire-header__inner {
     grid-template-columns: 1fr auto;
     grid-template-rows: auto auto;
@@ -1488,22 +1937,42 @@
 
   .comic-wire-hero__visual {
     padding-inline: 0;
+    justify-content: flex-end;
+    padding-right: clamp(0.25rem, 4vw, 1rem);
   }
 
   .hero-showcase__stage {
     height: clamp(280px, 72vw, 360px);
   }
 
+  .hero-showcase {
+    transform: translateX(clamp(0.35rem, 4vw, 1.25rem));
+  }
+
   .layout--good-girl .comic-hero-copy__headline-line {
     font-size: clamp(1.65rem, 7.5vw, 2.35rem);
-    line-height: 1;
-    letter-spacing: -0.02em;
+    line-height: 0.98;
+    letter-spacing: -0.01em;
     white-space: normal;
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
   }
 
+  .comic-hero-copy__headline-wrap {
+    padding: 0.25rem 0.35rem 0.65rem 0;
+  }
+
   .comic-hero-copy__headline {
-    width: 100%;
+    width: fit-content;
+    max-width: 100%;
+    padding: clamp(0.85rem, 3vw, 1.25rem) clamp(0.9rem, 3.5vw, 1.35rem);
+    transform: rotate(-1.25deg);
+  }
+
+  .comic-hero-copy__headline::after {
+    right: -3%;
+    bottom: -14%;
+    width: clamp(2.75rem, 32%, 4rem);
+    height: clamp(2rem, 26%, 3rem);
   }
 
   .comic-pack-grid,

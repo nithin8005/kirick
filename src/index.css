@@ -1,20 +1,41 @@
 :root {
-  --color-cream: #fafafa;
-  --color-cream-dark: #f0f0f0;
-  --color-dietary-band: #f5efe6;
-  --color-ink: #1a1208;
-  --color-ink-muted: #5c5040;
-  --color-accent: #e85d04;
-  --color-accent-dark: #c44d00;
-  --color-accent-soft: rgba(232, 93, 4, 0.1);
-  --color-turmeric: #f4a825;
-  --color-chili: #9d0208;
-  --color-green: #2d6a4f;
-  --color-lime: #c8f135;
-  --color-lime-dark: #a8d620;
-  --color-surface: #ffffff;
-  --color-border: rgba(26, 18, 8, 0.08);
-  --color-border-strong: rgba(26, 18, 8, 0.14);
+  /* Kirik official palette */
+  --kirik-pear: #d7ef29;
+  --kirik-celtic-blue: #426fdf;
+  --kirik-lavender-pink: #e68bc7;
+  --kirik-cinnabar: #f35b2e;
+
+  --kirik-navy: #0f173a;
+  --kirik-teal: #2bd4bf;
+  --kirik-coral: #f67186;
+  --kirik-soft-pink: #fff1f2;
+  --kirik-offwhite: #f8fafc;
+  --kirik-burgundy: #a50054;
+  --kirik-royal-blue: #005b96;
+  --kirik-golden-yellow: #f7c40f;
+  --kirik-bright-orange: #f79c12;
+  --kirik-warm-cream: #d5d8db;
+  --kirik-terracotta: #b85d47;
+  --kirik-light-cream: #e7e5cf;
+  --kirik-sage: #afc2ae;
+
+  /* App semantic colors (no pure black/white) */
+  --color-cream: var(--kirik-offwhite);
+  --color-cream-dark: var(--kirik-soft-pink);
+  --color-dietary-band: var(--kirik-light-cream);
+  --color-ink: var(--kirik-navy);
+  --color-ink-muted: color-mix(in srgb, var(--kirik-navy) 68%, var(--kirik-offwhite));
+  --color-accent: var(--kirik-cinnabar);
+  --color-accent-dark: var(--kirik-burgundy);
+  --color-accent-soft: color-mix(in srgb, var(--kirik-cinnabar) 14%, transparent);
+  --color-turmeric: var(--kirik-golden-yellow);
+  --color-chili: var(--kirik-burgundy);
+  --color-green: var(--kirik-teal);
+  --color-lime: var(--kirik-pear);
+  --color-lime-dark: color-mix(in srgb, var(--kirik-pear) 78%, var(--kirik-navy));
+  --color-surface: var(--kirik-offwhite);
+  --color-border: color-mix(in srgb, var(--kirik-navy) 16%, transparent);
+  --color-border-strong: color-mix(in srgb, var(--kirik-navy) 26%, transparent);
   --font-display: 'Bangers', cursive;
   --font-hand: 'Caveat', cursive;
   --font-body: 'DM Sans', system-ui, sans-serif;

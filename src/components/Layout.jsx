@@ -88,8 +88,10 @@ function LayoutShell() {
 
   return (
     <div className="layout layout--comic layout--good-girl">
-      <PromoMarquee />
-      <ComicWireHeader />
+      <div className="site-top-chrome">
+        <PromoMarquee />
+        <ComicWireHeader />
+      </div>
 
       <main className="main">
         <Outlet />

@@ -4,18 +4,24 @@
  */
 
 .layout--good-girl {
+  /* Packaging theme (from your PALETTE sheet) */
+  --kirik-pear: #d7ef29; /* Pear Green */
+  --kirik-celtic-blue: #426fdf; /* Celtic Blue */
+  --kirik-lavender-pink: #e68bc7; /* Lavender Pink */
+  --kirik-cinnabar: #f35b2e; /* Cinnabar Orange */
+
   /* Ink & contrast */
-  --brutal-ink: #000000;
-  --color-ink: #000000;
+  --brutal-ink: var(--kirik-navy, #0f173a);
+  --color-ink: var(--kirik-navy, #0f173a);
 
   /* Borders & shadows (uniform 4px / 5px offset) */
   --brutal-border-width: 4px;
-  --brutal-border: 4px solid #000000;
-  --brutal-border-thin: 2px solid #000000;
-  --brutal-shadow: 5px 5px 0 #000000;
-  --brutal-shadow-sm: 3px 3px 0 #000000;
-  --brutal-shadow-lg: 8px 8px 0 #000000;
-  --brutal-shadow-hover: 7px 7px 0 #000000;
+  --brutal-border: 4px solid var(--kirik-navy, #0f173a);
+  --brutal-border-thin: 2px solid var(--kirik-royal-blue, #005b96);
+  --brutal-shadow: 5px 5px 0 rgba(15, 23, 58, 0.9);
+  --brutal-shadow-sm: 3px 3px 0 rgba(15, 23, 58, 0.9);
+  --brutal-shadow-lg: 8px 8px 0 rgba(15, 23, 58, 0.9);
+  --brutal-shadow-hover: 7px 7px 0 rgba(15, 23, 58, 0.9);
 
   /* Playful transforms */
   --brutal-tilt: -2deg;
@@ -30,7 +36,7 @@
   --comic-cream: #f8f2e8;
   --comic-pink: #ff4d8d;
   --comic-mango: #f4a825;
-  --comic-panel: #fff9f0;
+  --comic-panel: var(--kirik-offwhite, #f8fafc);
   --font-blocky: var(--font-brutal-heading);
 }
 

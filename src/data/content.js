@@ -10,11 +10,42 @@ export const comicHeroCopy = {
   tagline: ['DOSA CHIPS — MADE FROM DOSA', 'BUT NOT YOUR REGULAR DOSA.'],
 }
 
+export const heroBackground = {
+  src: '/images/hero-bg.png',
+  alt: '',
+}
+
+/** Looping hero background — swap src if you add a dedicated tawa clip to public/videos/ */
+export const heroTawaVideo = {
+  src: '/videos/Video-471.mp4',
+  label: 'Dosa preparing on tawa',
+}
+
 export const comicProductMeta = {
-  'green-chutney': { flavorPop: 'Pudina fresh!', cardBg: '#dff5c8' },
-  'tangy-salty': { flavorPop: 'Chaat tangy!', cardBg: '#ffe8cc' },
-  'kara-podi': { flavorPop: 'Yum spicy!', cardBg: '#ffd4d4' },
-  'ginger-jaggery': { flavorPop: 'Sweet heat!', cardBg: '#fff3b0' },
+  'green-chutney': {
+    flavorPop: 'Pudina fresh!',
+    cardBg: 'linear-gradient(180deg, rgba(215, 239, 41, 0.38) 0%, #ffffff 100%)',
+    cardInk: 'var(--kirik-oxford)',
+    accent: 'var(--kirik-pear)',
+  },
+  'tangy-salty': {
+    flavorPop: 'Chaat tangy!',
+    cardBg: 'linear-gradient(180deg, rgba(230, 139, 199, 0.38) 0%, #ffffff 100%)',
+    cardInk: 'var(--kirik-oxford)',
+    accent: 'var(--kirik-lavender-pink)',
+  },
+  'kara-podi': {
+    flavorPop: 'Yum spicy!',
+    cardBg: 'linear-gradient(180deg, rgba(243, 91, 46, 0.36) 0%, #ffffff 100%)',
+    cardInk: 'var(--kirik-oxford)',
+    accent: 'var(--kirik-cinnabar)',
+  },
+  'ginger-jaggery': {
+    flavorPop: 'Sweet heat!',
+    cardBg: 'linear-gradient(180deg, rgba(66, 111, 223, 0.34) 0%, #ffffff 100%)',
+    cardInk: 'var(--kirik-oxford)',
+    accent: 'var(--kirik-celtic-blue)',
+  },
 }
 
 export const comicBuildBox = {

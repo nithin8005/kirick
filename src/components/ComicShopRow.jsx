@@ -10,9 +10,14 @@ function PackCard({ product }) {
     <AppLink
       to="/products"
       className="comic-pack-card"
-      style={{ '--comic-card-bg': meta.cardBg || '#fff9f0' }}
+      style={{
+        '--comic-card-bg': meta.cardBg || '#fff9f0',
+        '--comic-card-ink': meta.cardInk || 'var(--color-ink)',
+        '--comic-card-accent': meta.accent || 'var(--color-accent)',
+      }}
     >
       <ProductNewBadge />
+      <span className="comic-pack-card__pop">{meta.flavorPop || product.name}</span>
       <div className="comic-pack-card__visual">
         <img
           src={imgSrc}
