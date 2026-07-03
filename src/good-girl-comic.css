@@ -334,7 +334,7 @@
   position: relative;
   z-index: 200;
   overflow: hidden;
-  background: var(--kirik-cinnabar);
+  background: var(--kirik-burnt-orange);
 }
 
 .layout.layout--good-girl.layout--comic .main {
@@ -469,13 +469,13 @@
 }
 
 .comic-wire-nav__link:hover {
-  color: var(--kirik-pear);
+  color: var(--kirik-sage);
   transform: translateY(-1px);
   opacity: 1;
 }
 
 .comic-wire-nav__link:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--kirik-pear) 55%, transparent);
+  outline: 3px solid color-mix(in srgb, var(--kirik-sage) 55%, transparent);
   outline-offset: 4px;
   border-radius: 6px;
 }
@@ -486,7 +486,7 @@
   align-items: center;
   justify-content: center;
   padding: 0.55rem 1.15rem;
-  background: var(--kirik-pear);
+  background: var(--kirik-sage);
   color: var(--kirik-navy);
   font-family: var(--font-display);
   font-size: clamp(0.9rem, 2vw, 1.05rem);
@@ -501,7 +501,7 @@
 }
 
 .btn--try-kirik:hover {
-  background: var(--kirik-cinnabar);
+  background: var(--kirik-burnt-orange);
   color: var(--kirik-soft-cream);
   transform: rotate(-2deg) translate(-1px, -1px);
   box-shadow: var(--brutal-shadow, 5px 5px 0 color-mix(in srgb, var(--kirik-navy) 85%, transparent));
@@ -734,9 +734,9 @@
   /* Brand bubble: Celtic Blue + Soft Pink tint (official palette) */
   background: linear-gradient(
     148deg,
-    color-mix(in srgb, var(--kirik-celtic-blue) 38%, var(--kirik-offwhite)) 0%,
-    color-mix(in srgb, var(--kirik-celtic-blue) 22%, var(--kirik-soft-pink)) 46%,
-    color-mix(in srgb, var(--kirik-lavender-pink) 28%, var(--kirik-offwhite)) 100%
+    color-mix(in srgb, var(--kirik-royal-blue) 38%, var(--kirik-offwhite)) 0%,
+    color-mix(in srgb, var(--kirik-royal-blue) 22%, var(--kirik-soft-pink)) 46%,
+    color-mix(in srgb, var(--kirik-lavender) 28%, var(--kirik-offwhite)) 100%
   );
   border-radius: 58% 42% 55% 45% / 48% 52% 46% 54%;
   box-shadow:
@@ -757,7 +757,7 @@
     160deg,
     color-mix(in srgb, var(--kirik-golden-yellow) 92%, var(--kirik-offwhite)) 0%,
     color-mix(in srgb, var(--kirik-bright-orange) 78%, var(--kirik-golden-yellow)) 55%,
-    color-mix(in srgb, var(--kirik-cinnabar) 86%, var(--kirik-bright-orange)) 100%
+    color-mix(in srgb, var(--kirik-burnt-orange) 86%, var(--kirik-bright-orange)) 100%
   );
   border-radius: 48% 52% 58% 42% / 44% 56% 48% 52%;
   transform: rotate(12deg);
@@ -786,7 +786,7 @@
 }
 
 .layout--good-girl .comic-hero-copy__headline-line:nth-child(2) {
-  color: var(--kirik-celtic-blue);
+  color: var(--kirik-royal-blue);
 }
 
 .layout--good-girl .comic-hero-copy__headline-line:nth-child(1) {
@@ -802,7 +802,7 @@
 }
 
 .layout--good-girl .comic-hero-copy__headline-line--accent {
-  color: var(--kirik-pear);
+  color: var(--kirik-sage);
   text-shadow: 2px 3px 0 color-mix(in srgb, var(--kirik-navy) 22%, transparent);
 }
 
@@ -818,7 +818,7 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   /* Professional, brand-safe: Royal Blue toned with Deep Navy */
-  color: color-mix(in srgb, var(--kirik-celtic-blue) 82%, var(--kirik-navy));
+  color: color-mix(in srgb, var(--kirik-royal-blue) 82%, var(--kirik-navy));
   max-width: 28rem;
 }
 
@@ -1019,8 +1019,8 @@
   text-transform: uppercase;
   color: var(--kirik-navy);
   text-shadow:
-    3px 3px 0 color-mix(in srgb, var(--kirik-celtic-blue) 35%, transparent),
-    6px 6px 0 color-mix(in srgb, var(--kirik-lavender-pink) 28%, transparent);
+    3px 3px 0 color-mix(in srgb, var(--kirik-royal-blue) 35%, transparent),
+    6px 6px 0 color-mix(in srgb, var(--kirik-lavender) 28%, transparent);
   transform: rotate(-2deg);
 }
 
@@ -1097,7 +1097,7 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background: color-mix(in srgb, var(--comic-card-accent, var(--kirik-celtic-blue)) 58%, transparent);
+  background: color-mix(in srgb, var(--comic-card-accent, var(--kirik-royal-blue)) 58%, transparent);
   color: var(--kirik-navy);
   font-family: 'Fredoka', var(--font-body);
   font-size: clamp(0.95rem, 2vw, 1.1rem);
@@ -1117,7 +1117,7 @@
   right: -0.35rem;
   z-index: 10;
   padding: 0.45rem 0.75rem;
-  background: var(--comic-card-accent, var(--kirik-pear));
+  background: var(--comic-card-accent, var(--kirik-sage));
   border: 3px solid var(--kirik-navy);
   border-radius: 999px;
   font-family: var(--font-display);
@@ -1401,7 +1401,7 @@
   letter-spacing: 0.01em;
   text-transform: uppercase;
   line-height: 0.94;
-  color: var(--kirik-celtic-blue);
+  color: var(--kirik-royal-blue);
 }
 
 .comic-build-box__title-line {
@@ -1526,7 +1526,7 @@
   margin-top: 0.35rem;
   font-size: clamp(1.05rem, 2.4vw, 1.55rem);
   letter-spacing: 0.06em;
-  color: var(--kirik-cinnabar);
+  color: var(--kirik-burnt-orange);
 }
 
 .comic-rogue__headline {
@@ -1632,7 +1632,7 @@
   font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--kirik-celtic-blue);
+  color: var(--kirik-royal-blue);
 }
 
 .layout--good-girl .dietary-icons__circle {
@@ -1748,7 +1748,7 @@
 }
 
 .layout--good-girl .comic-section-title__handle {
-  color: var(--kirik-lavender-pink);
+  color: var(--kirik-lavender);
 }
 
 .layout--good-girl .social-wire__post {
@@ -1812,7 +1812,7 @@
   place-items: center;
   width: 100%;
   height: 100%;
-  background: var(--kirik-pear);
+  background: var(--kirik-sage);
   color: var(--kirik-navy);
   clip-path: var(--new-badge-clip);
   font-family: 'Archivo Black', 'Impact', 'Arial Narrow', sans-serif;

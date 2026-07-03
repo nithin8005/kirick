@@ -24,27 +24,27 @@ export const heroTawaVideo = {
 export const comicProductMeta = {
   'green-chutney': {
     flavorPop: 'Pudina fresh!',
-    cardBg: 'linear-gradient(180deg, rgba(199, 255, 41, 0.38) 0%, #f5f6f8 100%)',
+    cardBg: 'linear-gradient(180deg, rgba(175, 192, 174, 0.42) 0%, #f5f6f8 100%)',
     cardInk: 'var(--kirik-navy)',
-    accent: 'var(--kirik-pear)',
+    accent: 'var(--kirik-sage)',
   },
   'tangy-salty': {
     flavorPop: 'Chaat tangy!',
-    cardBg: 'linear-gradient(180deg, rgba(238, 163, 199, 0.38) 0%, #f5f6f8 100%)',
+    cardBg: 'linear-gradient(180deg, rgba(246, 113, 134, 0.36) 0%, #f5f6f8 100%)',
     cardInk: 'var(--kirik-navy)',
-    accent: 'var(--kirik-lavender-pink)',
+    accent: 'var(--kirik-coral)',
   },
   'kara-podi': {
     flavorPop: 'Yum spicy!',
-    cardBg: 'linear-gradient(180deg, rgba(239, 91, 35, 0.36) 0%, #f5f6f8 100%)',
+    cardBg: 'linear-gradient(180deg, rgba(217, 138, 0, 0.34) 0%, #f5f6f8 100%)',
     cardInk: 'var(--kirik-navy)',
-    accent: 'var(--kirik-cinnabar)',
+    accent: 'var(--kirik-burnt-orange)',
   },
   'ginger-jaggery': {
     flavorPop: 'Sweet heat!',
-    cardBg: 'linear-gradient(180deg, rgba(66, 118, 187, 0.34) 0%, #f5f6f8 100%)',
+    cardBg: 'linear-gradient(180deg, rgba(0, 91, 150, 0.32) 0%, #f5f6f8 100%)',
     cardInk: 'var(--kirik-navy)',
-    accent: 'var(--kirik-celtic-blue)',
+    accent: 'var(--kirik-royal-blue)',
   },
 }
 

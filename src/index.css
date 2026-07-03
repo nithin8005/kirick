@@ -1,56 +1,55 @@
 :root {
-  /* KIRIK packaging brand palette */
-  --kirik-pear: #c7ff29;
-  --kirik-celtic-blue: #4276bb;
-  --kirik-lavender-pink: #eea3c7;
-  --kirik-cinnabar: #ef5b23;
-
+  /* Reference palette (no packaging theme colors) */
   --kirik-navy: #0f173a;
-  --kirik-bright-blue: #005b96;
-  --kirik-golden-yellow: #ffc40f;
-  --kirik-orange: #f79c02;
+  --kirik-royal-blue: #005b96;
+  --kirik-mustard: #ffc40f;
+  --kirik-golden-orange: #f79c02;
   --kirik-purple: #6f35a5;
   --kirik-lavender: #8e7cc3;
   --kirik-coral: #f67186;
   --kirik-teal: #39c8bf;
   --kirik-soft-cream: #fff1f2;
   --kirik-light-grey: #f5f6f8;
+  --kirik-terracotta: #b75b46;
+  --kirik-sage: #afc0ae;
+  --kirik-pale-ivory: #e7e5cc;
+  --kirik-magenta: #c7007a;
+  --kirik-burnt-orange: #d98a00;
 
-  /* Legacy aliases */
   --kirik-soft-pink: var(--kirik-soft-cream);
   --kirik-offwhite: var(--kirik-light-grey);
-  --kirik-royal-blue: var(--kirik-bright-blue);
-  --kirik-bright-orange: var(--kirik-orange);
-  --kirik-burgundy: var(--kirik-purple);
-  --kirik-light-cream: var(--kirik-soft-cream);
-  --kirik-warm-cream: #e8eaed;
+  --kirik-bright-blue: var(--kirik-royal-blue);
+  --kirik-golden-yellow: var(--kirik-mustard);
+  --kirik-orange: var(--kirik-golden-orange);
+  --kirik-bright-orange: var(--kirik-golden-orange);
+  --kirik-burgundy: var(--kirik-magenta);
+  --kirik-light-cream: var(--kirik-pale-ivory);
+  --kirik-warm-cream: var(--kirik-pale-ivory);
 
-  /* App semantic colors */
   --color-cream: var(--kirik-light-grey);
   --color-cream-dark: var(--kirik-soft-cream);
-  --color-dietary-band: var(--kirik-soft-cream);
+  --color-dietary-band: var(--kirik-pale-ivory);
   --color-ink: var(--kirik-navy);
   --color-ink-muted: color-mix(in srgb, var(--kirik-navy) 62%, var(--kirik-light-grey));
-  --color-accent: var(--kirik-cinnabar);
+  --color-accent: var(--kirik-coral);
   --color-accent-dark: var(--kirik-purple);
-  --color-accent-soft: color-mix(in srgb, var(--kirik-cinnabar) 14%, transparent);
-  --color-turmeric: var(--kirik-golden-yellow);
-  --color-chili: var(--kirik-purple);
+  --color-accent-soft: color-mix(in srgb, var(--kirik-coral) 14%, transparent);
+  --color-turmeric: var(--kirik-mustard);
+  --color-chili: var(--kirik-magenta);
   --color-green: var(--kirik-teal);
-  --color-lime: var(--kirik-pear);
-  --color-lime-dark: color-mix(in srgb, var(--kirik-pear) 78%, var(--kirik-navy));
+  --color-lime: var(--kirik-mustard);
+  --color-lime-dark: color-mix(in srgb, var(--kirik-mustard) 78%, var(--kirik-navy));
   --color-surface: var(--kirik-light-grey);
   --color-border: color-mix(in srgb, var(--kirik-navy) 16%, transparent);
   --color-border-strong: color-mix(in srgb, var(--kirik-navy) 26%, transparent);
 
-  /* Interactive tokens */
-  --color-link: var(--kirik-celtic-blue);
-  --color-link-hover: var(--kirik-pear);
-  --color-btn-primary-bg: var(--kirik-pear);
+  --color-link: var(--kirik-royal-blue);
+  --color-link-hover: var(--kirik-coral);
+  --color-btn-primary-bg: var(--kirik-coral);
   --color-btn-primary-text: var(--kirik-navy);
-  --color-btn-secondary-bg: var(--kirik-celtic-blue);
-  --color-btn-secondary-text: var(--kirik-soft-cream);
-  --color-btn-hover-bg: var(--kirik-cinnabar);
+  --color-btn-secondary-bg: var(--kirik-teal);
+  --color-btn-secondary-text: var(--kirik-navy);
+  --color-btn-hover-bg: var(--kirik-burnt-orange);
   --color-btn-hover-text: var(--kirik-soft-cream);
   --color-on-dark: var(--kirik-soft-cream);
   --font-display: 'Bangers', cursive;
@@ -62,7 +61,7 @@
   --shadow-sm: 0 2px 8px rgba(26, 18, 8, 0.06);
   --shadow: 0 8px 32px rgba(26, 18, 8, 0.1);
   --shadow-lg: 0 20px 48px rgba(26, 18, 8, 0.12);
-  --shadow-accent: 0 12px 32px rgba(232, 93, 4, 0.22);
+  --shadow-accent: 0 12px 32px color-mix(in srgb, var(--kirik-burnt-orange) 22%, transparent);
   --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   --container: 1120px;
 }
@@ -434,7 +433,7 @@ svg {
 }
 
 .nav__link:hover {
-  color: var(--kirik-pear);
+  color: var(--kirik-coral);
   background: transparent;
   opacity: 1;
 }
@@ -482,7 +481,7 @@ svg {
 .btn--primary:hover {
   background: var(--color-btn-hover-bg);
   color: var(--color-btn-hover-text);
-  box-shadow: 0 16px 36px color-mix(in srgb, var(--kirik-cinnabar) 32%, transparent);
+  box-shadow: 0 16px 36px color-mix(in srgb, var(--kirik-burnt-orange) 32%, transparent);
 }
 
 .btn--outline {
@@ -864,9 +863,9 @@ svg {
   background: linear-gradient(
     90deg,
     var(--kirik-navy) 0%,
-    var(--kirik-celtic-blue) 35%,
-    var(--kirik-cinnabar) 70%,
-    var(--kirik-pear) 100%
+    var(--kirik-royal-blue) 35%,
+    var(--kirik-burnt-orange) 70%,
+    var(--kirik-mustard) 100%
   );
   border-block: 4px solid var(--color-ink);
 }
@@ -1831,7 +1830,7 @@ svg {
 .footer-premium__link:hover,
 .footer-premium__contact-item:hover,
 .footer-premium__bottom-link:hover {
-  color: var(--kirik-pear);
+  color: var(--kirik-coral);
   transform: translateX(2px);
 }
 
@@ -1866,8 +1865,8 @@ svg {
 }
 
 .footer-premium__input:focus {
-  border-color: color-mix(in srgb, var(--kirik-cinnabar) 75%, transparent);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--kirik-cinnabar) 18%, transparent);
+  border-color: color-mix(in srgb, var(--kirik-burnt-orange) 75%, transparent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--kirik-burnt-orange) 18%, transparent);
   background: color-mix(in srgb, var(--kirik-soft-cream) 6%, transparent);
 }
 
@@ -1876,25 +1875,25 @@ svg {
   padding: 0 1.15rem;
   border-radius: 999px;
   border: 2px solid var(--kirik-navy);
-  background: var(--kirik-pear);
+  background: var(--kirik-coral);
   color: var(--kirik-navy);
   font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   cursor: pointer;
   box-shadow:
-    0 10px 30px color-mix(in srgb, var(--kirik-pear) 18%, transparent),
-    0 0 0 0 color-mix(in srgb, var(--kirik-pear) 35%, transparent);
+    0 10px 30px color-mix(in srgb, var(--kirik-sage) 18%, transparent),
+    0 0 0 0 color-mix(in srgb, var(--kirik-sage) 35%, transparent);
   transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
 }
 
 .footer-premium__button:hover {
-  background: var(--kirik-cinnabar);
+  background: var(--kirik-burnt-orange);
   color: var(--kirik-soft-cream);
   transform: translateY(-2px);
   box-shadow:
-    0 14px 34px color-mix(in srgb, var(--kirik-cinnabar) 24%, transparent),
-    0 0 0 6px color-mix(in srgb, var(--kirik-cinnabar) 14%, transparent);
+    0 14px 34px color-mix(in srgb, var(--kirik-burnt-orange) 24%, transparent),
+    0 0 0 6px color-mix(in srgb, var(--kirik-burnt-orange) 14%, transparent);
   filter: saturate(1.06);
 }
 
