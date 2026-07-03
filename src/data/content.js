@@ -11,8 +11,8 @@ export const comicHeroCopy = {
 }
 
 export const heroBackground = {
-  src: '/images/hero-bg.png',
-  alt: '',
+  src: '/images/hero-banner.png',
+  alt: 'KIRIK dosa chips hero artwork',
 }
 
 /** Looping hero background — swap src if you add a dedicated tawa clip to public/videos/ */
@@ -24,26 +24,26 @@ export const heroTawaVideo = {
 export const comicProductMeta = {
   'green-chutney': {
     flavorPop: 'Pudina fresh!',
-    cardBg: 'linear-gradient(180deg, rgba(215, 239, 41, 0.38) 0%, #ffffff 100%)',
-    cardInk: 'var(--kirik-oxford)',
+    cardBg: 'linear-gradient(180deg, rgba(199, 255, 41, 0.38) 0%, #f5f6f8 100%)',
+    cardInk: 'var(--kirik-navy)',
     accent: 'var(--kirik-pear)',
   },
   'tangy-salty': {
     flavorPop: 'Chaat tangy!',
-    cardBg: 'linear-gradient(180deg, rgba(230, 139, 199, 0.38) 0%, #ffffff 100%)',
-    cardInk: 'var(--kirik-oxford)',
+    cardBg: 'linear-gradient(180deg, rgba(238, 163, 199, 0.38) 0%, #f5f6f8 100%)',
+    cardInk: 'var(--kirik-navy)',
     accent: 'var(--kirik-lavender-pink)',
   },
   'kara-podi': {
     flavorPop: 'Yum spicy!',
-    cardBg: 'linear-gradient(180deg, rgba(243, 91, 46, 0.36) 0%, #ffffff 100%)',
-    cardInk: 'var(--kirik-oxford)',
+    cardBg: 'linear-gradient(180deg, rgba(239, 91, 35, 0.36) 0%, #f5f6f8 100%)',
+    cardInk: 'var(--kirik-navy)',
     accent: 'var(--kirik-cinnabar)',
   },
   'ginger-jaggery': {
     flavorPop: 'Sweet heat!',
-    cardBg: 'linear-gradient(180deg, rgba(66, 111, 223, 0.34) 0%, #ffffff 100%)',
-    cardInk: 'var(--kirik-oxford)',
+    cardBg: 'linear-gradient(180deg, rgba(66, 118, 187, 0.34) 0%, #f5f6f8 100%)',
+    cardInk: 'var(--kirik-navy)',
     accent: 'var(--kirik-celtic-blue)',
   },
 }

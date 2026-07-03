@@ -1,41 +1,58 @@
 :root {
-  /* Kirik official palette */
-  --kirik-pear: #d7ef29;
-  --kirik-celtic-blue: #426fdf;
-  --kirik-lavender-pink: #e68bc7;
-  --kirik-cinnabar: #f35b2e;
+  /* KIRIK packaging brand palette */
+  --kirik-pear: #c7ff29;
+  --kirik-celtic-blue: #4276bb;
+  --kirik-lavender-pink: #eea3c7;
+  --kirik-cinnabar: #ef5b23;
 
   --kirik-navy: #0f173a;
-  --kirik-teal: #2bd4bf;
+  --kirik-bright-blue: #005b96;
+  --kirik-golden-yellow: #ffc40f;
+  --kirik-orange: #f79c02;
+  --kirik-purple: #6f35a5;
+  --kirik-lavender: #8e7cc3;
   --kirik-coral: #f67186;
-  --kirik-soft-pink: #fff1f2;
-  --kirik-offwhite: #f8fafc;
-  --kirik-burgundy: #a50054;
-  --kirik-royal-blue: #005b96;
-  --kirik-golden-yellow: #f7c40f;
-  --kirik-bright-orange: #f79c12;
-  --kirik-warm-cream: #d5d8db;
-  --kirik-terracotta: #b85d47;
-  --kirik-light-cream: #e7e5cf;
-  --kirik-sage: #afc2ae;
+  --kirik-teal: #39c8bf;
+  --kirik-soft-cream: #fff1f2;
+  --kirik-light-grey: #f5f6f8;
 
-  /* App semantic colors (no pure black/white) */
-  --color-cream: var(--kirik-offwhite);
-  --color-cream-dark: var(--kirik-soft-pink);
-  --color-dietary-band: var(--kirik-light-cream);
+  /* Legacy aliases */
+  --kirik-soft-pink: var(--kirik-soft-cream);
+  --kirik-offwhite: var(--kirik-light-grey);
+  --kirik-royal-blue: var(--kirik-bright-blue);
+  --kirik-bright-orange: var(--kirik-orange);
+  --kirik-burgundy: var(--kirik-purple);
+  --kirik-light-cream: var(--kirik-soft-cream);
+  --kirik-warm-cream: #e8eaed;
+
+  /* App semantic colors */
+  --color-cream: var(--kirik-light-grey);
+  --color-cream-dark: var(--kirik-soft-cream);
+  --color-dietary-band: var(--kirik-soft-cream);
   --color-ink: var(--kirik-navy);
-  --color-ink-muted: color-mix(in srgb, var(--kirik-navy) 68%, var(--kirik-offwhite));
+  --color-ink-muted: color-mix(in srgb, var(--kirik-navy) 62%, var(--kirik-light-grey));
   --color-accent: var(--kirik-cinnabar);
-  --color-accent-dark: var(--kirik-burgundy);
+  --color-accent-dark: var(--kirik-purple);
   --color-accent-soft: color-mix(in srgb, var(--kirik-cinnabar) 14%, transparent);
   --color-turmeric: var(--kirik-golden-yellow);
-  --color-chili: var(--kirik-burgundy);
+  --color-chili: var(--kirik-purple);
   --color-green: var(--kirik-teal);
   --color-lime: var(--kirik-pear);
   --color-lime-dark: color-mix(in srgb, var(--kirik-pear) 78%, var(--kirik-navy));
-  --color-surface: var(--kirik-offwhite);
+  --color-surface: var(--kirik-light-grey);
   --color-border: color-mix(in srgb, var(--kirik-navy) 16%, transparent);
   --color-border-strong: color-mix(in srgb, var(--kirik-navy) 26%, transparent);
+
+  /* Interactive tokens */
+  --color-link: var(--kirik-celtic-blue);
+  --color-link-hover: var(--kirik-pear);
+  --color-btn-primary-bg: var(--kirik-pear);
+  --color-btn-primary-text: var(--kirik-navy);
+  --color-btn-secondary-bg: var(--kirik-celtic-blue);
+  --color-btn-secondary-text: var(--kirik-soft-cream);
+  --color-btn-hover-bg: var(--kirik-cinnabar);
+  --color-btn-hover-text: var(--kirik-soft-cream);
+  --color-on-dark: var(--kirik-soft-cream);
   --font-display: 'Bangers', cursive;
   --font-hand: 'Caveat', cursive;
   --font-body: 'DM Sans', system-ui, sans-serif;
@@ -102,7 +119,12 @@ h3 {
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--color-link);
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--color-link-hover);
 }
 
 img {
@@ -412,7 +434,7 @@ svg {
 }
 
 .nav__link:hover {
-  color: var(--color-accent);
+  color: var(--kirik-pear);
   background: transparent;
   opacity: 1;
 }
@@ -451,24 +473,29 @@ svg {
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, var(--color-accent) 0%, #f07020 100%);
-  color: var(--color-cream);
+  background: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text);
+  border: 2px solid var(--kirik-navy);
   box-shadow: var(--shadow-accent);
 }
 
 .btn--primary:hover {
-  box-shadow: 0 16px 36px rgba(232, 93, 4, 0.32);
+  background: var(--color-btn-hover-bg);
+  color: var(--color-btn-hover-text);
+  box-shadow: 0 16px 36px color-mix(in srgb, var(--kirik-cinnabar) 32%, transparent);
 }
 
 .btn--outline {
-  background: var(--color-surface);
-  color: var(--color-ink);
-  border: 1.5px solid var(--color-border-strong);
+  background: var(--color-btn-secondary-bg);
+  color: var(--color-btn-secondary-text);
+  border: 2px solid var(--kirik-navy);
   box-shadow: var(--shadow-sm);
 }
 
 .btn--outline:hover {
-  border-color: var(--color-accent);
+  background: var(--color-btn-hover-bg);
+  color: var(--color-btn-hover-text);
+  border-color: var(--kirik-navy);
   box-shadow: var(--shadow);
 }
 
@@ -834,7 +861,13 @@ svg {
 /* Home tagline banner */
 .home-tagline-banner {
   overflow: hidden;
-  background: linear-gradient(90deg, #1a1208 0%, #3d2510 35%, #e85d04 70%, #c8f135 100%);
+  background: linear-gradient(
+    90deg,
+    var(--kirik-navy) 0%,
+    var(--kirik-celtic-blue) 35%,
+    var(--kirik-cinnabar) 70%,
+    var(--kirik-pear) 100%
+  );
   border-block: 4px solid var(--color-ink);
 }
 
@@ -860,8 +893,8 @@ svg {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   white-space: nowrap;
-  color: #fff9f0;
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
+  color: var(--kirik-soft-cream);
+  text-shadow: 2px 2px 0 color-mix(in srgb, var(--kirik-navy) 25%, transparent);
 }
 
 .home-tagline-banner__dot {
@@ -1071,7 +1104,7 @@ svg {
 }
 
 .meter-card {
-  background: #fff;
+  background: var(--kirik-soft-cream);
   border: 2px solid var(--color-ink);
   border-radius: var(--radius);
   padding: 1rem;
@@ -1166,7 +1199,7 @@ svg {
 }
 
 .showcase__story {
-  background: #fff;
+  background: var(--kirik-soft-cream);
   border: 2px solid var(--color-ink);
   border-radius: var(--radius);
   padding: 1.5rem;
@@ -1291,8 +1324,8 @@ svg {
 
 .diet-pill {
   padding: 0.5rem 1rem;
-  background: var(--color-green);
-  color: #fff;
+  background: var(--kirik-teal);
+  color: var(--kirik-soft-cream);
   font-weight: 700;
   font-size: 0.85rem;
   border-radius: 999px;
@@ -1317,7 +1350,7 @@ svg {
 }
 
 .combo-card {
-  background: #fff;
+  background: var(--kirik-soft-cream);
   border: 2px solid var(--color-ink);
   border-radius: var(--radius);
   padding: 1rem;
@@ -1347,7 +1380,7 @@ svg {
 }
 
 .faq-accordion {
-  background: #fff;
+  background: var(--kirik-soft-cream);
   border: 1px solid rgba(26, 18, 8, 0.1);
   border-radius: var(--radius-lg);
   box-shadow: 0 4px 24px rgba(26, 18, 8, 0.06);
@@ -1355,7 +1388,7 @@ svg {
 }
 
 .faq-item {
-  background: #fff;
+  background: var(--kirik-soft-cream);
   border: 2px solid var(--color-ink);
   border-radius: var(--radius);
   margin-bottom: 0.75rem;
@@ -1728,15 +1761,15 @@ svg {
 /* Footer */
 .footer {
   background: var(--color-ink);
-  color: rgba(255, 249, 240, 0.85);
+  color: color-mix(in srgb, var(--kirik-soft-cream) 85%, transparent);
   margin-top: 2rem;
   padding: clamp(3rem, 6vw, 4.5rem) 0;
 }
 
 /* Premium footer (Kirik) */
 .footer--premium {
-  background: #120905;
-  color: #f5efe6;
+  background: var(--kirik-navy);
+  color: var(--kirik-soft-cream);
   padding: 0;
 }
 
@@ -1776,7 +1809,7 @@ svg {
   font-weight: 700;
   letter-spacing: 0.01em;
   text-transform: none;
-  color: rgba(245, 239, 230, 0.72);
+  color: color-mix(in srgb, var(--kirik-soft-cream) 72%, transparent);
 }
 
 .footer-premium__links {
@@ -1787,7 +1820,7 @@ svg {
 .footer-premium__link,
 .footer-premium__contact-item,
 .footer-premium__bottom-link {
-  color: rgba(245, 239, 230, 0.86);
+  color: color-mix(in srgb, var(--kirik-soft-cream) 86%, transparent);
   text-decoration: none;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -1798,13 +1831,13 @@ svg {
 .footer-premium__link:hover,
 .footer-premium__contact-item:hover,
 .footer-premium__bottom-link:hover {
-  color: #e67e22;
+  color: var(--kirik-pear);
   transform: translateX(2px);
 }
 
 .footer-premium__muted {
   margin: 0 0 1rem;
-  color: rgba(245, 239, 230, 0.72);
+  color: color-mix(in srgb, var(--kirik-soft-cream) 72%, transparent);
   font-size: 0.95rem;
   line-height: 1.55;
 }
@@ -1820,46 +1853,48 @@ svg {
   width: 100%;
   height: 44px;
   border-radius: 999px;
-  border: 1px solid rgba(245, 239, 230, 0.22);
-  background: rgba(255, 255, 255, 0.04);
-  color: #f5efe6;
+  border: 1px solid color-mix(in srgb, var(--kirik-soft-cream) 22%, transparent);
+  background: color-mix(in srgb, var(--kirik-soft-cream) 4%, transparent);
+  color: var(--kirik-soft-cream);
   padding: 0 1rem;
   outline: none;
   transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
 }
 
 .footer-premium__input::placeholder {
-  color: rgba(245, 239, 230, 0.55);
+  color: color-mix(in srgb, var(--kirik-soft-cream) 55%, transparent);
 }
 
 .footer-premium__input:focus {
-  border-color: rgba(230, 126, 34, 0.75);
-  box-shadow: 0 0 0 4px rgba(230, 126, 34, 0.18);
-  background: rgba(255, 255, 255, 0.06);
+  border-color: color-mix(in srgb, var(--kirik-cinnabar) 75%, transparent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--kirik-cinnabar) 18%, transparent);
+  background: color-mix(in srgb, var(--kirik-soft-cream) 6%, transparent);
 }
 
 .footer-premium__button {
   height: 44px;
   padding: 0 1.15rem;
   border-radius: 999px;
-  border: 1px solid rgba(230, 126, 34, 0.65);
-  background: #e67e22;
-  color: #120905;
+  border: 2px solid var(--kirik-navy);
+  background: var(--kirik-pear);
+  color: var(--kirik-navy);
   font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   cursor: pointer;
   box-shadow:
-    0 10px 30px rgba(230, 126, 34, 0.18),
-    0 0 0 0 rgba(230, 126, 34, 0.35);
+    0 10px 30px color-mix(in srgb, var(--kirik-pear) 18%, transparent),
+    0 0 0 0 color-mix(in srgb, var(--kirik-pear) 35%, transparent);
   transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
 }
 
 .footer-premium__button:hover {
+  background: var(--kirik-cinnabar);
+  color: var(--kirik-soft-cream);
   transform: translateY(-2px);
   box-shadow:
-    0 14px 34px rgba(230, 126, 34, 0.24),
-    0 0 0 6px rgba(230, 126, 34, 0.14);
+    0 14px 34px color-mix(in srgb, var(--kirik-cinnabar) 24%, transparent),
+    0 0 0 6px color-mix(in srgb, var(--kirik-cinnabar) 14%, transparent);
   filter: saturate(1.06);
 }
 
@@ -1870,7 +1905,7 @@ svg {
 
 .footer-premium__contact-item--static {
   margin: 0;
-  color: rgba(245, 239, 230, 0.78);
+  color: color-mix(in srgb, var(--kirik-soft-cream) 78%, transparent);
   transform: none !important;
 }
 
@@ -3402,7 +3437,7 @@ svg {
   height: 100%;
   object-fit: cover;
   display: block;
-  background: #000;
+  background: var(--kirik-navy);
   pointer-events: none;
 }
 
@@ -3444,7 +3479,7 @@ svg {
   border: none;
   border-radius: 999px;
   background: rgba(26, 18, 8, 0.72);
-  color: #fff;
+  color: var(--kirik-soft-cream);
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
@@ -3486,7 +3521,7 @@ svg {
   padding: 0 0.45rem;
   border-radius: 999px;
   background: rgba(26, 18, 8, 0.72);
-  color: #fff;
+  color: var(--kirik-soft-cream);
   font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.04em;
@@ -3878,7 +3913,7 @@ body.has-dosa-cursor * {
   top: 0;
   width: 34%;
   aspect-ratio: 1;
-  background: #fff;
+  background: var(--kirik-soft-cream);
   border: 2px solid #2a1506;
   border-radius: 50%;
   box-shadow: inset 0 -1px 2px rgba(42, 21, 6, 0.12);
@@ -4273,7 +4308,7 @@ body.has-dosa-cursor * {
   max-height: 7.5rem;
   overflow-y: auto;
   border-bottom: 1px solid rgba(26, 18, 8, 0.1);
-  background: #fff;
+  background: var(--kirik-soft-cream);
   flex-shrink: 0;
 }
 
@@ -4355,7 +4390,7 @@ body.has-dosa-cursor * {
 }
 
 .dosa-babu__bubble--bot {
-  background: #fff;
+  background: var(--kirik-soft-cream);
   border: 1px solid rgba(26, 18, 8, 0.1);
   border-left: 3px solid var(--color-accent);
   box-shadow: var(--shadow-sm);
@@ -4363,7 +4398,7 @@ body.has-dosa-cursor * {
 
 .dosa-babu__bubble--user {
   background: linear-gradient(135deg, var(--color-accent) 0%, #f07020 100%);
-  color: #fff;
+  color: var(--kirik-soft-cream);
   border: 2px solid var(--color-ink);
   border-bottom-right-radius: 4px;
 }
@@ -4444,7 +4479,7 @@ body.has-dosa-cursor * {
   gap: 0.35rem;
   padding: 0.45rem 0.5rem;
   border-top: 2px solid var(--color-ink);
-  background: #fff;
+  background: var(--kirik-soft-cream);
   flex-shrink: 0;
 }
 

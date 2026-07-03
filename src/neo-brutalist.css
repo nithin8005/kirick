@@ -4,24 +4,35 @@
  */
 
 .layout--good-girl {
-  /* Packaging theme (from your PALETTE sheet) */
-  --kirik-pear: #d7ef29; /* Pear Green */
-  --kirik-celtic-blue: #426fdf; /* Celtic Blue */
-  --kirik-lavender-pink: #e68bc7; /* Lavender Pink */
-  --kirik-cinnabar: #f35b2e; /* Cinnabar Orange */
+  /* KIRIK packaging palette */
+  --kirik-pear: #c7ff29;
+  --kirik-celtic-blue: #4276bb;
+  --kirik-lavender-pink: #eea3c7;
+  --kirik-cinnabar: #ef5b23;
+
+  --kirik-navy: #0f173a;
+  --kirik-bright-blue: #005b96;
+  --kirik-golden-yellow: #ffc40f;
+  --kirik-orange: #f79c02;
+  --kirik-purple: #6f35a5;
+  --kirik-lavender: #8e7cc3;
+  --kirik-coral: #f67186;
+  --kirik-teal: #39c8bf;
+  --kirik-soft-cream: #fff1f2;
+  --kirik-light-grey: #f5f6f8;
 
   /* Ink & contrast */
-  --brutal-ink: var(--kirik-navy, #0f173a);
-  --color-ink: var(--kirik-navy, #0f173a);
+  --brutal-ink: var(--kirik-navy);
+  --color-ink: var(--kirik-navy);
 
   /* Borders & shadows (uniform 4px / 5px offset) */
   --brutal-border-width: 4px;
-  --brutal-border: 4px solid var(--kirik-navy, #0f173a);
-  --brutal-border-thin: 2px solid var(--kirik-royal-blue, #005b96);
-  --brutal-shadow: 5px 5px 0 rgba(15, 23, 58, 0.9);
-  --brutal-shadow-sm: 3px 3px 0 rgba(15, 23, 58, 0.9);
-  --brutal-shadow-lg: 8px 8px 0 rgba(15, 23, 58, 0.9);
-  --brutal-shadow-hover: 7px 7px 0 rgba(15, 23, 58, 0.9);
+  --brutal-border: 4px solid var(--kirik-navy);
+  --brutal-border-thin: 2px solid var(--kirik-bright-blue);
+  --brutal-shadow: 5px 5px 0 color-mix(in srgb, var(--kirik-navy) 88%, transparent);
+  --brutal-shadow-sm: 3px 3px 0 color-mix(in srgb, var(--kirik-navy) 88%, transparent);
+  --brutal-shadow-lg: 8px 8px 0 color-mix(in srgb, var(--kirik-navy) 88%, transparent);
+  --brutal-shadow-hover: 7px 7px 0 color-mix(in srgb, var(--kirik-navy) 88%, transparent);
 
   /* Playful transforms */
   --brutal-tilt: -2deg;
@@ -33,10 +44,10 @@
   --font-brutal-accent: 'Fredoka', var(--font-brutal-body);
 
   /* Brand palette (desi-pop) */
-  --comic-cream: #f8f2e8;
-  --comic-pink: #ff4d8d;
-  --comic-mango: #f4a825;
-  --comic-panel: var(--kirik-offwhite, #f8fafc);
+  --comic-cream: var(--kirik-light-grey);
+  --comic-pink: var(--kirik-lavender-pink);
+  --comic-mango: var(--kirik-golden-yellow);
+  --comic-panel: var(--kirik-soft-cream);
   --font-blocky: var(--font-brutal-heading);
 }
 
@@ -85,6 +96,8 @@
 }
 
 .layout--good-girl .btn--try-kirik:hover {
+  background: var(--kirik-cinnabar);
+  color: var(--kirik-soft-cream);
   box-shadow: var(--brutal-shadow);
 }
 

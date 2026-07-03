@@ -11,7 +11,7 @@ function PackCard({ product }) {
       to="/products"
       className="comic-pack-card"
       style={{
-        '--comic-card-bg': meta.cardBg || '#fff9f0',
+        '--comic-card-bg': meta.cardBg || 'var(--kirik-soft-cream)',
         '--comic-card-ink': meta.cardInk || 'var(--color-ink)',
         '--comic-card-accent': meta.accent || 'var(--color-accent)',
       }}
