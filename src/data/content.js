@@ -24,27 +24,27 @@ export const heroTawaVideo = {
 export const comicProductMeta = {
   'green-chutney': {
     flavorPop: 'Pudina fresh!',
-    cardBg: 'linear-gradient(180deg, rgba(175, 192, 174, 0.42) 0%, #f5f6f8 100%)',
+    panelBg: '#c8d8c7',
     cardInk: 'var(--kirik-navy)',
     accent: 'var(--kirik-sage)',
   },
   'tangy-salty': {
     flavorPop: 'Chaat tangy!',
-    cardBg: 'linear-gradient(180deg, rgba(246, 113, 134, 0.36) 0%, #f5f6f8 100%)',
+    panelBg: '#f5c4cf',
     cardInk: 'var(--kirik-navy)',
     accent: 'var(--kirik-coral)',
   },
   'kara-podi': {
     flavorPop: 'Yum spicy!',
-    cardBg: 'linear-gradient(180deg, rgba(217, 138, 0, 0.34) 0%, #f5f6f8 100%)',
+    panelBg: '#f2d4a8',
     cardInk: 'var(--kirik-navy)',
     accent: 'var(--kirik-burnt-orange)',
   },
   'ginger-jaggery': {
     flavorPop: 'Sweet heat!',
-    cardBg: 'linear-gradient(180deg, rgba(0, 91, 150, 0.32) 0%, #f5f6f8 100%)',
+    panelBg: '#cfc4e8',
     cardInk: 'var(--kirik-navy)',
-    accent: 'var(--kirik-royal-blue)',
+    accent: 'var(--kirik-lavender)',
   },
 }
 
@@ -53,26 +53,15 @@ export const comicBuildBox = {
   subtitleLines: ['You Choose. We Pack.', 'The Perfect Box of Crunch'],
 }
 
-export const comicRogueSection = {
-  smallHeading: ['WANT A', 'TASTE?'],
-  smallHeadingAccent: 'THE DOSA THAT WENT ROGUE...',
-  mainHeading: 'The good stuff in every bag',
-  paragraph: 'No fake claims — just dosa chips your amma would actually nod at.',
-  description:
-    'Made from Real Dosa, Naturally Gluten Free, NO Palm Oil, Ridiculous Crunch, Indian Flavours, No Artificial Colors, nostalgia in every bite, farm to banana leaf',
-  chips: [
-    'Made From Real Dosa',
-    'Gluten Free',
-    'NO Palm Oil',
-    'Ridiculous Crunch',
-    'Indian Flavours',
-    'No Artificial Colors',
-    'Farm to Banana Leaf',
-    'Nostalgia in Every Bite',
-  ],
-  image: assetUrl('/dosa-rogue.png'),
-  imageAlt: 'Illustration of dosa with chips on a plate',
-}
+/** Repeating wallpaper for sticker-style hero (no floating stickers) */
+export const stickerHeroBgLines = [
+  { text: 'DOSA WENT ROGUE · SERIOUS CRUNCH · KIRIK CHIPS ·', rotate: -3 },
+  { text: 'REAL DOSA · REAL FLAVOUR · MAXIMUM TROUBLE ·', rotate: 2.5 },
+  { text: 'CRUNCH THAT SLAPS · DESI VIBES ONLY ·', rotate: -2 },
+  { text: 'FARM TO BANANA LEAF · NO FAKE CLAIMS ·', rotate: 3 },
+  { text: 'AMMA APPROVED · KIRIK CERTIFIED ·', rotate: -2.5 },
+  { text: 'INDIAN FLAVOURS · RIDICULOUS CRUNCH ·', rotate: 2 },
+]
 
 export const comicDietaryBullets = [
   'Made from Real Dosa',

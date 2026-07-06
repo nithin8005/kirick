@@ -59,7 +59,6 @@
 .layout--good-girl .brutal-heading,
 .layout--good-girl .comic-shop__title,
 .layout--good-girl .comic-build-box__title,
-.layout--good-girl .comic-rogue__title,
 .layout--good-girl .comic-shop__name,
 .layout--good-girl .comic-section-title,
 .layout--good-girl .dietary-icons__title {
@@ -99,7 +98,6 @@
 }
 
 .layout--good-girl .comic-shop__card,
-.layout--good-girl .comic-pack-card,
 .layout--good-girl .comic-shop__pop,
 .layout--good-girl .comic-shop__pack-bubble,
 .layout--good-girl .social-wire--comic-box .container {
@@ -107,8 +105,7 @@
   box-shadow: var(--brutal-shadow);
 }
 
-.layout--good-girl .comic-shop__card:hover,
-.layout--good-girl .comic-pack-card:hover {
+.layout--good-girl .comic-shop__card:hover {
   box-shadow: var(--brutal-shadow-hover);
 }
 
@@ -139,8 +136,7 @@
   font-family: var(--font-brutal-accent);
 }
 
-.layout--good-girl .comic-burst__tag,
-.layout--good-girl .comic-rogue__subtitle {
+.layout--good-girl .comic-burst__tag {
   font-family: var(--font-brutal-heading);
 }
 

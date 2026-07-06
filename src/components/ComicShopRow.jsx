@@ -4,33 +4,34 @@ import ProductNewBadge from './ProductNewBadge'
 
 function PackCard({ product }) {
   const meta = comicProductMeta[product.id] || {}
-  const imgSrc = product.heroImage || product.showcaseImage || product.image
+  const imgSrc = product.showcaseImage || product.image
 
   return (
     <AppLink
       to="/products"
       className="comic-pack-card"
       style={{
-        '--comic-card-bg': meta.cardBg || 'var(--kirik-soft-cream)',
+        '--comic-card-panel': meta.panelBg || 'var(--kirik-soft-cream)',
         '--comic-card-ink': meta.cardInk || 'var(--color-ink)',
         '--comic-card-accent': meta.accent || 'var(--color-accent)',
       }}
     >
-      <ProductNewBadge />
-      <span className="comic-pack-card__pop">{meta.flavorPop || product.name}</span>
-      <div className="comic-pack-card__visual">
-        <img
-          src={imgSrc}
-          alt={product.imageLabel || `${product.name} — KIRIK Dosa Chips`}
-          className="comic-pack-card__img"
-          loading="lazy"
-          decoding="async"
-        />
-        <span className="comic-pack-card__hover-name">{product.name}</span>
+      <div className="comic-pack-card__panel">
+        <ProductNewBadge />
+        <span className="comic-pack-card__pop">{meta.flavorPop || product.name}</span>
+        <div className="comic-pack-card__visual">
+          <img
+            src={imgSrc}
+            alt={product.imageLabel || `${product.name} — KIRIK Dosa Chips`}
+            className="comic-pack-card__img"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
       </div>
       <div className="comic-pack-card__meta">
+        <p className="comic-pack-card__eyebrow">{product.gridBlurb || product.tagline}</p>
         <h3 className="comic-pack-card__name">{product.name}</h3>
-        <p className="comic-pack-card__desc">{product.gridBlurb || product.tagline}</p>
         <p className="comic-pack-card__price">
           <span className="comic-pack-card__price-was">{product.priceWas}</span>
           <span className="comic-pack-card__price-now">{product.price}</span>
