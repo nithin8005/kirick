@@ -99,8 +99,7 @@
 
 .layout--good-girl .comic-shop__card,
 .layout--good-girl .comic-shop__pop,
-.layout--good-girl .comic-shop__pack-bubble,
-.layout--good-girl .social-wire--comic-box .container {
+.layout--good-girl .comic-shop__pack-bubble {
   border: var(--brutal-border);
   box-shadow: var(--brutal-shadow);
 }

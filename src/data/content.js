@@ -53,14 +53,16 @@ export const comicBuildBox = {
   subtitleLines: ['You Choose. We Pack.', 'The Perfect Box of Crunch'],
 }
 
-/** Repeating wallpaper for sticker-style hero (no floating stickers) */
-export const stickerHeroBgLines = [
-  { text: 'DOSA WENT ROGUE · SERIOUS CRUNCH · KIRIK CHIPS ·', rotate: -3 },
-  { text: 'REAL DOSA · REAL FLAVOUR · MAXIMUM TROUBLE ·', rotate: 2.5 },
-  { text: 'CRUNCH THAT SLAPS · DESI VIBES ONLY ·', rotate: -2 },
-  { text: 'FARM TO BANANA LEAF · NO FAKE CLAIMS ·', rotate: 3 },
-  { text: 'AMMA APPROVED · KIRIK CERTIFIED ·', rotate: -2.5 },
-  { text: 'INDIAN FLAVOURS · RIDICULOUS CRUNCH ·', rotate: 2 },
+/** Static wallpaper — 4 rows */
+const stickerHeroWallLine = 'KIRIK CHIPS • REAL DOSA • SERIOUS CRUNCH • KIRIK CHIPS •'
+const stickerHeroWallLine2 = 'REAL DOSA • REAL FLAVOUR • DESI VIBES • REAL DOSA •'
+const stickerHeroWallLine3 = 'SERIOUS CRUNCH • MAXIMUM TROUBLE • KIRIK CERTIFIED • SERIOUS CRUNCH •'
+
+export const stickerHeroWallRows = [
+  stickerHeroWallLine,
+  stickerHeroWallLine2,
+  stickerHeroWallLine3,
+  stickerHeroWallLine,
 ]
 
 export const comicDietaryBullets = [
