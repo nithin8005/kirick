@@ -38,7 +38,7 @@
   --font-brutal-body: 'DM Sans', system-ui, sans-serif;
   --font-brutal-accent: 'Fredoka', var(--font-brutal-body);
 
-  --comic-cream: var(--kirik-light-grey);
+  --comic-cream: #f5f6f8;
   --comic-pink: var(--kirik-coral);
   --comic-mango: var(--kirik-mustard);
   --comic-panel: var(--kirik-soft-cream);
@@ -84,10 +84,20 @@
   text-transform: uppercase;
 }
 
-.layout--good-girl .btn--try-kirik:hover {
-  background: var(--kirik-teal);
+.layout--good-girl .btn.btn--try-kirik {
+  background: var(--kirik-pear);
   color: var(--kirik-navy);
+}
+
+.layout--good-girl .btn.btn--try-kirik:hover,
+.layout--good-girl .btn--try-kirik:hover {
+  background: var(--kirik-fandango, #b4287a);
+  color: #fff8ec;
   box-shadow: var(--brutal-shadow);
+}
+
+.layout--good-girl .promo-marquee {
+  background: var(--kirik-cinnabar);
 }
 
 .layout--good-girl .brutal-bubble {

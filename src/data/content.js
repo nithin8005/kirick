@@ -6,6 +6,7 @@ export const promoMarqueeText = '10% off 4 pack * Dosa went Rogue *'
 export const comicTaglineRibbon = "Flavours that slap harder than Amma's Chappal"
 
 export const comicHeroCopy = {
+  brandTitle: ['KIRIK DOSA CHIPS'],
   headline: ['PURE CHAOS.', 'SERIOUS CRUNCH.', 'MAXIMUM TROUBLE.'],
   tagline: ['DOSA CHIPS — MADE FROM DOSA', 'BUT NOT YOUR REGULAR DOSA.'],
 }
@@ -24,27 +25,27 @@ export const heroTawaVideo = {
 export const comicProductMeta = {
   'green-chutney': {
     flavorPop: 'Pudina fresh!',
-    panelBg: '#c8d8c7',
+    cardBg: 'linear-gradient(180deg, rgba(240, 87, 122, 0.42) 0%, #f5f6f8 100%)',
     cardInk: 'var(--kirik-navy)',
-    accent: 'var(--kirik-sage)',
+    accent: '#e23a63',
   },
   'tangy-salty': {
     flavorPop: 'Chaat tangy!',
-    panelBg: '#f5c4cf',
+    cardBg: 'linear-gradient(180deg, rgba(255, 205, 45, 0.5) 0%, #f5f6f8 100%)',
     cardInk: 'var(--kirik-navy)',
-    accent: 'var(--kirik-coral)',
+    accent: '#e0a400',
   },
   'kara-podi': {
     flavorPop: 'Yum spicy!',
-    panelBg: '#f2d4a8',
+    cardBg: 'linear-gradient(180deg, rgba(47, 112, 255, 0.36) 0%, #f5f6f8 100%)',
     cardInk: 'var(--kirik-navy)',
-    accent: 'var(--kirik-burnt-orange)',
+    accent: 'var(--kirik-celtic-blue)',
   },
   'ginger-jaggery': {
     flavorPop: 'Sweet heat!',
-    panelBg: '#cfc4e8',
+    cardBg: 'linear-gradient(180deg, rgba(64, 200, 150, 0.42) 0%, #f5f6f8 100%)',
     cardInk: 'var(--kirik-navy)',
-    accent: 'var(--kirik-lavender)',
+    accent: '#1ba97e',
   },
 }
 
@@ -53,17 +54,26 @@ export const comicBuildBox = {
   subtitleLines: ['You Choose. We Pack.', 'The Perfect Box of Crunch'],
 }
 
-/** Static wallpaper — 4 rows */
+/** Static wallpaper — rows */
 const stickerHeroWallLine = 'KIRIK CHIPS • REAL DOSA • SERIOUS CRUNCH • KIRIK CHIPS •'
-const stickerHeroWallLine2 = 'REAL DOSA • REAL FLAVOUR • DESI VIBES • REAL DOSA •'
-const stickerHeroWallLine3 = 'SERIOUS CRUNCH • MAXIMUM TROUBLE • KIRIK CERTIFIED • SERIOUS CRUNCH •'
+const stickerHeroWallLine2 = 'MADE FROM REAL DOSA • NATURALLY GLUTEN FREE • NO PALM OIL •'
+const stickerHeroWallLine3 = 'RIDICULOUS CRUNCH • INDIAN FLAVOURS • NO ARTIFICIAL COLOURS •'
+const stickerHeroWallLine4 = 'NOSTALGIA IN EVERY BITE • FARM TO BANANA LEAF • KIRIK CHIPS •'
 
 export const stickerHeroWallRows = [
   stickerHeroWallLine,
   stickerHeroWallLine2,
   stickerHeroWallLine3,
-  stickerHeroWallLine,
+  stickerHeroWallLine4,
 ]
+
+export const stickerHeroContent = {
+  eyebrow: 'Want a taste? The dosa that went rogue…',
+  title: 'The good stuff in every bag',
+  lead: 'No fake claims — just dosa chips your amma would actually nod at.',
+  claims:
+    'Made from Real Dosa, Naturally Gluten Free, NO Palm Oil, Ridiculous Crunch, Indian Flavours, No Artificial colours, nostalgia in every bite, farm to banana leaf',
+}
 
 export const comicDietaryBullets = [
   'Made from Real Dosa',

@@ -330,12 +330,12 @@
   position: relative;
   z-index: 200;
   overflow: hidden;
-  background: var(--kirik-burnt-orange);
+  background: var(--kirik-cinnabar);
 }
 
 .layout.layout--good-girl.layout--comic .main {
-  /* promo (~32px) + header (~80px) ≈ 112px */
-  padding-top: 7rem;
+  /* promo (~36px) + slim header (80px) */
+  padding-top: 7.5rem;
 }
 
 .promo-marquee__item {
@@ -348,7 +348,7 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   white-space: nowrap;
-  color: var(--kirik-soft-cream);
+  color: var(--kirik-pear);
 }
 
 .promo-marquee__track {
@@ -405,27 +405,49 @@
   box-shadow: none;
 }
 
+/* Slim navbar — logo removed so height is fixed regardless of branding size */
 .comic-wire-header__inner {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  position: relative;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: clamp(0.75rem, 2vw, 1.5rem);
-  padding: 0.85rem 0;
-  min-height: 5rem;
+  padding: 0;
+  min-height: 80px;
+  height: 80px;
 }
 
-.comic-wire-header__logo {
+.comic-wire-header__cta {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
+  align-items: center;
+}
+
+/* Logo pinned to the corner, absolutely positioned so its size never
+   changes the 80px navbar height. Anchored from the top with a small gap
+   so it hangs downward (into the hero) instead of touching the promo banner. */
+.comic-wire-header__logo {
+  position: absolute;
+  left: clamp(0.5rem, 1.2vw, 1rem);
+  top: 5px;
+  transform: none;
+  transform-origin: top left;
+  display: flex;
+  align-items: flex-start;
   text-decoration: none;
+  z-index: 3;
   transition: transform 0.2s ease;
 }
 
 .comic-wire-header__logo:hover {
-  transform: translateY(-1px);
+  transform: scale(1.03);
 }
 
 .comic-wire-header__logo-img {
-  height: clamp(52px, 8vw, 72px);
+  height: clamp(74px, 9vw, 108px);
   width: auto;
   filter:
     drop-shadow(2px 2px 0 rgba(26, 18, 8, 0.3))
@@ -482,7 +504,7 @@
   align-items: center;
   justify-content: center;
   padding: 0.55rem 1.15rem;
-  background: var(--kirik-sage);
+  background: var(--kirik-pear);
   color: var(--kirik-navy);
   font-family: var(--font-display);
   font-size: clamp(0.9rem, 2vw, 1.05rem);
@@ -497,8 +519,8 @@
 }
 
 .btn--try-kirik:hover {
-  background: var(--kirik-burnt-orange);
-  color: var(--kirik-soft-cream);
+  background: var(--kirik-fandango, #b4287a);
+  color: #fff8ec;
   transform: rotate(-2deg) translate(-1px, -1px);
   box-shadow: var(--brutal-shadow, 5px 5px 0 color-mix(in srgb, var(--kirik-navy) 85%, transparent));
 }
@@ -512,7 +534,7 @@
 /* Hero — reference layout: copy left 45%, overlapping packets right 55% */
 .comic-wire-hero {
   padding-block: clamp(1.25rem, 3.5vw, 2.5rem);
-  background: #fff8ec;
+  background: var(--comic-cream);
   position: relative;
   z-index: 1;
 }
@@ -524,10 +546,10 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: radial-gradient(circle, rgba(244, 168, 37, 0.28) 1.35px, transparent 1.35px);
-  background-size: 26px 26px;
+  background-image: radial-gradient(circle, rgba(244, 168, 37, 0.48) 3.6px, transparent 3.6px);
+  background-size: 52px 52px;
   background-position: 0 0;
-  opacity: 0.55;
+  opacity: 0.82;
 }
 
 .comic-wire-hero__grid {
@@ -603,6 +625,16 @@
   gap: clamp(1.25rem, 3.5vw, 2.75rem);
   align-items: center;
   min-height: clamp(460px, 56vh, 700px);
+}
+
+/* Base hero (no photo): single column so brand title can center full-width */
+.comic-wire-hero:not(.comic-wire-hero--photo) .comic-wire-hero__grid {
+  grid-template-columns: 1fr;
+  min-height: 0;
+}
+
+.comic-wire-hero:not(.comic-wire-hero--photo) .comic-wire-hero__visual {
+  display: none;
 }
 
 .comic-wire-hero__grid > .comic-hero-copy {
@@ -756,6 +788,50 @@
   gap: clamp(0.85rem, 2vw, 1.25rem);
   position: relative;
   z-index: 2;
+}
+
+/* Big brand title — Good Girl Pickles style: clean top line + distressed stamp word */
+.comic-hero-copy__brand {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto clamp(0.35rem, 1vw, 0.65rem);
+  text-align: center;
+  z-index: 3;
+}
+
+.layout--good-girl .comic-hero-copy__brand-line {
+  display: block;
+  font-family: 'Montserrat', 'Archivo Black', 'Arial Black', sans-serif;
+  font-size: clamp(2rem, 5.4vw, 4.75rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--kirik-cinnabar);
+  white-space: nowrap;
+  max-width: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.layout--good-girl .comic-hero-copy__brand-line--accent {
+  font-family: 'Bangers', 'Archivo Black', cursive;
+  font-size: clamp(3.35rem, 9.8vw, 7.35rem);
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: 0.04em;
+  margin-top: -0.04em;
+  transform: rotate(-0.35deg);
+  transform-origin: left center;
+  text-shadow:
+    1px 1px 0 color-mix(in srgb, var(--kirik-cinnabar) 72%, #000),
+    2px 2px 0 color-mix(in srgb, var(--kirik-cinnabar) 38%, transparent),
+    -1px 1px 0 color-mix(in srgb, var(--kirik-cinnabar) 22%, transparent);
+  filter: contrast(1.08) saturate(1.05);
 }
 
 .comic-hero-copy__headline-wrap {
@@ -1095,158 +1171,146 @@
 /* Pack of 4 — Good Girl Snacks style pastel panels */
 .comic-pack-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: start;
-  gap: clamp(1.25rem, 2.8vw, 2rem);
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2.2vw, 1.5rem);
   padding-top: 1rem;
   overflow: visible;
-}
-
-@keyframes comic-pack-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-6px);
-  }
-}
-
-.layout.layout--good-girl .comic-pack-card,
-.layout.layout--good-girl .comic-pack-card:hover,
-.layout.layout--good-girl .comic-pack-card:focus-visible {
-  border: none;
-  box-shadow: none;
 }
 
 .comic-pack-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: clamp(0.75rem, 1.8vw, 1rem);
-  width: 100%;
-  min-width: 0;
   text-decoration: none;
   color: var(--comic-card-ink, var(--color-ink));
-  background: transparent;
+  background: var(--comic-card-bg, var(--kirik-soft-cream));
+  border: 3px solid var(--color-ink);
+  box-shadow: var(--brutal-shadow, 5px 5px 0 var(--kirik-navy));
   overflow: visible;
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.2, 0.64, 1),
+    box-shadow 0.3s ease;
 }
 
-.comic-pack-card__panel {
-  position: relative;
-  width: 100%;
-  flex-shrink: 0;
-  aspect-ratio: 4 / 5;
-  background: var(--comic-card-panel, var(--kirik-soft-cream));
-  border-radius: clamp(28px, 5vw, 40px);
-  overflow: visible;
-  transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
-}
-
-.comic-pack-card:hover .comic-pack-card__panel,
-.comic-pack-card:focus-visible .comic-pack-card__panel {
-  transform: scale(1.03);
+.comic-pack-card:hover,
+.comic-pack-card:focus-visible {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--brutal-shadow-hover, 8px 8px 0 var(--kirik-navy));
 }
 
 .comic-pack-card__visual {
-  display: none;
+  position: relative;
+  padding: 1.15rem 1rem 0.75rem;
+  background: color-mix(in srgb, var(--kirik-soft-cream) 50%, transparent);
+  overflow: hidden;
 }
 
 .comic-pack-card__img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: contain;
-  object-position: center center;
-  filter: drop-shadow(0 18px 22px rgba(15, 23, 58, 0.2));
-  transform-origin: center center;
-  animation: comic-pack-float 5s ease-in-out infinite;
+  mix-blend-mode: multiply;
   transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
 }
 
 .comic-pack-card:hover .comic-pack-card__img,
 .comic-pack-card:focus-visible .comic-pack-card__img {
-  animation: none;
-  transform: scale(1.05);
+  transform: scale(1.06);
+}
+
+.comic-pack-card__hover-name {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--comic-card-accent, var(--kirik-celtic-blue)) 58%, transparent);
+  color: var(--kirik-navy);
+  font-family: 'Fredoka', var(--font-body);
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 0 1px 0 color-mix(in srgb, var(--kirik-soft-cream) 65%, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .comic-pack-card__pop {
   position: absolute;
-  top: 10%;
-  right: clamp(-0.15rem, -1vw, 0.15rem);
-  bottom: auto;
-  left: auto;
+  top: -0.85rem;
+  right: -0.35rem;
   z-index: 10;
-  padding: 0.5rem 0.8rem;
-  background: var(--comic-card-accent, var(--kirik-coral));
-  border: 2px solid var(--kirik-navy);
+  padding: 0.45rem 0.75rem;
+  background: var(--comic-card-accent, var(--kirik-pear));
+  border: 3px solid var(--kirik-navy);
   border-radius: 999px;
   font-family: var(--font-display);
-  font-size: clamp(0.68rem, 1.4vw, 0.78rem);
-  font-weight: 800;
-  letter-spacing: 0.05em;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--kirik-navy);
-  box-shadow: 0 4px 12px rgba(15, 23, 58, 0.14);
-  opacity: 1;
-  transform: rotate(-6deg);
-  transition: transform 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+  box-shadow: var(--brutal-shadow-sm, 3px 3px 0 var(--kirik-navy));
+  opacity: 0;
+  transform: scale(0.85) rotate(8deg);
+  transition: opacity var(--transition), transform var(--transition);
   pointer-events: none;
 }
 
-.comic-pack-card:hover .comic-pack-card__pop,
-.comic-pack-card:focus-visible .comic-pack-card__pop {
-  transform: rotate(-3deg) scale(1.06);
+.comic-pack-card:nth-child(4n) .comic-pack-card__pop {
+  right: -0.35rem;
+  left: auto;
+  transform: scale(0.85) rotate(8deg);
 }
 
-.comic-pack-card .new-badge-anchor {
-  top: 6%;
-  bottom: auto;
-  left: clamp(-0.25rem, -1vw, 0.1rem);
-  right: auto;
-  transform: translateY(-40%);
-  z-index: 11;
+.comic-pack-card:hover .comic-pack-card__pop,
+.comic-pack-card:focus-visible .comic-pack-card__pop,
+.comic-pack-card:focus-within .comic-pack-card__pop {
+  opacity: 1;
+  transform: scale(1) rotate(4deg);
+}
+
+.comic-pack-card:nth-child(4n):hover .comic-pack-card__pop,
+.comic-pack-card:nth-child(4n):focus-visible .comic-pack-card__pop,
+.comic-pack-card:nth-child(4n):focus-within .comic-pack-card__pop {
+  transform: scale(1) rotate(4deg);
+}
+
+.comic-pack-card:hover .comic-pack-card__hover-name,
+.comic-pack-card:focus-visible .comic-pack-card__hover-name,
+.comic-pack-card:focus-within .comic-pack-card__hover-name {
+  opacity: 1;
 }
 
 .comic-pack-card__meta {
-  padding: 0 0.25rem;
-  text-align: center;
-  min-height: 5.25rem;
-}
-
-.comic-pack-card__eyebrow {
-  margin: 0 0 0.35rem;
-  font-size: clamp(0.62rem, 1.15vw, 0.72rem);
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--comic-card-accent, var(--kirik-coral));
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  padding: 0.9rem 1rem 1.15rem;
 }
 
 .comic-pack-card__name {
   font-family: var(--font-blocky, var(--font-display));
-  font-size: clamp(1rem, 1.8vw, 1.35rem);
-  font-weight: 800;
-  letter-spacing: 0.03em;
+  font-size: clamp(0.92rem, 1.55vw, 1.25rem);
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   margin: 0 0 0.4rem;
-  line-height: 1.05;
+  line-height: 1.1;
   color: var(--comic-card-accent, var(--kirik-navy));
-  white-space: normal;
-}
-
-.comic-pack-card__name-line {
-  display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.comic-pack-card__name-line--sub {
-  margin-top: 0.1rem;
+.comic-pack-card__desc {
+  margin: 0 0 0.65rem;
+  font-size: clamp(0.76rem, 1.35vw, 0.86rem);
+  line-height: 1.3;
+  color: var(--color-ink-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .comic-pack-card__price {
@@ -1254,7 +1318,6 @@
   display: flex;
   flex-wrap: nowrap;
   align-items: baseline;
-  justify-content: center;
   gap: 0.35rem;
   white-space: nowrap;
   font-size: 0.9rem;
@@ -1262,20 +1325,20 @@
 
 .comic-pack-card__price-was {
   flex-shrink: 0;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-ink-muted);
   text-decoration: line-through;
 }
 
 .comic-pack-card__price-now {
   flex-shrink: 0;
-  font-family: var(--font-body);
-  font-size: clamp(0.82rem, 1.5vw, 0.95rem);
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  color: var(--color-ink-muted);
+  font-family: var(--font-blocky, var(--font-display));
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  letter-spacing: 0.02em;
+  color: var(--comic-card-accent, var(--color-accent));
 }
 
 .comic-pack-card__price-each {
@@ -1283,19 +1346,6 @@
   font-size: 0.75rem;
   color: var(--color-ink-muted);
   white-space: nowrap;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .comic-pack-card__img {
-    animation: none;
-  }
-
-  .comic-pack-card:hover .comic-pack-card__panel,
-  .comic-pack-card:focus-visible .comic-pack-card__panel,
-  .comic-pack-card:hover .comic-pack-card__img,
-  .comic-pack-card:focus-visible .comic-pack-card__img {
-    transform: none;
-  }
 }
 
 .comic-shop__grid {
@@ -1419,7 +1469,7 @@
 /* Build your own box — reference layout, transparent PNG only */
 .comic-build-box.section {
   padding: clamp(0.4rem, 1.1vw, 0.7rem) 0;
-  background: #f8f2e8;
+  background: var(--comic-cream);
 }
 
 .comic-build-box__inner {
@@ -1551,22 +1601,103 @@
 .sticker-hero {
   position: relative;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  min-height: clamp(440px, 54vw, 600px);
-  padding: clamp(2.5rem, 5vw, 4rem) 0;
-  background: #f0e4d0;
+  min-height: clamp(300px, 36vw, 420px);
+  padding: clamp(2.75rem, 6vw, 4.5rem) 0;
+  background:
+    radial-gradient(ellipse 70% 90% at 50% 0%, color-mix(in srgb, var(--kirik-pear) 38%, #fff) 0%, transparent 70%),
+    linear-gradient(180deg, color-mix(in srgb, var(--kirik-pear) 24%, #fff) 0%, color-mix(in srgb, var(--kirik-pear) 14%, #fff) 100%);
   overflow: hidden;
 }
 
 .sticker-hero__wallpaper {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 118%;
   margin-left: -9%;
   pointer-events: none;
   user-select: none;
+}
+
+.sticker-hero__content {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 2.5rem, 880px);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+  text-align: center;
+}
+
+.sticker-hero__eyebrow {
+  margin: 0 0 0.9rem;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: clamp(0.72rem, 1.6vw, 0.92rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--kirik-navy);
+}
+
+.sticker-hero__title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-brutal-heading, 'Syne', sans-serif);
+  font-weight: 900;
+  font-size: clamp(2rem, 6vw, 3.75rem);
+  line-height: 0.98;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+  color: var(--kirik-navy);
+  text-shadow:
+    2px 2px 0 color-mix(in srgb, #fff 75%, transparent),
+    5px 5px 0 color-mix(in srgb, var(--kirik-pear) 55%, transparent);
+}
+
+.sticker-hero__lead {
+  margin: 0 auto 1.5rem;
+  max-width: 34ch;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+  line-height: 1.35;
+  color: var(--kirik-navy);
+}
+
+.sticker-hero__claims {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.5rem, 1.2vw, 0.75rem);
+  margin: 0 auto;
+  padding: 0;
+  max-width: 720px;
+  list-style: none;
+}
+
+.sticker-hero__claim {
+  padding: 0.4rem 0.95rem;
+  background: color-mix(in srgb, #fff 82%, var(--kirik-pear));
+  border: 2px solid var(--kirik-navy);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(0.72rem, 1.5vw, 0.88rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--kirik-navy);
+  box-shadow: 2px 2px 0 color-mix(in srgb, var(--kirik-navy) 75%, transparent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sticker-hero__claim:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 4px 0 color-mix(in srgb, var(--kirik-navy) 75%, transparent);
 }
 
 .sticker-hero__wall-row {
@@ -1744,7 +1875,7 @@
   padding: clamp(1.5rem, 4vw, 2.5rem);
   border: none;
   box-shadow: none;
-  background: var(--kirik-soft-cream);
+  background: var(--comic-cream);
 }
 
 .layout--good-girl .social-wire {
@@ -1829,7 +1960,7 @@
   place-items: center;
   width: 100%;
   height: 100%;
-  background: var(--kirik-sage);
+  background: color-mix(in srgb, var(--kirik-pear) 60%, #ffffff);
   color: var(--kirik-navy);
   clip-path: var(--new-badge-clip);
   font-family: 'Archivo Black', 'Impact', 'Arial Narrow', sans-serif;
@@ -1933,6 +2064,15 @@
   text-align: center;
 }
 
+.kirik-loader__logo {
+  width: clamp(160px, 26vw, 260px);
+  height: auto;
+  margin-bottom: 0.35rem;
+  filter:
+    drop-shadow(2px 3px 0 rgba(15, 23, 58, 0.16))
+    drop-shadow(0 12px 22px rgba(15, 23, 58, 0.14));
+}
+
 .kirik-loader__babu {
   transform: scale(1.35);
 }
@@ -1987,30 +2127,21 @@
 /* Responsive */
 @media (max-width: 960px) {
   .layout.layout--good-girl.layout--comic .main {
-    padding-top: 8.25rem;
+    padding-top: 7.5rem;
   }
 
   .comic-wire-header__inner {
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-  }
-
-  .comic-wire-header__logo {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .comic-wire-header .btn--try-kirik {
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: end;
+    justify-content: flex-end;
+    padding-left: clamp(5rem, 26vw, 8rem);
+    padding-right: clamp(6rem, 28vw, 8.5rem);
   }
 
   .comic-wire-nav {
-    grid-column: 1 / -1;
-    grid-row: 2;
     justify-content: center;
-    padding-top: 0.25rem;
+  }
+
+  .comic-wire-header__cta .btn--try-kirik {
+    padding: 0.45rem 0.9rem;
   }
 
   .comic-wire-hero__grid {
@@ -2031,6 +2162,19 @@
 
   .hero-showcase {
     transform: none;
+  }
+
+  .layout--good-girl .comic-hero-copy__brand-line {
+    font-size: clamp(2.35rem, 11vw, 3.35rem);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    white-space: normal;
+  }
+
+  .layout--good-girl .comic-hero-copy__brand-line--accent {
+    font-size: clamp(2.85rem, 13.5vw, 4.15rem);
+    line-height: 0.86;
+    letter-spacing: 0.03em;
   }
 
   .layout--good-girl .comic-hero-copy__headline-line {

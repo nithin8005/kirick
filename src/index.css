@@ -1,4 +1,11 @@
 :root {
+  /* KIRIK guideline palette (needed for header + banner) */
+  --kirik-pear: #c7ff29;
+  --kirik-celtic-blue: #2f70ff;
+  --kirik-lavender-pink: #f6a9c9;
+  --kirik-cinnabar: #e54b2b;
+  --kirik-fandango: #b4287a;
+
   /* Reference palette (no packaging theme colors) */
   --kirik-navy: #0f173a;
   --kirik-royal-blue: #005b96;
@@ -3826,6 +3833,130 @@ body.has-dosa-cursor * {
   display: inline-block;
   flex-shrink: 0;
   line-height: 0;
+}
+
+.dosa-babu-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Green hair highlight (simple swoosh near top) */
+.dosa-babu-decor__hair {
+  position: absolute;
+  left: 18%;
+  top: 8%;
+  width: 64%;
+  height: 30%;
+  background:
+    radial-gradient(ellipse at 40% 60%, rgba(199, 255, 41, 0.9) 0%, rgba(199, 255, 41, 0.0) 70%),
+    radial-gradient(ellipse at 70% 40%, rgba(199, 255, 41, 0.65) 0%, rgba(199, 255, 41, 0.0) 68%);
+  filter: blur(0.2px);
+  opacity: 0.9;
+  mix-blend-mode: multiply;
+  transform: rotate(-10deg);
+  transform-origin: center;
+}
+
+/* Glasses: two frames + bridge */
+.dosa-babu-decor__glasses {
+  position: absolute;
+  left: 24%;
+  top: 36%;
+  width: 52%;
+  height: 18%;
+}
+
+.dosa-babu-decor__glasses::before,
+.dosa-babu-decor__glasses::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 42%;
+  height: 90%;
+  transform: translateY(-50%);
+  border: 3px solid var(--kirik-navy);
+  border-radius: 14px;
+  background: color-mix(in srgb, #fff 75%, transparent);
+  box-shadow: 2px 2px 0 color-mix(in srgb, var(--kirik-navy) 75%, transparent);
+}
+
+.dosa-babu-decor__glasses::before {
+  left: 0;
+}
+
+.dosa-babu-decor__glasses::after {
+  right: 0;
+}
+
+.dosa-babu-decor__glasses {
+  --bridge: 10%;
+}
+
+.dosa-babu-decor__glasses {
+  background:
+    linear-gradient(
+      to right,
+      transparent 0 calc(50% - var(--bridge)),
+      var(--kirik-navy) calc(50% - var(--bridge)) calc(50% + var(--bridge)),
+      transparent calc(50% + var(--bridge)) 100%
+    );
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 4px;
+}
+
+/* Stick arms + legs (simple lines around avatar) */
+.dosa-babu-decor__limbs {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.9;
+}
+
+.dosa-babu-decor__limbs::before,
+.dosa-babu-decor__limbs::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: 140%;
+  height: 70%;
+  transform: translateX(-50%);
+  background:
+    /* arms */
+    linear-gradient(12deg, transparent 0 46%, var(--kirik-navy) 46% 49%, transparent 49% 100%),
+    linear-gradient(-12deg, transparent 0 46%, var(--kirik-navy) 46% 49%, transparent 49% 100%),
+    /* legs */
+    linear-gradient(22deg, transparent 0 46%, var(--kirik-navy) 46% 49%, transparent 49% 100%),
+    linear-gradient(-22deg, transparent 0 46%, var(--kirik-navy) 46% 49%, transparent 49% 100%);
+  background-size: 50% 50%, 50% 50%, 40% 55%, 40% 55%;
+  background-position: 0% 0%, 100% 0%, 28% 55%, 72% 55%;
+  background-repeat: no-repeat;
+  filter: drop-shadow(2px 2px 0 color-mix(in srgb, var(--kirik-navy) 75%, transparent));
+}
+
+/* Size-tuning per avatar size */
+.dosa-babu-avatar-wrap--xs .dosa-babu-decor__glasses {
+  left: 26%;
+  top: 38%;
+  width: 50%;
+  height: 16%;
+}
+
+.dosa-babu-avatar-wrap--xs .dosa-babu-decor__glasses::before,
+.dosa-babu-avatar-wrap--xs .dosa-babu-decor__glasses::after {
+  border-width: 2px;
+  border-radius: 10px;
+}
+
+.dosa-babu-avatar-wrap--xs .dosa-babu-decor__hair {
+  opacity: 0.85;
+}
+
+.dosa-babu-avatar-wrap--xs .dosa-babu-decor__limbs {
+  opacity: 0.75;
 }
 
 .dosa-babu-avatar-wrap--premium {

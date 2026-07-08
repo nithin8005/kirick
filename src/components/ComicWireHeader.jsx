@@ -15,17 +15,17 @@ const wireNavLinks = [
 export default function ComicWireHeader() {
   return (
     <header className="comic-wire-header">
-      <div className="container comic-wire-header__inner">
-        <AppLink to="/" className="comic-wire-header__logo" aria-label="KIRIK home">
-          <img
-            src={assetUrl('/images/kirik-logo.png')}
-            alt="KIRIK"
-            className="comic-wire-header__logo-img"
-            loading="eager"
-            decoding="async"
-          />
-        </AppLink>
+      <AppLink to="/" className="comic-wire-header__logo" aria-label="KIRIK home">
+        <img
+          src={assetUrl('/images/kirik-logo.png')}
+          alt="KIRIK"
+          className="comic-wire-header__logo-img"
+          loading="eager"
+          decoding="async"
+        />
+      </AppLink>
 
+      <div className="container comic-wire-header__inner">
         <nav className="comic-wire-nav" aria-label="Main navigation">
           {wireNavLinks.map(({ to, href, label, external }) =>
             external ? (
@@ -40,9 +40,11 @@ export default function ComicWireHeader() {
           )}
         </nav>
 
-        <AppLink to="/products" className="btn btn--try-kirik">
-          Try KIRIK
-        </AppLink>
+        <div className="comic-wire-header__cta">
+          <AppLink to="/products" className="btn btn--try-kirik">
+            Try KIRIK
+          </AppLink>
+        </div>
       </div>
     </header>
   )

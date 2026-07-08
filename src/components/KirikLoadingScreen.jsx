@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import DosaBabuAvatar from './DosaBabuAvatar'
+import { assetUrl } from '../lib/assets'
 
 const MIN_LOAD_MS = 1800
 const EXIT_MS = 400
@@ -42,6 +43,13 @@ export default function KirikLoadingScreen({ onDone }) {
       aria-label="Loading KIRIK"
     >
       <div className="kirik-loader__inner">
+        <img
+          className="kirik-loader__logo"
+          src={assetUrl('/images/kirik-logo.png')}
+          alt="KIRIK"
+          loading="eager"
+          decoding="async"
+        />
         <DosaBabuAvatar size="lg" className="kirik-loader__babu" animated />
         <p className="kirik-loader__title">BEING KIRIK</p>
         <p className="kirik-loader__tagline">Dosa went rogue. Crunch loading…</p>

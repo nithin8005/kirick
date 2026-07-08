@@ -2,9 +2,8 @@ import ComicHeroBurst from '../components/ComicHeroBurst'
 import ComicShopRow from '../components/ComicShopRow'
 import ComicBuildBox from '../components/ComicBuildBox'
 import StickerHeroSection from '../components/StickerHeroSection'
-import ComicDietaryBand from '../components/ComicDietaryBand'
 import SocialMediaSection from '../components/SocialMediaSection'
-import { products, dietaryFeatures } from '../data/content'
+import { products } from '../data/content'
 
 export default function Home() {
   return (
@@ -21,8 +20,6 @@ export default function Home() {
       <ComicBuildBox />
 
       <StickerHeroSection />
-
-      <ComicDietaryBand features={dietaryFeatures} />
 
       <SocialMediaSection comicTitle sectionId="reviews" comicBox />
     </>

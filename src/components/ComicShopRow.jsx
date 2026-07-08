@@ -2,41 +2,35 @@ import { AppLink } from '../lib/ComicThemeContext'
 import { comicProductMeta } from '../data/content'
 import ProductNewBadge from './ProductNewBadge'
 
-function SplitName({ name }) {
-  const words = String(name || '').trim().split(/\s+/).filter(Boolean)
-  const first = words[0] || ''
-  const rest = words.slice(1).join(' ')
-
-  return (
-    <>
-      <span className="comic-pack-card__name-line">{first}</span>
-      {rest ? <span className="comic-pack-card__name-line comic-pack-card__name-line--sub">{rest}</span> : null}
-    </>
-  )
-}
-
 function PackCard({ product }) {
   const meta = comicProductMeta[product.id] || {}
+  const imgSrc = product.showcaseImage || product.image
 
   return (
     <AppLink
       to="/products"
       className="comic-pack-card"
       style={{
-        '--comic-card-panel': meta.panelBg || 'var(--kirik-soft-cream)',
+        '--comic-card-bg': meta.cardBg || 'var(--kirik-soft-cream)',
         '--comic-card-ink': meta.cardInk || 'var(--color-ink)',
         '--comic-card-accent': meta.accent || 'var(--color-accent)',
       }}
     >
-      <div className="comic-pack-card__panel">
-        <ProductNewBadge />
-        <span className="comic-pack-card__pop">{meta.flavorPop || product.name}</span>
+      <ProductNewBadge />
+      <span className="comic-pack-card__pop">{meta.flavorPop || product.name}</span>
+      <div className="comic-pack-card__visual">
+        <img
+          src={imgSrc}
+          alt={product.imageLabel || `${product.name} — KIRIK Dosa Chips`}
+          className="comic-pack-card__img"
+          loading="lazy"
+          decoding="async"
+        />
+        <span className="comic-pack-card__hover-name">{product.name}</span>
       </div>
       <div className="comic-pack-card__meta">
-        <p className="comic-pack-card__eyebrow">{product.gridBlurb || product.tagline}</p>
-        <h3 className="comic-pack-card__name">
-          <SplitName name={product.name} />
-        </h3>
+        <h3 className="comic-pack-card__name">{product.name}</h3>
+        <p className="comic-pack-card__desc">{product.gridBlurb || product.tagline}</p>
         <p className="comic-pack-card__price">
           <span className="comic-pack-card__price-was">{product.priceWas}</span>
           <span className="comic-pack-card__price-now">{product.price}</span>
